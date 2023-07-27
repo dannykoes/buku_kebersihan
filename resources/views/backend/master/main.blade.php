@@ -149,15 +149,26 @@
     $('.basic').select2({
         tags: true
     });
+    $('.basics').select2({
+        tags: true
+    });
+    $('.basicdsd').select2({
+        tags: true
+    });
     createDataTable('#mastertugas');
 
     function edittugas(data) {
+        console.log(data)
         $('#idtugas').val(data.id);
         $('#namatugas').val(JSON.parse(data.nama));
+        $('#tugasbulanan').val(JSON.parse(data.tugas_bulanan));
+        $('#tugasmingguan').val(JSON.parse(data.tugas_mingguan));
         $('#kantortugas').val(data.kantor_id);
         $('#ruanganidtugas').val(data.ruangan_id);
         $('#kantortugas').change();
         $('#namatugas').change();
+        $('#tugasbulanan').change();
+        $('#tugasmingguan').change();
     }
 
     function resettugas() {
@@ -165,6 +176,8 @@
         $('#namatugas').val(null);
         $('#kantortugas').val(null);
         $('#ruanganidtugas').val(null);
+        $('#tugasbulanan').val(null);
+        $('#tugasmingguan').val(null);
     }
 
     function changekantortugas() {
