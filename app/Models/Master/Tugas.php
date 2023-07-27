@@ -14,5 +14,7 @@ class Tugas extends Model
         'kantor_id',
         'nama',
         'merchant_id',
+        'tugas_mingguan',
+        'tugas_bulanan',
     ];
 }

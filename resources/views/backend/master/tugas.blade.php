@@ -2,38 +2,64 @@
     <div class="widget-content">
         <form action="tugas" method="POST">
             @csrf
-            <input type="text" name="idtugas" id="idtugas" value="{{old('idtugas')}}" hidden>
-            <input type="text" name="ruanganidtugas" id="ruanganidtugas" value="{{old('ruanganidtugas')}}" hidden>
-            <div class="form-group m-2">
-                <label for="">Kantor</label>
-                <select name="kantortugas" id="kantortugas" class="form-control" onchange="changekantortugas()">
-                    <option value="">Pilih</option>
-                    @foreach ($kantor as $kn)
-                    <option value="{{$kn->id}}" {{old('kantortugas')==$kn->id?'selected':''}}>{{$kn->nama}}</option>
-                    @endforeach
-                </select>
-                @error('kantortugas')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
+            <div class="row p-3">
+                <div class="col-lg-6">
+                    <label for="form-control">Kantor</label>
+                    <input type="text" name="idtugas" id="idtugas" value="{{old('idtugas')}}" hidden>
+                    <input type="text" name="ruanganidtugas" id="ruanganidtugas" value="{{old('ruanganidtugas')}}" hidden>
+                    <select name="kantortugas" id="kantortugas" class="form-control" onchange="changekantortugas()">
+                        <option value="">Pilih</option>
+                        @foreach ($kantor as $kn)
+                        <option value="{{$kn->id}}" {{old('kantortugas')==$kn->id?'selected':''}}>{{$kn->nama}}</option>
+                        @endforeach
+                    </select>
+                    @error('kantortugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Ruangan</label>
+                    <select name="ruangantugas" id="ruangantugas" class="form-control">
+                    </select>
+                    @error('ruangantugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
             </div>
-            <div class="form-group m-2">
-                <label for="">Ruangan</label>
-                <select name="ruangantugas" id="ruangantugas" class="form-control">
-                </select>
-                @error('ruangantugas')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
-            </div>
-            <div class="form-group m-2">
-                <label for="">Tugas</label>
-                <select class="form-control basic" name="namatugas[]" id="namatugas" multiple>
-                    @foreach ($tagtugas as $tt)
-                    <option value="{{$tt}}" {{old('namatugas')==$tt?'selected':''}}>{{$tt}}</option>
-                    @endforeach
-                </select>
-                @error('namatugas')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
+            <div class="row p-3">
+                <div class="col-lg-4">
+                    <label for="form-control">Tugas harian</label>
+                    <select class="form-control basic" name="namatugas[]" id="namatugas" multiple>
+                        @foreach ($tagtugas as $tt)
+                        <option value="{{$tt}}" {{old('namatugas')==$tt?'selected':''}}>{{$tt}}</option>
+                        @endforeach
+                    </select>
+                    @error('namatugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
+                    <label for="form-control">Tugas mingguan</label>
+                    <select class="form-control basicdsd" name="tugasmingguan[]" id="tugasmingguan" multiple>
+                        @foreach ($tagtugasminggu as $tt)
+                        <option value="{{$tt}}" {{old('tugasmingguan')==$tt?'selected':''}}>{{$tt}}</option>
+                        @endforeach
+                    </select>
+                    @error('tugasmingguan')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
+                    <label for="form-control">Tugas bulanan</label>
+                    <select class="form-control basics" name="tugasbulanan[]" id="tugasbulanan" multiple>
+                        @foreach ($tagtugasbulanan as $tt)
+                        <option value="{{$tt}}" {{old('tugasbulanan')==$tt?'selected':''}}>{{$tt}}</option>
+                        @endforeach
+                    </select>
+                    @error('tugasbulanan')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
             </div>
             <button type="submit" class="btn btn-primary btn-sm m-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
                     <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
@@ -50,23 +76,47 @@
                     <table id="mastertugas" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="8%">No</th>
-                                <th>Kantor</th>
-                                <th>Ruangan</th>
-                                <th>Nama</th>
-                                <th class="dt-no-sorting text-center" width="12%">Aksi</th>
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">Kantor</th>
+                                <th rowspan="2">Ruangan</th>
+                                <th class="text-center" colspan="3">Job time</th>
+                                <th rowspan="2" class="dt-no-sorting text-center" width="12%">Aksi</th>
+                            </tr>
+                            <tr>
+                                <th>Harian</th>
+                                <th>Mingguan</th>
+                                <th>Bulanan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($tugas as $key => $k )
                             <tr>
-                                <td>{{$key+1}}</td>
+                                <td width="1%">{{$key+1}}</td>
                                 <td>{{$k->namakantor}}</td>
                                 <td>{{$k->namaruangan}}</td>
                                 @if ($k->nama)
                                 <td>
                                     @foreach (json_decode($k->nama) as $n)
-                                    <span class="badge badge-info">{{$n}}</span>
+                                    <!-- <span class="badge badge-info">{{$n}}</span> -->
+                                    <li>{{$n}}</li>
+                                    @endforeach
+                                </td>
+                                @else
+                                <td>Tidak Ditemukan</td>
+                                @endif
+                                @if ($k->tugas_mingguan)
+                                <td>
+                                    @foreach (json_decode($k->tugas_mingguan) as $n)
+                                    <li>{{$n}}</li>
+                                    @endforeach
+                                </td>
+                                @else
+                                <td>Tidak Ditemukan</td>
+                                @endif
+                                @if ($k->tugas_bulanan)
+                                <td>
+                                    @foreach (json_decode($k->tugas_bulanan) as $n)
+                                    <li>{{$n}}</li>
                                     @endforeach
                                 </td>
                                 @else

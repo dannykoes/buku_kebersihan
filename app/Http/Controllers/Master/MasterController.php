@@ -25,8 +25,7 @@ class MasterController extends Controller
         $data = [];
         $data['client'] = ClientModel::get();
         $data['pengguna'] = User::get();
-        $data['kantor'] = Kantor::leftJoin('client', 'client.id', '=', 'kantors.client_id')
-            ->get(['client.perusahaan', 'kantors.*']);
+        $data['kantor'] = Kantor::leftJoin('client', 'client.id', '=', 'kantors.client_id')->get(['client.perusahaan', 'kantors.*']);
         $data['ruangan'] = Ruangan::select(
             'ruangans.*',
             'kantors.nama as namakantor',
@@ -49,15 +48,46 @@ class MasterController extends Controller
             ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
             ->leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
             ->get();
-        $tags = Tugas::select('nama')->distinct('nama')->pluck('nama')->toArray();
+        $tagsharian = Tugas::select('nama')->distinct('nama')->pluck('nama')->toArray();
+        $tagsmingguan = Tugas::select('tugas_mingguan')->distinct('tugas_mingguan')->pluck('tugas_mingguan')->toArray();
+        $tagsbulanan = Tugas::select('tugas_bulanan')->distinct('tugas_bulanan')->pluck('tugas_bulanan')->toArray();
         $data['tagtugas'] = [];
-        foreach ($tags as $key => $value) {
+        $data['tagtugasminggu'] = [];
+        $data['tagtugasbulanan'] = [];
+
+        foreach ($tagsharian as $key => $value) {
             if ($value) {
                 $js = json_decode($value);
                 if ($js) {
                     foreach ($js as $key => $v) {
                         if (!in_array($v, $data['tagtugas'])) {
                             array_push($data['tagtugas'], $v);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach ($tagsmingguan as $key => $value) {
+            if ($value) {
+                $js = json_decode($value);
+                if ($js) {
+                    foreach ($js as $key => $v) {
+                        if (!in_array($v, $data['tagtugasminggu'])) {
+                            array_push($data['tagtugasminggu'], $v);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach ($tagsbulanan as $key => $value) {
+            if ($value) {
+                $js = json_decode($value);
+                if ($js) {
+                    foreach ($js as $key => $v) {
+                        if (!in_array($v, $data['tagtugasbulanan'])) {
+                            array_push($data['tagtugasbulanan'], $v);
                         }
                     }
                 }
