@@ -35,6 +35,7 @@ class KantorController extends Controller
         Session::put('tab', 1);
         $validator = Validator::make($request->all(), [
             'namakantor' => 'required',
+            'client' => 'required',
         ]);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput($request->all())->with('error', 'Harap Cek Data Kembali');
@@ -42,7 +43,8 @@ class KantorController extends Controller
         $k = Kantor::updateOrCreate([
             'id' => $request->idkantor
         ], [
-            'nama' => $request->namakantor
+            'nama' => $request->namakantor,
+            'client_id' => $request->client
         ]);
         if ($k) {
             return Redirect::back()->with('info', 'Tersimpan');
