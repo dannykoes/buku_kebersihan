@@ -11,6 +11,7 @@ class Kantor extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'nama',
-        'merchant_id'
+        'merchant_id',
+        'client_id',
     ];
 }

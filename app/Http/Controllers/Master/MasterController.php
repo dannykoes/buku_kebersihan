@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Master\ClientModel;
 use App\Models\Master\Kantor;
 use App\Models\Master\Lantai;
 use App\Models\Master\Ruangan;
@@ -22,8 +23,10 @@ class MasterController extends Controller
     public function index()
     {
         $data = [];
+        $data['client'] = ClientModel::get();
         $data['pengguna'] = User::get();
-        $data['kantor'] = Kantor::get();
+        $data['kantor'] = Kantor::leftJoin('client', 'client.id', '=', 'kantors.client_id')
+            ->get(['client.perusahaan', 'kantors.*']);
         $data['ruangan'] = Ruangan::select(
             'ruangans.*',
             'kantors.nama as namakantor',
