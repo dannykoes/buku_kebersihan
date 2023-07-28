@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'merchant_id',
+        'client_id',
         'role',
     ];
 
