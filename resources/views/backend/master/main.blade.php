@@ -56,7 +56,7 @@
 
         let html = '';
         html += '<option value="" >Pilih</option>';
-        $('#clc').html(html);
+        $('#clcs').html(html);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -74,7 +74,7 @@
                             html += '<option value="' + element.id + '">' + element.perusahaan + '</option>';
                         }
                     });
-                    $('#clc').html(html);
+                    $('#clcs').html(html);
                 }
             }
         });
@@ -82,7 +82,7 @@
 
     function resetkantor() {
         $('#idkantor').val(null);
-        $('#clc').val(null);
+        $('#clcs').val(null);
         $('#namakantor').val(null);
     }
 
@@ -161,6 +161,7 @@
         console.log(data)
         $('#idtugas').val(data.id);
         $('#namatugas').val(JSON.parse(data.nama));
+        $('#tgs').val(data.nama_tugas);
         $('#tugasbulanan').val(JSON.parse(data.tugas_bulanan));
         $('#tugasmingguan').val(JSON.parse(data.tugas_mingguan));
         $('#kantortugas').val(data.kantor_id);
@@ -214,6 +215,33 @@
         $('#emailpengguna').val(data.email);
         $('#rolepengguna').val(data.role);
         $('#passwordpengguna').val(null);
+
+        var r = data.client_id
+
+        let html = '';
+        html += '<option value="" >Pilih</option>';
+        $('#clc').html(html);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'GET',
+            url: '/getclient/' + data.client_id,
+            success: function(data) {
+                if (data.length > 0) {
+                    data.forEach(element => {
+                        if (element.id == r) {
+                            html += '<option value="' + element.id + '" selected>' + element.perusahaan + '</option>';
+                        } else {
+                            html += '<option value="' + element.id + '">' + element.perusahaan + '</option>';
+                        }
+                    });
+                    $('#clc').html(html);
+                }
+            }
+        });
     }
 
     function resetpengguna() {
@@ -221,6 +249,7 @@
         $('#namapengguna').val(null);
         $('#emailpengguna').val(null);
         $('#rolepengguna').val(null);
+        $('#clc').val(null);
         $('#passwordpengguna').val(null);
     }
 

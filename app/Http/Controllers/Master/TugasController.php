@@ -38,21 +38,22 @@ class TugasController extends Controller
         $validator = Validator::make($request->all(), [
             'kantortugas' => 'required',
             'ruangantugas' => 'required',
-            'namatugas' => 'required|array',
-            'tugasmingguan' => 'required|array',
-            'tugasbulanan' => 'required|array',
+            'nama_tugas' => 'required',
         ]);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput($request->all())->with('error', 'Harap Cek Data Kembali');
         }
+
+
         $k = Tugas::updateOrCreate([
             'id' => $request->idtugas
         ], [
             'kantor_id' => $request->kantortugas,
             'ruangan_id' => $request->ruangantugas,
-            'nama' => json_encode($request->namatugas),
-            'tugas_mingguan' => json_encode($request->tugasmingguan),
-            'tugas_bulanan' => json_encode($request->tugasbulanan),
+            'nama_tugas' => $request->nama_tugas
+            // 'nama' => json_encode($request->namatugas),
+            // 'tugas_mingguan' => json_encode($request->tugasmingguan),
+            // 'tugas_bulanan' => json_encode($request->tugasbulanan),
         ]);
         if ($k) {
             return Redirect::back()->with('info', 'Tersimpan');

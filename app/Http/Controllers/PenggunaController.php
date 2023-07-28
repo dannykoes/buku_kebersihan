@@ -37,6 +37,7 @@ class PenggunaController extends Controller
             'namapengguna' => 'required',
             'emailpengguna' => 'required',
             'rolepengguna' => 'required',
+            'client' => 'required',
         ]);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput($request->all())->with('error', 'Harap Cek Data Kembali');
@@ -48,6 +49,7 @@ class PenggunaController extends Controller
             'name' => $request->namapengguna,
             'email' => $request->emailpengguna,
             'role' => $request->rolepengguna,
+            'client_id' => $request->client
         ];
         if ($request->passwordpengguna) {
             $input['password'] = Hash::make($request->passwordpengguna);

@@ -16,5 +16,6 @@ class Tugas extends Model
         'merchant_id',
         'tugas_mingguan',
         'tugas_bulanan',
+        'nama_tugas',
     ];
 }

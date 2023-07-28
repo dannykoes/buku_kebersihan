@@ -2,38 +2,56 @@
     <div class="widget-content">
         <form action="pengguna" method="POST">
             @csrf
-            <input type="text" name="idpengguna" id="idpengguna" value="{{old('idpengguna')}}" hidden>
-            <div class="form-group m-2">
-                <label for="">Nama</label>
-                <input type="text" name="namapengguna" id="namapengguna" value="{{old('namapengguna')}}" class="form-control">
-                @error('namapengguna')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
+            <div class="row p-3">
+                <div class="col-lg-4">
+                    <label for="form-control">Client</label>
+                    <select class="form-control @error('client') is-invalid @enderror" name="client" id="clcs">
+                        <option value="">Pilih salah satu</option>
+                        @foreach($client as $key => $val)
+                        <option value="{{$val->id}}">{{$val->perusahaan}}</option>
+                        @endforeach
+                    </select>
+                    @error('client')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" name="idpengguna" id="idpengguna" value="{{old('idpengguna')}}" hidden>
+                    <label for="">Nama</label>
+                    <input type="text" name="namapengguna" id="namapengguna" value="{{old('namapengguna')}}" class="form-control   @error('namapengguna') is-invalid @enderror">
+                    @error('namapengguna')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
+                    <label for="">Email</label>
+                    <input type="email" name="emailpengguna" id="emailpengguna" value="{{old('emailpengguna')}}" class="form-control  @error('emailpengguna') is-invalid @enderror">
+                    @error('emailpengguna')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
             </div>
-            <div class="form-group m-2">
-                <label for="">Email</label>
-                <input type="email" name="emailpengguna" id="emailpengguna" value="{{old('emailpengguna')}}" class="form-control">
-                @error('emailpengguna')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
-            </div>
-            <div class="form-group m-2">
-                <label for="">Role</label>
-                <select name="rolepengguna" id="rolepengguna" class="form-control">
-                    <option value="">Pilih</option>
-                    <option value="1">Direktur</option>
-                    <option value="2">Karyawan</option>
-                </select>
-                @error('rolepengguna')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
-            </div>
-            <div class="form-group m-2">
-                <label for="">Password</label>
-                <input type="password" name="passwordpengguna" id="passwordpengguna" value="{{old('passwordpengguna')}}" class="form-control">
-                @error('passwordpengguna')
-                <small class="text-danger">Harap diisi</small>
-                @enderror
+            <div class="row p-3">
+                <div class="col-lg-6">
+                    <label for="">Role</label>
+                    <select name="rolepengguna" id="rolepengguna" class="form-control  @error('rolepengguna') is-invalid @enderror">
+                        <option value="">Pilih</option>
+                        <option value="0">Superadmin</option>
+                        <option value="1">SPV</option>
+                        <option value="2">Client</option>
+                        <option value="3">Petugas</option>
+                    </select>
+                    @error('rolepengguna')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Password</label>
+                    <input type="password" name="passwordpengguna" id="passwordpengguna" value="{{old('passwordpengguna')}}" class="form-control  @error('passwordpengguna') is-invalid @enderror">
+                    @error('passwordpengguna')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
             </div>
             <button type="submit" class="btn btn-primary btn-sm m-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
                     <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z">
@@ -50,20 +68,32 @@
                     <table id="masterpengguna" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="8%">No</th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Client</th>
                                 <th class="dt-no-sorting text-center" width="12%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($pengguna as $key => $k )
                             <tr>
-                                <td>{{$key+1}}</td>
+                                <td width="1%">{{$key+1}}</td>
                                 <td>{{$k->name}}</td>
                                 <td>{{$k->email}}</td>
-                                <td>{{$k->role==1?'Direktur':'Karyawan'}}</td>
+                                <td>
+                                    @if($k->role == 0 || $k->role == null)
+                                    Superadmin
+                                    @elseif($k->role == 1)
+                                    SPV
+                                    @elseif($k->role == 2)
+                                    Client
+                                    @else
+                                    Petugas
+                                    @endif
+                                </td>
+                                <td> @if($k->client_id != null) {{$k->perusahaan}} @else Default superadmin @endif</td>
                                 <td>
                                     <button class="btn btn-warning" id="edit" onclick="editpengguna({{ $k }})" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
                                             <path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"></path>
