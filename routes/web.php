@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Master\ClientController;
+use App\Http\Controllers\Master\PembagianTugasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('laporan', App\Http\Controllers\LaporanController::class);
     Route::resource('client', ClientController::class);
     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
+    Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
+    Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);
 });
