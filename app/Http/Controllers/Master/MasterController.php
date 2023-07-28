@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Master\ClientModel;
 use App\Models\Master\Kantor;
 use App\Models\Master\Lantai;
+use App\Models\Master\PembagiantugasModel;
 use App\Models\Master\Ruangan;
 use App\Models\Master\Tugas;
 use App\Models\User;
@@ -48,6 +49,57 @@ class MasterController extends Controller
             ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
             ->leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
             ->get();
+
+        // $usr = User::where('role', 3)->get();
+
+        $data['userptg'] = User::where('role', 3)->get();
+        // foreach ($usr as $key => $value) {
+        //     $checktgs = PembagiantugasModel::where('user_id', $value->id)->get();
+        //     // $value->check = $checktgs->isNotEmpty();
+        //     $truefalse = $checktgs->isNotEmpty();
+        //     if ($truefalse == false) {
+        //         $data['userptg'][] = $value;
+        //     }
+        // }
+
+        $data['pgntgs'] = PembagiantugasModel::leftJoin('users', 'users.id', '=', 'pembagian_tugas.user_id')
+            ->get(['users.name', 'pembagian_tugas.*']);
+
+        foreach ($data['pgntgs'] as $key => $value) {
+
+            $datharian = json_decode($value->tugas_harian);
+            $datmingguan = json_decode($value->tugas_mingguan);
+            $datbulanan = json_decode($value->tugas_bulanan);
+
+            if ($datharian != null) {
+                $value->jobharian = Tugas::leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
+                    ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
+                    ->whereIn('tugas.id', $datharian)
+                    ->get(['ruangans.ruangan', 'kantors.nama', 'tugas.*']);
+            } else {
+                $value->jobharian = [];
+            }
+            if ($datmingguan != null) {
+                $value->jobmingguan = Tugas::leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
+                    ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
+                    ->whereIn('tugas.id', $datmingguan)
+                    ->get(['ruangans.ruangan', 'kantors.nama', 'tugas.*']);
+            } else {
+                $value->jobmingguan = [];
+            }
+
+            if ($datbulanan != null) {
+                $value->jobbulanan = Tugas::leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
+                    ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
+                    ->whereIn('tugas.id', $datbulanan)
+                    ->get(['ruangans.ruangan', 'kantors.nama', 'tugas.*']);
+            } else {
+                $value->jobbulanan = [];
+            }
+        }
+
+        // return $data;
+
         // $tagsharian = Tugas::select('nama')->distinct('nama')->pluck('nama')->toArray();
         // $tagsmingguan = Tugas::select('tugas_mingguan')->distinct('tugas_mingguan')->pluck('tugas_mingguan')->toArray();
         // $tagsbulanan = Tugas::select('tugas_bulanan')->distinct('tugas_bulanan')->pluck('tugas_bulanan')->toArray();
