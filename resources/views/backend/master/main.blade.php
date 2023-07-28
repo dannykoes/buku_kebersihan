@@ -20,6 +20,9 @@
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==5) active @endif " id="pengguna-tab" data-toggle="tab" href="#pengguna" role="tab" aria-controls="pengguna" aria-selected="false">Pengguna</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link @if (Session::get('tab')==6) active @endif " id="pembagian-job" data-toggle="tab" href="#pgjb" role="tab" aria-controls="pgjb" aria-selected="false">Pembagian job</a>
+        </li>
     </ul>
     <div class="tab-content" id="simpletabContent">
         <div class="tab-pane fade @if (Session::get('tab')==0) show active @endif " id="client" role="tabpanel" aria-labelledby="client-tab">
@@ -40,6 +43,10 @@
         <div class="tab-pane fade @if (Session::get('tab')==5) show active @endif " id="pengguna" role="tabpanel" aria-labelledby="pengguna-tab">
             @include('backend.pengguna')
         </div>
+        <div class="tab-pane fade @if (Session::get('tab')==6) show active @endif " id="pgjb" role="tabpanel" aria-labelledby="pembagian-job">
+            @include('backend.master.pembagianjob')
+        </div>
+
     </div>
 </div>
 @endsection
@@ -147,13 +154,13 @@
 
     // Tugas
     $('.basic').select2({
-        tags: true
+        tags: false
     });
     $('.basics').select2({
-        tags: true
+        tags: false
     });
     $('.basicdsd').select2({
-        tags: true
+        tags: false
     });
     createDataTable('#mastertugas');
 
@@ -275,6 +282,32 @@
         $('#pic').val(dat.pic);
         $('#kontak').val(dat.kontak);
         $('#eml').val(dat.email);
+    }
+
+
+    // pembagian tugas
+    createDataTable('#tablepgn');
+
+    function resetclientpembagian() {
+        $('#idpbgn').val(null);
+        $('#pgn').val(null);
+        $('#tugasharian').val(null);
+        $('#tugasmingguan').val(null);
+        $('#tugasbulanan').val(null);
+    }
+
+
+    function editpembagianjob(data) {
+        $('#idpbgn').val(data.id);
+        $('#tugasharian').val(JSON.parse(data.tugas_harian));
+        // $('#tgs').val(data.nama_tugas);
+        $('#tugasmingguan').val(JSON.parse(data.tugas_mingguan));
+        $('#tugasbulanan').val(JSON.parse(data.tugas_bulanan));
+        $('#pgn').val(data.user_id);
+        $('#pgn').change();
+        $('#tugasharian').change();
+        $('#tugasmingguan').change();
+        $('#tugasbulanan').change();
     }
 </script>
 @endsection
