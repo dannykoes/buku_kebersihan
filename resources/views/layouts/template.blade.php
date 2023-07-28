@@ -221,6 +221,16 @@
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
                 <div class="row layout-top-spacing">
+                    @if (session('info'))
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{session('info')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
