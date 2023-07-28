@@ -31,8 +31,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+//     Route::get('/master', [App\Http\Controllers\Master\MasterController::class, 'index'])->name('master');
+//     Route::resource('kantor', App\Http\Controllers\Master\KantorController::class);
+//     Route::resource('ruangan', App\Http\Controllers\Master\RuanganController::class);
+//     Route::resource('lantai', App\Http\Controllers\Master\LantaiController::class);
+//     Route::resource('tugas', App\Http\Controllers\Master\TugasController::class);
+//     Route::resource('pengguna', App\Http\Controllers\PenggunaController::class);
+//     Route::resource('laporan', App\Http\Controllers\LaporanController::class);
+//     Route::resource('client', ClientController::class);
+//     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
+//     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
+//     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);
+// });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth']);
+Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::get('/master', [App\Http\Controllers\Master\MasterController::class, 'index'])->name('master');
     Route::resource('kantor', App\Http\Controllers\Master\KantorController::class);
     Route::resource('ruangan', App\Http\Controllers\Master\RuanganController::class);
