@@ -44,10 +44,10 @@ class MasterController extends Controller
         $data['tugas'] = Tugas::select(
             'tugas.*',
             'kantors.nama as namakantor',
-            'ruangans.ruangan as namaruangan',
+            'lantais.lantai as namaruangan',
         )
             ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
-            ->leftJoin('ruangans', 'ruangans.id', 'tugas.ruangan_id')
+            ->leftJoin('lantais', 'lantais.id', 'tugas.ruangan_id')
             ->get();
 
         // $usr = User::where('role', 3)->get();

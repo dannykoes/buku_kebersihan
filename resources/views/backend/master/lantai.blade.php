@@ -48,7 +48,7 @@
                             <tr>
                                 <th width="8%">No</th>
                                 <th>Kantor</th>
-                                <th>Ruangan</th>
+                                <th>Lantai</th>
                                 <th>Nama</th>
                                 <th class="dt-no-sorting text-center" width="12%">Aksi</th>
                             </tr>

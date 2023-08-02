@@ -196,15 +196,15 @@
         $('#ruangantugas').html(html);
         $.ajax({
             type: 'GET',
-            url: '/ruangan/getbykantor',
+            url: '/lantai/getbykantor',
             data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor,
             success: function(data) {
                 if (data.length > 0) {
                     data.forEach(element => {
                         if (element.id == r) {
-                            html += '<option value="' + element.id + '" selected>' + element.ruangan + '</option>';
+                            html += '<option value="' + element.id + '" selected>' + element.lantai + '</option>';
                         } else {
-                            html += '<option value="' + element.id + '">' + element.ruangan + '</option>';
+                            html += '<option value="' + element.id + '">' + element.lantai + '</option>';
                         }
                     });
                     $('#ruangantugas').html(html);
