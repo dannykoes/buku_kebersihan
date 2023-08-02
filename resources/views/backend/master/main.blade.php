@@ -9,10 +9,10 @@
             <a class="nav-link @if (Session::get('tab')==1) active @endif" id="kantor-tab" data-toggle="tab" href="#kantor" role="tab" aria-controls="kantor" aria-selected="true">Kantor</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==2) active @endif" id="ruangan-tab" data-toggle="tab" href="#ruangan" role="tab" aria-controls="ruangan" aria-selected="false">Ruangan</a>
+            <a class="nav-link @if (Session::get('tab')==2) active @endif" id="ruangan-tab" data-toggle="tab" href="#ruangan" role="tab" aria-controls="ruangan" aria-selected="false">Lantai</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==3) active @endif" id="lantai-tab" data-toggle="tab" href="#lantai" role="tab" aria-controls="lantai" aria-selected="false">Lantai</a>
+            <a class="nav-link @if (Session::get('tab')==3) active @endif" id="lantai-tab" data-toggle="tab" href="#lantai" role="tab" aria-controls="lantai" aria-selected="false">Ruangan</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==4) active @endif" id="tugas-tab" data-toggle="tab" href="#tugas" role="tab" aria-controls="tugas" aria-selected="false">Tugas</a>
