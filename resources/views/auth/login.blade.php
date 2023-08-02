@@ -33,11 +33,8 @@
                             <div class="form">
 
                                 <div id="username-field" class="field-wrapper input">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-mail">
-                                        <path
-                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                         </path>
                                         <polyline points="22,6 12,13 2,6"></polyline>
                                     </svg>
@@ -45,14 +42,11 @@
                                 </div>
 
                                 <div id="password-field" class="field-wrapper input">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-lock">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                     </svg>
-                                    <input id="password" name="password" type="password" class="form-control"
-                                        placeholder="Password">
+                                    <input id="password" name="password" type="password" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="d-sm-flex justify-content-end  mb-2">
                                     <div class="field-wrapper toggle-pass">
@@ -84,10 +78,7 @@
 
                             </div>
                         </form>
-                        <p class="terms-conditions">© 2020 All Rights Reserved. <a href="index.html">CORK</a> is a
-                            product of Designreset. <a href="javascript:void(0);">Cookie Preferences</a>, <a
-                                href="javascript:void(0);">Privacy</a>, and <a href="javascript:void(0);">Terms</a>.</p>
-
+                        <p class="terms-conditions text-center">© {{ \Carbon\Carbon::now()->year }} All Rights Reserved <a href="https://gagtodolist.id/">PT. Guna Adi Graha | Cleaning Service</a> <a href="https://akarindo.id/">AKARINDO.ID</a>.</p>
                     </div>
                 </div>
             </div>
@@ -95,10 +86,9 @@
         <div class="form-image">
             {{-- <div class="l-image">
             </div> --}}
-            <img src="{{asset('image/login.png')}}" alt="" srcset="" height="100%">
+            <img src="{{asset('image/Login.jpg')}}" alt="" srcset="" height="100%">
         </div>
     </div>
-    method="POST" class="text-left" action="{{ route('login') }}"
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('asset/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('asset/bootstrap/js/popper.min.js')}}"></script>
