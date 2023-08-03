@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PenggunaController extends Controller
 {
@@ -35,7 +36,7 @@ class PenggunaController extends Controller
         Session::put('tab', 5);
         $validator = Validator::make($request->all(), [
             'namapengguna' => 'required',
-            'emailpengguna' => 'required',
+            'idpegawaipengguna' => 'required',
             'rolepengguna' => 'required',
             'client' => 'required',
         ]);
@@ -47,8 +48,9 @@ class PenggunaController extends Controller
         }
         $input = [
             'name' => $request->namapengguna,
-            'email' => $request->emailpengguna,
+            'email' => fake()->unique()->safeEmail(),
             'role' => $request->rolepengguna,
+            'id_pegawai' => $request->idpegawaipengguna,
             'client_id' => $request->client
         ];
         if ($request->passwordpengguna) {

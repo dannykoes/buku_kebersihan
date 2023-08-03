@@ -4,8 +4,23 @@
             @csrf
             <div class="row p-3">
                 <div class="col-lg-4">
+                    <label for="">Pengguna</label>
+                    <select name="penggunatugas" id="penggunatugas" class="form-control">
+                        <option value="">Pilih</option>
+                        @foreach($pengguna as $key => $v)
+                        @if($v->role == 3)
+                        <option value="{{$v->id}}" {{old('kantortugas')==$v->id?'selected':''}}>{{$v->name}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                    @error('penggunatugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
                     <label for="form-control">Kantor</label>
                     <input type="text" name="idtugas" id="idtugas" value="{{old('idtugas')}}" hidden>
+                    <input type="text" name="lantaiidtugas" id="lantaiidtugas" value="{{old('lantaiidtugas')}}" hidden>
                     <input type="text" name="ruanganidtugas" id="ruanganidtugas" value="{{old('ruanganidtugas')}}" hidden>
                     <select name="kantortugas" id="kantortugas" class="form-control" onchange="changekantortugas()">
                         <option value="">Pilih</option>
@@ -18,6 +33,14 @@
                     @enderror
                 </div>
                 <div class="col-lg-4">
+                    <label for="">Lantai</label>
+                    <select name="lantaitugas" id="lantaitugas" class="form-control" onchange="changelantaitugas()">
+                    </select>
+                    @error('lantaitugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
                     <label for="">Ruangan</label>
                     <select name="ruangantugas" id="ruangantugas" class="form-control">
                     </select>
@@ -26,8 +49,19 @@
                     @enderror
                 </div>
                 <div class="col-lg-4">
-                    <label for="form-control">Tugas</label>
-
+                    <label for="">Kategori</label>
+                    <select name="kategoritugas" id="kategoritugas" class="form-control">
+                        <option value="">Pilih</option>
+                        <option value="1">Harian</option>
+                        <option value="2">Mingguan</option>
+                        <option value="3">Bulanan</option>
+                    </select>
+                    @error('kategoritugas')
+                    <small class="text-danger">Harap diisi</small>
+                    @enderror
+                </div>
+                <div class="col-lg-4">
+                    <label for="form-control">Objek</label>
                     <input type="text" placeholder="Nama tugas" name="nama_tugas" class="form-control" id="tgs">
                     @error('nama_tugas')
                     <small class="text-danger">Harap diisi</small>

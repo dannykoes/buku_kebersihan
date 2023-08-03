@@ -24,9 +24,9 @@
                     @enderror
                 </div>
                 <div class="col-lg-4">
-                    <label for="">Email</label>
-                    <input type="email" name="emailpengguna" id="emailpengguna" value="{{old('emailpengguna')}}" class="form-control  @error('emailpengguna') is-invalid @enderror">
-                    @error('emailpengguna')
+                    <label for="">Id Pegawai</label>
+                    <input type="text" name="idpegawaipengguna" id="idpegawaipengguna" value="{{old('idpegawaipengguna')}}" class="form-control  @error('idpegawaipengguna') is-invalid @enderror">
+                    @error('idpegawaipengguna')
                     <small class="text-danger">Harap diisi</small>
                     @enderror
                 </div>
@@ -70,7 +70,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
+                                <th>Id Pengguna</th>
                                 <th>Role</th>
                                 <th>Client</th>
                                 <th class="dt-no-sorting text-center" width="12%">Aksi</th>
@@ -81,7 +81,7 @@
                             <tr>
                                 <td width="1%">{{$key+1}}</td>
                                 <td>{{$k->name}}</td>
-                                <td>{{$k->email}}</td>
+                                <td>{{$k->id_pegawai}}</td>
                                 <td>
                                     @if($k->role == 0 || $k->role == null)
                                     Superadmin

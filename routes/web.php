@@ -57,10 +57,10 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);
+    Route::resource('laporan', App\Http\Controllers\LaporanController::class);
 });
 
 Route::middleware('spv')->group(function () {
-    Route::resource('laporan', App\Http\Controllers\LaporanController::class);
 });
 Route::middleware('client')->group(function () {
     // 
