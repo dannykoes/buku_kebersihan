@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ProfileApiController;
 use App\Http\Controllers\API\TodoApiController;
 use App\Http\Controllers\API\UserApiController;
 use Illuminate\Http\Request;
@@ -31,4 +32,5 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::get('/auth-check', [UserApiController::class, 'doAuthCheck']);
     Route::get('/gettodo', [TodoApiController::class, 'getTodo']);
     Route::post('/settodo', [TodoApiController::class, 'setTodo']);
+    Route::post('/simpanprofile', [ProfileApiController::class, 'simpanprofile']);
 });
