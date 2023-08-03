@@ -97,29 +97,14 @@
                                 </svg></a>
                         </td>
                         <td>
-                            <button class="btn btn-warning" id="edit" onclick="" title="Edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                    <path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="btn btn-success" id="edit" onclick="" title="ACC">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                    <path
-                                        d="M7 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm4 10.414-2.707-2.707 1.414-1.414L11 12.586l3.793-3.793 1.414 1.414L11 15.414z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="btn btn-danger" id="edit" onclick="" title="Batal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                    <path
-                                        d="M21 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5zm-4.793 9.793-1.414 1.414L12 13.414l-2.793 2.793-1.414-1.414L10.586 12 7.793 9.207l1.414-1.414L12 10.586l2.793-2.793 1.414 1.414L13.414 12l2.793 2.793z">
-                                    </path>
-                                </svg>
-                            </button>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault1" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault1">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -150,29 +135,371 @@
                                 </svg></a>
                         </td>
                         <td>
-                            <button class="btn btn-warning" id="edit" onclick="" title="Edit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                    <path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="btn btn-success" id="edit" onclick="" title="ACC">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault2" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault2">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{-- @foreach ($fee as $key => $f )
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>
+                            @if (json_decode($f->class_id))
+                            @foreach (json_decode($f->class_id) as $fe)
+                            <span class="badge badge-info">{{$fe}}</span>
+                            @endforeach
+                            @else
+                            All
+                            @endif
+                        </td>
+                        <td>{{$f->nominal}} %</td>
+                        <td>
+                            <button class="btn btn-warning" id="edit" onclick="edit({{ $f }})" title="Edit"><i
+                                    class='bx bx-edit'></i></button>
+                            <button class="btn btn-danger" onclick="hapus('{{ $f->id }}')" title="Delete"> <i
+                                    class='bx bx-trash'></i></button>
+                        </td>
+                    </tr>
+                    @endforeach --}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+    <div class="widget widget-chart-two">
+        <div class="widget-content">
+            <p class="text-center"><b>Harian</b></p>
+            <table id="harianjob" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th width="8%">No</th>
+                        <th>Kantor</th>
+                        <th>Ruangan</th>
+                        <th>Foto Sebelum</th>
+                        <th>Proses</th>
+                        <th>Foto Sesudah</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Kantor 1</td>
+                        <td>Ruangan 1</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
                                     <path
-                                        d="M7 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm4 10.414-2.707-2.707 1.414-1.414L11 12.586l3.793-3.793 1.414 1.414L11 15.414z">
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
-                                </svg>
-                            </button>
-                            <button class="btn btn-danger" id="edit" onclick="" title="Batal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">100%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
                                     <path
-                                        d="M21 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5zm-4.793 9.793-1.414 1.414L12 13.414l-2.793 2.793-1.414-1.414L10.586 12 7.793 9.207l1.414-1.414L12 10.586l2.793-2.793 1.414 1.414L13.414 12l2.793 2.793z">
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
-                                </svg>
-                            </button>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault3">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kantor 2</td>
+                        <td>Ruangan 2</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-warning">50%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault4" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault4">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{-- @foreach ($fee as $key => $f )
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>
+                            @if (json_decode($f->class_id))
+                            @foreach (json_decode($f->class_id) as $fe)
+                            <span class="badge badge-info">{{$fe}}</span>
+                            @endforeach
+                            @else
+                            All
+                            @endif
+                        </td>
+                        <td>{{$f->nominal}} %</td>
+                        <td>
+                            <button class="btn btn-warning" id="edit" onclick="edit({{ $f }})" title="Edit"><i
+                                    class='bx bx-edit'></i></button>
+                            <button class="btn btn-danger" onclick="hapus('{{ $f->id }}')" title="Delete"> <i
+                                    class='bx bx-trash'></i></button>
+                        </td>
+                    </tr>
+                    @endforeach --}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+    <div class="widget widget-chart-two">
+        <div class="widget-content">
+            <p class="text-center"><b>Mingguan</b></p>
+            <table id="mingguanjob" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th width="8%">No</th>
+                        <th>Kantor</th>
+                        <th>Ruangan</th>
+                        <th>Foto Sebelum</th>
+                        <th>Proses</th>
+                        <th>Foto Sesudah</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Kantor 1</td>
+                        <td>Ruangan 1</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">100%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault5" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault5">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kantor 2</td>
+                        <td>Ruangan 2</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-warning">50%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault6" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault6">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{-- @foreach ($fee as $key => $f )
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>
+                            @if (json_decode($f->class_id))
+                            @foreach (json_decode($f->class_id) as $fe)
+                            <span class="badge badge-info">{{$fe}}</span>
+                            @endforeach
+                            @else
+                            All
+                            @endif
+                        </td>
+                        <td>{{$f->nominal}} %</td>
+                        <td>
+                            <button class="btn btn-warning" id="edit" onclick="edit({{ $f }})" title="Edit"><i
+                                    class='bx bx-edit'></i></button>
+                            <button class="btn btn-danger" onclick="hapus('{{ $f->id }}')" title="Delete"> <i
+                                    class='bx bx-trash'></i></button>
+                        </td>
+                    </tr>
+                    @endforeach --}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+    <div class="widget widget-chart-two">
+        <div class="widget-content">
+            <p class="text-center"><b>Bulanan</b></p>
+            <table id="bulananjob" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th width="8%">No</th>
+                        <th>Kantor</th>
+                        <th>Ruangan</th>
+                        <th>Foto Sebelum</th>
+                        <th>Proses</th>
+                        <th>Foto Sesudah</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Kantor 1</td>
+                        <td>Ruangan 1</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">100%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault7" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault7">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kantor 2</td>
+                        <td>Ruangan 2</td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <span class="badge badge-warning">50%</span>
+                        </td>
+                        <td>
+                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                    <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                    <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                    <path
+                                        d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                    </path>
+                                </svg></a>
+                        </td>
+                        <td>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                            <button title="Aksi" id="btndefault8" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
+                            <div class="dropdown-menu" aria-labelledby="btndefault8">
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>ACC</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
+                            </div>
+                            </div>
                         </td>
                     </tr>
                     {{-- @foreach ($fee as $key => $f )
@@ -205,6 +532,9 @@
 @section('custom-js')
 <script>
     createDataTable('#banner');
+    createDataTable('#harianjob');
+    createDataTable('#mingguanjob');
+    createDataTable('#bulananjob');
     // radialbar(['80'],300,'80%',['label'],'#radialbar1');
     // radialbar(['50'],100,'50%',['label'],'#radialbar2');
     // radialbar(['10'],100,'10%',['label'],'#radialbar3');

@@ -23,12 +23,13 @@ class PembagianTugasController extends Controller
             return Redirect::back()->withErrors($validator)->withInput($request->all())->with('error', 'Harap Cek Data Kembali');
         }
         $k =  PembagiantugasModel::updateOrCreate([
-            'id' => $request->idpbgn
+            'user_id' => $request->pengguna,
+            // 'id' => $request->idpbgn
         ], [
             'user_id' => $request->pengguna,
             'tugas_harian' => json_encode($request->tugas_harian),
-            'tugas_bulanan' => json_encode($request->tugas_mingguan),
-            'tugas_mingguan' => json_encode($request->tugas_bulanan),
+            'tugas_bulanan' => json_encode($request->tugas_bulanan),
+            'tugas_mingguan' => json_encode($request->tugas_mingguan),
         ]);
         if ($k) {
             // return Redirect::back()->with('info', 'Tersimpan');

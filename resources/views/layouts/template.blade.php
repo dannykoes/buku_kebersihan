@@ -58,6 +58,10 @@
         .btn {
             border-radius: 15px
         }
+
+        .bgsidebar {
+            background-color: #007EFF;
+        }
     </style>
 </head>
 
@@ -130,9 +134,9 @@
         <!--  BEGIN SIDEBAR  -->
         <div class="sidebar-wrapper sidebar-theme" style="background-color: #007EFF">
 
-            <nav id="sidebar">
+            <nav id="sidebar" style="border-color: white !important;">
 
-                <ul class="navbar-nav theme-brand flex-row  text-center" style="background-color: #007EFF;background-image: linear-gradient(to right, #007EFF 0%, #007EFF 86%);">
+                <ul class="navbar-nav theme-brand flex-row  text-center" style="background-color: #007EFF;background-image: linear-gradient(to right, #007EFF 0%, #007EFF 86%); border-color: white !important;">
                     <li class="nav-item theme-logo">
                         <a href="home">
                             <img src="{{asset('image/logo.png')}}" class="navbar-logo" alt="logo">
@@ -143,7 +147,7 @@
                     </li>
                 </ul>
 
-                <ul class="list-unstyled menu-categories" id="accordionExample">
+                <ul class="list-unstyled menu-categories bgsidebar" id="accordionExample">
                     <li class="menu" hidden>
                         <a href="#dashboard" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                             <div class="">

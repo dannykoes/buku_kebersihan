@@ -17,7 +17,7 @@
                 @enderror
             </div>
             <div class="form-group m-2">
-                <label for="">Ruangan</label>
+                <label for="">Lantai</label>
                 <select name="ruanganlantai" id="ruanganlantai" class="form-control">
                 </select>
                 @error('ruanganlantai')
@@ -48,7 +48,7 @@
                             <tr>
                                 <th width="8%">No</th>
                                 <th>Kantor</th>
-                                <th>Ruangan</th>
+                                <th>Lantai</th>
                                 <th>Nama</th>
                                 <th class="dt-no-sorting text-center" width="12%">Aksi</th>
                             </tr>

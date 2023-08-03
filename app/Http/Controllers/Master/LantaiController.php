@@ -54,12 +54,19 @@ class LantaiController extends Controller
         return Redirect::back()->withErrors($validator)->withInput($request->all())->with('error', 'Harap Cek Data Kembali');
     }
 
+    public function getbykantor($kantor)
+    {
+        return Lantai::where('kantor_id', $kantor)->get();
+    }
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, Request $req)
     {
-        //
+        if ($id == 'getbykantor') {
+            return $this->getbykantor($req->kantor);
+        }
     }
 
     /**
