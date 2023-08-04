@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Master\Tugas;
+use App\Models\TodoNewModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class HomeController extends Controller
     {
         $data['fee'] = [];
         $data['pengguna'] = User::select(
-            'users.*',
+            'users.id',
             // 'kantors.nama',
             // 'ruangans.ruangan',
             // 'lantais.lantai',
@@ -38,7 +39,9 @@ class HomeController extends Controller
             // ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
             // ->join('kantors', 'kantors.id', 'tugas.kantor_id')
             ->where('users.role', 3)
-            ->get();
+            ->pluck('users.id')
+            ->toArray();
+        $data['job'] = TodoNewModel::whereIn('id_pegawai', $data['pengguna'])->get();
 
         $data['harian'] = Tugas::select(
             'tugas.*',
