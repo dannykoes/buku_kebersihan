@@ -4,7 +4,7 @@
             @csrf
             <div class="row p-3">
                 <div class="col-lg-4">
-                    <label for="">Pengguna</label>
+                    <label for="">Petugas</label>
                     <select name="penggunatugas" id="penggunatugas" class="form-control">
                         <option value="">Pilih</option>
                         @foreach($pengguna as $key => $v)
@@ -85,8 +85,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Petugas</th>
                                 <th>Kantor</th>
-                                <th>Ruangan</th>
+                                <th>Kategori</th>
                                 <th>Tugas</th>
                                 <th class="dt-no-sorting text-center" width="12%">Aksi</th>
                             </tr>
@@ -96,8 +97,9 @@
                             @foreach ($tugas as $key => $k )
                             <tr>
                                 <td width="1%">{{$key+1}}</td>
+                                <td>{{$k->name}}</td>
                                 <td>{{$k->namakantor}}</td>
-                                <td>{{$k->namaruangan}}</td>
+                                <td>{{$k->namakategori}}</td>
                                 <td>{{$k->nama_tugas}}</td>
                                 <td>
                                     <button class="btn btn-warning" id="edit" onclick="edittugas({{ $k }})" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
