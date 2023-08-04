@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Master\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +23,28 @@ class UserApiController extends Controller
         // 		'created_at'=>date('Y-m-d H:i:s'),
         // 	]);
         // }
+        $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
+            ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
+            // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
+            ->where('id_pengguna', Auth::user()->id)
+            ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+
+        foreach ($dat as $key => $val) {
+            $val->is_check = false;
+            if ($val->kategori == 1) {
+                $val->timejob = 'Harian';
+            }
+            if ($val->kategori == 2) {
+                $val->timejob = 'Mingguan';
+            }
+            if ($val->kategori == 3) {
+                $val->timejob = 'Bulanan';
+            }
+        }
         return response()->json([
             'success' => true,
             'user' => Auth::user(),
+            'datajob' => $dat
         ]);
     }
     public function doLogin(Request $r)
@@ -32,7 +52,7 @@ class UserApiController extends Controller
         // return response()->json([
         //     'dat' => $r->all()
         // ]);
-        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        if (Auth::attempt(['id_pegawai' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             // $emp = Pegawai::where('user_id',$user->id)->exists();
 
@@ -56,15 +76,36 @@ class UserApiController extends Controller
             // 	]);
             // }
 
+            $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
+                ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
+                // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
+                ->where('id_pengguna', $user['id'])
+                ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+
+            foreach ($dat as $key => $val) {
+                $val->is_check = false;
+                if ($val->kategori == 1) {
+                    $val->timejob = 'Harian';
+                }
+                if ($val->kategori == 2) {
+                    $val->timejob = 'Mingguan';
+                }
+                if ($val->kategori == 3) {
+                    $val->timejob = 'Bulanan';
+                }
+            }
+
+            // return $dat;
             return response()->json([
                 'success' => true,
                 'token' => $success,
                 'user' => $user,
+                'datajob' => $dat
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid Email or Password',
+                'message' => 'Invalid Id pegawai or Password',
             ], 401);
         }
     }
