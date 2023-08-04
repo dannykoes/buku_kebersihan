@@ -38,8 +38,11 @@
                                         </path>
                                         <polyline points="22,6 12,13 2,6"></polyline>
                                     </svg>
-                                    <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+                                    <input id="name" name="name" type="text" class="form-control" placeholder="Id Pegawai">
                                 </div>
+                                @error('name')
+                                    <strong>{{$message}}</strong>
+                                @enderror
 
                                 <div id="password-field" class="field-wrapper input">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">

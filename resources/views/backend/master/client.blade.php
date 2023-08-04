@@ -5,7 +5,7 @@
                 <form action="client" method="post">
                     @csrf
                     <div class="row mb-1">
-                        <div class="col-lg-6">
+                        <div class="col">
                             <label for="form-control">Perusahaan</label>
                             <input type="hidden" name="id" id="uid" value="{{old('id')}}">
                             <input type="text" placeholder="Perusahaan" class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" id="prs">
@@ -13,23 +13,23 @@
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col">
                             <label for="form-control">PIC</label>
                             <input type="text" placeholder="PIC perusahaan" class="form-control @error('pic') is-invalid @enderror" name="pic" id="pic">
                             @error('pic')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-
-                    </div>
-                    <div class="row mb-1">
-                        <div class="col-lg-6">
+                        <div class="col">
                             <label for="form-control">Kontak WA</label>
                             <input type="text" placeholder="Kontak WA" class="form-control @error('kontak') is-invalid @enderror" name="kontak" id="kontak">
                             @error('kontak')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+
+                    </div>
+                    {{-- <div class="row mb-1">
                         <div class="col-lg-6">
                             <label for="form-control">Email</label>
                             <input type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" id="eml">
@@ -37,7 +37,7 @@
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row">
                         <div class="col-lg-12">

@@ -17,5 +17,9 @@ class Tugas extends Model
         'tugas_mingguan',
         'tugas_bulanan',
         'nama_tugas',
+        'id_pengguna',
+        'kategori',
+        'lantai_id',
+        'json_additional',
     ];
 }

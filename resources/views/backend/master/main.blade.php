@@ -15,14 +15,14 @@
             <a class="nav-link @if (Session::get('tab')==3) active @endif" id="lantai-tab" data-toggle="tab" href="#lantai" role="tab" aria-controls="lantai" aria-selected="false">Ruangan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="tugas-tab" data-toggle="tab" href="#tugas" role="tab" aria-controls="tugas" aria-selected="false">Tugas</a>
+            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="tugas-tab" data-toggle="tab" href="#tugas" role="tab" aria-controls="tugas" aria-selected="false">Objek Perkerjaan</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==5) active @endif " id="pengguna-tab" data-toggle="tab" href="#pengguna" role="tab" aria-controls="pengguna" aria-selected="false">Pengguna</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==6) active @endif " id="pembagian-job" data-toggle="tab" href="#pgjb" role="tab" aria-controls="pgjb" aria-selected="false">Pembagian job</a>
-        </li>
+        </li> --}}
     </ul>
     <div class="tab-content" id="simpletabContent">
         <div class="tab-pane fade @if (Session::get('tab')==0) show active @endif " id="client" role="tabpanel" aria-labelledby="client-tab">
@@ -173,8 +173,13 @@
         $('#tugasmingguan').val(JSON.parse(data.tugas_mingguan));
         $('#kantortugas').val(data.kantor_id);
         $('#ruanganidtugas').val(data.ruangan_id);
+        $('#kategoritugas').val(data.kategori);
+        $('#penggunatugas').val(data.id_pengguna);
         $('#kantortugas').change();
         $('#namatugas').change();
+        // setTimeout(() => {
+            
+        // }, 1000);
         $('#tugasbulanan').change();
         $('#tugasmingguan').change();
     }
@@ -191,6 +196,33 @@
     function changekantortugas() {
         let kantor = $('#kantortugas').val();
         let r = $('#ruanganidtugas').val();
+        let html = '';
+        html += '<option value="" >Pilih</option>';
+        $('#lantaitugas').html(html);
+        $('#ruangantugas').html(html);
+        $.ajax({
+            type: 'GET',
+            url: '/ruangan/getbykantor',
+            data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor,
+            success: function(data) {
+                if (data.length > 0) {
+                    data.forEach(element => {
+                        if (element.id == r) {
+                            html += '<option value="' + element.id + '" selected>' + element.ruangan + '</option>';
+                        } else {
+                            html += '<option value="' + element.id + '">' + element.ruangan + '</option>';
+                        }
+                    });
+                    $('#lantaitugas').html(html);
+                    changelantaitugas();
+                }
+            }
+        });
+    }
+    function changelantaitugas() {
+        let kantor = $('#lantaitugas').val();
+        let r = $('#ruanganidtugas').val();
+        // console.log('lantai',r);
         let html = '';
         html += '<option value="" >Pilih</option>';
         $('#ruangantugas').html(html);
@@ -219,11 +251,12 @@
     function editpengguna(data) {
         $('#idpengguna').val(data.id);
         $('#namapengguna').val(data.name);
+        $('#idpegawaipengguna').val(data.id_pegawai);
         $('#emailpengguna').val(data.email);
         $('#rolepengguna').val(data.role);
         $('#passwordpengguna').val(null);
 
-        var r = data.client_id
+        var r = data.client_id;
 
         let html = '';
         html += '<option value="" >Pilih</option>';

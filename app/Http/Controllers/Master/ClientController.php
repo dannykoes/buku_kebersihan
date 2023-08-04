@@ -32,11 +32,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-
-
         session()->put('tab', 0);
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            // 'email' => 'required',
             'perusahaan' => 'required',
             'kontak' => 'required',
             'pic' => 'required',
@@ -52,7 +50,7 @@ class ClientController extends Controller
             'perusahaan' => $request->perusahaan,
             'kontak' => $request->kontak,
             'pic' => $request->pic,
-            'email' => $request->email,
+            'email' => '$request->email',
         ]);
         if ($k) {
             // return Redirect::back()->with('info', 'Tersimpan');

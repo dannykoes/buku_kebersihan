@@ -62,9 +62,9 @@
                         <th width="8%">No</th>
                         <th>Kantor</th>
                         <th>Ruangan</th>
-                        <th>Foto Sebelum</th>
+                        {{-- <th>Foto Sebelum</th> --}}
                         <th>Proses</th>
-                        <th>Foto Sesudah</th>
+                        <th>Foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -73,7 +73,7 @@
                         <td>1</td>
                         <td>Kantor 1</td>
                         <td>Ruangan 1</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -82,7 +82,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-success">100%</span>
                         </td>
@@ -111,7 +111,7 @@
                         <td>2</td>
                         <td>Kantor 2</td>
                         <td>Ruangan 2</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -120,7 +120,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-warning">50%</span>
                         </td>
@@ -181,10 +181,10 @@
                         <th width="8%">No</th>
                         <th>Kantor</th>
                         <th>Ruangan</th>
-                        <th>Foto Sebelum</th>
+                        {{-- <th>Foto Sebelum</th> --}}
                         <th>Proses</th>
-                        <th>Foto Sesudah</th>
-                        <th>Aksi</th>
+                        <th>Foto</th>
+                        {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -192,7 +192,7 @@
                         <td>1</td>
                         <td>Kantor 1</td>
                         <td>Ruangan 1</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -201,7 +201,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-success">100%</span>
                         </td>
@@ -215,7 +215,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault3" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault3">
@@ -224,13 +224,13 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Kantor 2</td>
                         <td>Ruangan 2</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -239,7 +239,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-warning">50%</span>
                         </td>
@@ -253,7 +253,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault4" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault4">
@@ -262,7 +262,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     {{-- @foreach ($fee as $key => $f )
                     <tr>
@@ -300,10 +300,10 @@
                         <th width="8%">No</th>
                         <th>Kantor</th>
                         <th>Ruangan</th>
-                        <th>Foto Sebelum</th>
+                        {{-- <th>Foto Sebelum</th> --}}
                         <th>Proses</th>
-                        <th>Foto Sesudah</th>
-                        <th>Aksi</th>
+                        <th>Foto</th>
+                        {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -311,7 +311,7 @@
                         <td>1</td>
                         <td>Kantor 1</td>
                         <td>Ruangan 1</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -320,7 +320,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-success">100%</span>
                         </td>
@@ -334,7 +334,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault5" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault5">
@@ -343,13 +343,13 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Kantor 2</td>
                         <td>Ruangan 2</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -358,7 +358,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-warning">50%</span>
                         </td>
@@ -372,7 +372,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault6" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault6">
@@ -381,7 +381,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     {{-- @foreach ($fee as $key => $f )
                     <tr>
@@ -419,10 +419,10 @@
                         <th width="8%">No</th>
                         <th>Kantor</th>
                         <th>Ruangan</th>
-                        <th>Foto Sebelum</th>
+                        {{-- <th>Foto Sebelum</th> --}}
                         <th>Proses</th>
-                        <th>Foto Sesudah</th>
-                        <th>Aksi</th>
+                        <th>Foto</th>
+                        {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -430,7 +430,7 @@
                         <td>1</td>
                         <td>Kantor 1</td>
                         <td>Ruangan 1</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -439,7 +439,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-success">100%</span>
                         </td>
@@ -453,7 +453,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault7" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault7">
@@ -462,13 +462,13 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Kantor 2</td>
                         <td>Ruangan 2</td>
-                        <td>
+                        {{-- <td>
                             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                     <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -477,7 +477,7 @@
                                         d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
                                     </path>
                                 </svg></a>
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-warning">50%</span>
                         </td>
@@ -491,7 +491,7 @@
                                     </path>
                                 </svg></a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <div class="btn-group  mb-2 me-4" role="group">
                             <button title="Aksi" id="btndefault8" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>
                             <div class="dropdown-menu" aria-labelledby="btndefault8">
@@ -500,7 +500,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-bell-fill-2 mr-1"></i>Batal</a>
                             </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     {{-- @foreach ($fee as $key => $f )
                     <tr>

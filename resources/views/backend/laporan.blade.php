@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+{{-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
     <div class="text-center">
         <p><b>Laporan Aktivitas Karyawan</b></p>
         <form action="" method="GET">
@@ -115,7 +115,7 @@
                                 </svg></a>
                         </td>
                     </tr>
-                    {{-- @foreach ($fee as $key => $f )
+                    @foreach ($fee as $key => $f )
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>
@@ -135,7 +135,7 @@
                                     class='bx bx-trash'></i></button>
                         </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -147,7 +147,7 @@
             <div class="" id="chart2"></div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
 @section('custom-js')
 <script>
