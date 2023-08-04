@@ -14,6 +14,7 @@ class ProfileApiController extends Controller
     public function simpanprofile(Request $request)
     {
 
+
         if ($request->hasFile('profile')) {
             $image  = $request->file('profile')->getPathname();
             $cdl = GlobalHelper::cloudinarys();

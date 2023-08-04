@@ -34,4 +34,5 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/settodo', [TodoApiController::class, 'setTodo']);
     Route::post('/simpanprofile', [ProfileApiController::class, 'simpanprofile']);
     Route::get('/getDataprofile', [ProfileApiController::class, 'getDataprofile']);
+    Route::post('/simpantodo', [TodoApiController::class, 'simpantodo']);
 });
