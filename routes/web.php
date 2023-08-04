@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\ClientController;
 use App\Http\Controllers\Master\PembagianTugasController;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::resource('tugas', App\Http\Controllers\Master\TugasController::class);
     Route::resource('pengguna', App\Http\Controllers\PenggunaController::class);
     Route::resource('client', ClientController::class);
+    Route::post('/approval', [HomeController::class, 'approval']);
     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);

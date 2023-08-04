@@ -60,17 +60,19 @@
                 <thead>
                     <th width="8%">No</th>
                         <th>Petugas</th>
-                        <th>Kantor</th>
+                        {{-- <th>Kantor</th>
                         <th>Lantai</th>
-                        <th>Ruangan</th>
+                        <th>Ruangan</th> --}}
                         <th>Proses</th>
                         <th>Foto</th>
+                        <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($fee as $key => $f )
+                    @foreach ($job as $key => $f )
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>
+                        <td>{{$f->name}}</td>
+                        {{-- <td>
                             @if (json_decode($f->class_id))
                             @foreach (json_decode($f->class_id) as $fe)
                             <span class="badge badge-info">{{$fe}}</span>
@@ -78,13 +80,23 @@
                             @else
                             All
                             @endif
-                        </td>
-                        <td>{{$f->nominal}} %</td>
+                        </td> --}}
+                        <td>99 %</td>
+                        <td><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                            <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                            <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                            <path
+                                d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                            </path>
+                        </svg></a></td>
                         <td>
-                            <button class="btn btn-warning" id="edit" onclick="edit({{ $f }})" title="Edit"><i
-                                    class='bx bx-edit'></i></button>
-                            <button class="btn btn-danger" onclick="hapus('{{ $f->id }}')" title="Delete"> <i
-                                    class='bx bx-trash'></i></button>
+                            <div class="btn-group  mb-2 me-4" role="group">
+                                <button id="btndefault" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(240, 240, 240);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg></button>
+                                <div class="dropdown-menu" aria-labelledby="btndefault">
+                                    <a href="javascript:void(0);" class="dropdown-item" onclick="edit({{$f}})"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
@@ -225,6 +237,34 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="detailjob" tabindex="-1" role="dialog" aria-labelledby="detailjobLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailjobLabel">Approve</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4 id="namapetugas"></h4>
+          <form action="/approval" method="POST">
+            @csrf
+            <textarea name="detaildata" id="detaildata"hidden></textarea>
+          <div id="detail"></div>
+            <hr>
+            <div class="col"><button class="btn btn-primary btn-sm" title="Update" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z"></path></svg></button></div>
+        </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> --}}
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @section('custom-js')
 <script>
@@ -417,12 +457,39 @@
         line.render();
 
     var map = L.map('map').setView([ -7.000433527639624, 110.33436565215736], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    L.marker([-7.000433527639624, 110.33436565215736]).addTo(map)
-        .bindPopup('Kantor.')
-        .openPopup();
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([-7.000433527639624, 110.33436565215736]).addTo(map)
+            .bindPopup('Kantor.')
+            .openPopup();
+
+    function edit(data) {
+        console.log(data.job);
+        let a = '';
+        $('#detailjob').modal('show');
+        $('#namapetugas').html(data.name);
+        $('#detaildata').val(JSON.stringify(data.job));
+        data.job.forEach(e => {
+        a+='<div class="row">';
+        a+='    <div class="col"><small>Kantor</small><h5>'+e.nama+'</h5></div>';
+        a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
+        a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
+        a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
+        a+='    <div class="col-md-2"><small>Nilai</small>';
+        a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
+        a+='            <option value="">Pilih</option>';
+        a+='            <option value="5">Bersih Sekali</option>';
+        a+='            <option value="4">Bersih</option>';
+        a+='            <option value="3">Cukup</option>';
+        a+='            <option value="2">Kurang Bersih</option>';
+        a+='            <option value="1">Kotor</option>';
+        a+='        </select>';
+        a+='    </div>';
+        a+='</div>';
+        });
+        $('#detail').html(a);
+    }
 </script>
 
 @endsection

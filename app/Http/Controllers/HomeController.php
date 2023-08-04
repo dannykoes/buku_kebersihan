@@ -7,6 +7,7 @@ use App\Models\TodoNewModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -28,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $data['fee'] = [];
-        $data['pengguna'] = User::select(
-            'users.id',
+        $data['job'] = User::select(
+            'users.*',
             // 'kantors.nama',
             // 'ruangans.ruangan',
             // 'lantais.lantai',
@@ -39,9 +40,22 @@ class HomeController extends Controller
             // ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
             // ->join('kantors', 'kantors.id', 'tugas.kantor_id')
             ->where('users.role', 3)
-            ->pluck('users.id')
-            ->toArray();
-        $data['job'] = TodoNewModel::whereIn('id_pegawai', $data['pengguna'])->get();
+            ->get();
+        foreach ($data['job'] as $key => $v) {
+            $v->job = Tugas::select(
+                'tugas.*',
+                'kantors.nama',
+                'ruangans.ruangan',
+                'lantais.lantai',
+                'users.name',
+            )
+                ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
+                ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
+                ->join('kantors', 'kantors.id', 'tugas.kantor_id')
+                ->join('users', 'users.id', 'tugas.id_pengguna')
+                ->where('tugas.id_pengguna', $v->id)
+                ->get();
+        }
 
         $data['harian'] = Tugas::select(
             'tugas.*',
@@ -92,5 +106,15 @@ class HomeController extends Controller
         } else {
             return view('backend.dashboard.petugasdashboard');
         }
+    }
+    function approval(Request $request)
+    {
+        // return $request->all();
+        $js =  json_decode($request->detaildata);
+        foreach ($js as $key => $value) {
+            $value->komentar = $request->detailkomentar[$key] ? $request->detailkomentar[$key] : '';
+            $value->nilai = $request->detailnilai[$key] ? $request->detailnilai[$key] : '';
+        }
+        return $js;
     }
 }
