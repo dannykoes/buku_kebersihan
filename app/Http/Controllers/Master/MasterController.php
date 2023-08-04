@@ -45,9 +45,11 @@ class MasterController extends Controller
             'tugas.*',
             'kantors.nama as namakantor',
             'lantais.lantai as namaruangan',
+            'users.name',
         )
             ->leftJoin('kantors', 'kantors.id', 'tugas.kantor_id')
             ->leftJoin('lantais', 'lantais.id', 'tugas.ruangan_id')
+            ->leftJoin('users', 'users.id', 'tugas.id_pengguna')
             ->get();
 
         // $usr = User::where('role', 3)->get();
