@@ -29,33 +29,34 @@ class HomeController extends Controller
     public function index()
     {
         $data['fee'] = [];
-        $data['job'] = User::select(
-            'users.*',
+        $data['job'] = TodoNewModel::select(
+            'todo_new_models.*',
+            'users.name',
             // 'kantors.nama',
             // 'ruangans.ruangan',
             // 'lantais.lantai',
         )
-            // ->join('tugas', 'tugas.id', 'users.id')
+            ->join('users', 'users.id', 'todo_new_models.id_pegawai')
             // ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
             // ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
             // ->join('kantors', 'kantors.id', 'tugas.kantor_id')
             ->where('users.role', 3)
             ->get();
-        foreach ($data['job'] as $key => $v) {
-            $v->job = Tugas::select(
-                'tugas.*',
-                'kantors.nama',
-                'ruangans.ruangan',
-                'lantais.lantai',
-                'users.name',
-            )
-                ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
-                ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
-                ->join('kantors', 'kantors.id', 'tugas.kantor_id')
-                ->join('users', 'users.id', 'tugas.id_pengguna')
-                ->where('tugas.id_pengguna', $v->id)
-                ->get();
-        }
+        // foreach ($data['job'] as $key => $v) {
+        //     $v->job = Tugas::select(
+        //         'tugas.*',
+        //         'kantors.nama',
+        //         'ruangans.ruangan',
+        //         'lantais.lantai',
+        //         'users.name',
+        //     )
+        //         ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
+        //         ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
+        //         ->join('kantors', 'kantors.id', 'tugas.kantor_id')
+        //         ->join('users', 'users.id', 'tugas.id_pengguna')
+        //         ->where('tugas.id_pengguna', $v->id)
+        //         ->get();
+        // }
 
         $data['harian'] = Tugas::select(
             'tugas.*',

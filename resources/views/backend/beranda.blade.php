@@ -251,8 +251,63 @@
           <h4 id="namapetugas"></h4>
           <form action="/approval" method="POST">
             @csrf
-            <textarea name="detaildata" id="detaildata"hidden></textarea>
-          <div id="detail"></div>
+            <input type="text" name="tugasid" id="tugasid" hidden>
+            <textarea name="detaildata" id="detaildata" hidden></textarea>
+            <div >
+                <table class="table teble-responsive">
+                    <thead>
+                        <tr>
+                            <th>Kantor</th>
+                            <th>Lantai</th>
+                            <th>Ruangan</th>
+                            <th>Objek</th>
+                            <th>Foto</th>
+                            <th>Komentar</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detail">
+                        {{-- <tr>
+                            <td>'+e.namakantor+'</td>
+                            <td>'+e.lantai+'</td>
+                            <td>'+e.ruangan+'</td>
+                            <td>'+e.nama_tugas+'</td>
+                            <td>
+                                <a href="{{asset('image/Login.jpg')}}" target="_blank"><img src="{{asset('image/Login.jpg')}}" alt="" width="60px" height="60px"></a>
+                                <a href="{{asset('image/login.png')}}" target="_blank"><img src="{{asset('image/login.png')}}" alt="" width="60px" height="60px"></a>
+                            </td>
+                            <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>
+                            <th>
+                                <select name="detailnilai[]" id="detailnilai" class="form-control">
+                                    <option value="">Pilih</option>
+                                    <option value="5">Bersih Sekali</option>
+                                    <option value="4">Bersih</option>
+                                    <option value="3">Cukup</option>
+                                    <option value="2">Kurang Bersih</option>
+                                    <option value="1">Kotor</option>
+                                </select>
+                            </th>
+                        </tr> --}}
+                    </tbody>
+                </table>
+                {{-- <div class="row">
+                        <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>
+                        <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>
+                        <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>
+                        <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>
+                        <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>
+                        <div class="col-md-2"><small>Nilai</small>
+                            <select name="detailnilai[]" id="detailnilai" class="form-control">
+                                <option value="">Pilih</option>
+                                <option value="5">Bersih Sekali</option>
+                                <option value="4">Bersih</option>
+                                <option value="3">Cukup</option>
+                                <option value="2">Kurang Bersih</option>
+                                <option value="1">Kotor</option>
+                            </select>
+                        </div>
+                    </div> --}}
+            </div>
             <hr>
             <div class="col"><button class="btn btn-primary btn-sm" title="Update" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z"></path></svg></button></div>
         </form>
@@ -465,18 +520,50 @@
             .openPopup();
 
     function edit(data) {
-        console.log(data.job);
         let a = '';
+        let no = 0;
+        let json = false;
+        let foto = false;
+        if (data.tugas) {
+            json = JSON.parse(data.tugas);
+        }
+        if (data.tugas) {
+            foto = JSON.parse(data.foto);
+        }
+        console.log(json,foto);
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
-        $('#detaildata').val(JSON.stringify(data.job));
-        data.job.forEach(e => {
-        a+='<div class="row">';
-        a+='    <div class="col"><small>Kantor</small><h5>'+e.nama+'</h5></div>';
-        a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
-        a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
-        a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
-        a+='    <div class="col-md-2"><small>Nilai</small>';
+        $('#tugasid').html(data.id);
+        $('#detaildata').val(data.tugas);
+        json.forEach(e => {
+        // a+='<div class="row">';
+        // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
+        // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
+        // a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
+        // a+='    <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>';
+        // a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
+        // a+='    <div class="col-md-2"><small>Nilai</small>';
+        // a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
+        // a+='            <option value="">Pilih</option>';
+        // a+='            <option value="5">Bersih Sekali</option>';
+        // a+='            <option value="4">Bersih</option>';
+        // a+='            <option value="3">Cukup</option>';
+        // a+='            <option value="2">Kurang Bersih</option>';
+        // a+='            <option value="1">Kotor</option>';
+        // a+='        </select>';
+        // a+='    </div>';
+        // a+='</div>';
+
+        a+='<tr>';
+        a+='    <td>'+e.namakantor+'</td>';
+        a+='    <td>'+e.lantai+'</td>';
+        a+='    <td>'+e.ruangan+'</td>';
+        a+='    <td>'+e.nama_tugas+'</td>';
+        a+='    <td>';
+        a+='        <a href="'+foto?foto[no].url:''+'" target="_blank"><img src="'+foto?foto[no].url:''+'" alt="" width="60px" height="60px"></a>';
+        a+='    </td>';
+        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
+        a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
         a+='            <option value="5">Bersih Sekali</option>';
@@ -485,11 +572,15 @@
         a+='            <option value="2">Kurang Bersih</option>';
         a+='            <option value="1">Kotor</option>';
         a+='        </select>';
-        a+='    </div>';
-        a+='</div>';
+        a+='    </th>';
+        a+='</tr>';
+        no++;
         });
         $('#detail').html(a);
     }
+    $(document).ready(function () {
+        console.log(09.53);
+    })
 </script>
 
 @endsection
