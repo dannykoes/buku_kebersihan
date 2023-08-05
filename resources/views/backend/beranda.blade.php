@@ -249,6 +249,8 @@
         </div>
         <div class="modal-body">
           <h4 id="namapetugas"></h4>
+          <div class="row" id="detailfoto">
+          </div>
           <form action="/approval" method="POST">
             @csrf
             <input type="text" name="tugasid" id="tugasid" hidden>
@@ -261,7 +263,6 @@
                             <th>Lantai</th>
                             <th>Ruangan</th>
                             <th>Objek</th>
-                            <th>Foto</th>
                             <th>Komentar</th>
                             <th>Nilai</th>
                         </tr>
@@ -522,6 +523,7 @@
     function edit(data) {
         console.log(data);
         let a = '';
+        let b = '';
         let no = 0;
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
@@ -529,8 +531,8 @@
         $('#detaildata').val(data.tugas);
         data.job.forEach(e => {
         // a+='<div class="row">';
-        // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
-        // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
+            // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
+            // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
         // a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
         // a+='    <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>';
         // a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
@@ -545,15 +547,15 @@
         // a+='        </select>';
         // a+='    </div>';
         // a+='</div>';
-
+        
+        // a+='    <td>';
+        // a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
+        // a+='    </td>';
         a+='<tr>';
         a+='    <td>'+e.namakantor+'</td>';
         a+='    <td>'+e.lantai+'</td>';
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.nama_tugas+'</td>';
-        a+='    <td>';
-        a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
-        a+='    </td>';
         a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
@@ -567,9 +569,16 @@
         a+='    </th>';
         a+='</tr>';
         no++;
-        });
-        $('#detail').html(a);
+    });
+    $('#detail').html(a);
+    data.photos.forEach(el => {
+        b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="60px" height="60px" class="col"></a>';
+    });
+    $('#detailfoto').html(b);
     }
+    $(document).ready(function () {
+        // $('#detailjob').modal('show');    
+    })
 </script>
 
 @endsection
