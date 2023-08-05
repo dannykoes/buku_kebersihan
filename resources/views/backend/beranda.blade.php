@@ -564,11 +564,11 @@
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
-        a+='            <option value="5" '+e.nilai==5?'selected':''+' >Bersih Sekali</option>';
-        a+='            <option value="4" '+e.nilai==4?'selected':''+' >Bersih</option>';
-        a+='            <option value="3" '+e.nilai==3?'selected':''+' >Cukup</option>';
-        a+='            <option value="2" '+e.nilai==2?'selected':''+' >Kurang Bersih</option>';
-        a+='            <option value="1" '+e.nilai==1?'selected':''+' >Kotor</option>';
+        a+='            <option value="5" '+e.nilai==5?'selected':+' >Bersih Sekali</option>';
+        a+='            <option value="4" '+e.nilai==4?'selected':+' >Bersih</option>';
+        a+='            <option value="3" '+e.nilai==3?'selected':+' >Cukup</option>';
+        a+='            <option value="2" '+e.nilai==2?'selected':+' >Kurang Bersih</option>';
+        a+='            <option value="1" '+e.nilai==1?'selected':+' >Kotor</option>';
         a+='        </select>';
         a+='    </th>';
         a+='</tr>';
@@ -582,6 +582,7 @@
     }
     $(document).ready(function () {
         // $('#detailjob').modal('show');    
+        console.log('11.41');
     })
 </script>
 
