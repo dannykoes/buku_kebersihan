@@ -95,7 +95,7 @@
                                 <button id="btndefault" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(240, 240, 240);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg></button>
                                 <div class="dropdown-menu" aria-labelledby="btndefault">
                                     <a href="javascript:void(0);" class="dropdown-item" onclick="edit({{$f}})"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
-                                    <a href="/approval?status={{$f->status==0?1:0}}&tugasid={{$f->id}}&approval=true" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
+                                    <a href="/approval?status={{$f->status==0?1:0}}&tugasid={{$f->id}}&approval=true" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>{{$f->status==0?'ACC':'BATAL ACC'}}</a>
                                 </div>
                             </div>
                         </td>
@@ -560,15 +560,15 @@
         a+='    <td>'+e.lantai+'</td>';
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.nama_tugas+'</td>';
-        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+el.komentar+'</textarea></th>';
+        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+e.komentar+'</textarea></th>';
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
-        a+='            <option value="5"'+el.nilai==5?'selected':''+'>Bersih Sekali</option>';
-        a+='            <option value="4"'+el.nilai==4?'selected':''+'>Bersih</option>';
-        a+='            <option value="3"'+el.nilai==3?'selected':''+'>Cukup</option>';
-        a+='            <option value="2"'+el.nilai==2?'selected':''+'>Kurang Bersih</option>';
-        a+='            <option value="1"'+el.nilai==1?'selected':''+'>Kotor</option>';
+        a+='            <option value="5"'+e.nilai==5?'selected':''+'>Bersih Sekali</option>';
+        a+='            <option value="4"'+e.nilai==4?'selected':''+'>Bersih</option>';
+        a+='            <option value="3"'+e.nilai==3?'selected':''+'>Cukup</option>';
+        a+='            <option value="2"'+e.nilai==2?'selected':''+'>Kurang Bersih</option>';
+        a+='            <option value="1"'+e.nilai==1?'selected':''+'>Kotor</option>';
         a+='        </select>';
         a+='    </th>';
         a+='</tr>';
