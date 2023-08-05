@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Helpers\GlobalHelper;
 use App\Models\Master\ClientModel;
+use App\Models\TodoNewModel;
 
 class TodoApiController extends Controller
 {
@@ -289,6 +290,16 @@ class TodoApiController extends Controller
             ];
         }
 
-        return $data;
+        TodoNewModel::create([
+            'status' => 0,
+            'id_pegawai' => Auth::user()->id,
+            'tugas' => json_encode($request->todo),
+            'foto' => json_encode($data),
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'msg' => 'Berhasil input task hari ini'
+        ]);
     }
 }
