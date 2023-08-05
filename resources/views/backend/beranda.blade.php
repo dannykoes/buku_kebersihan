@@ -564,11 +564,11 @@
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
-        a+='            <option value="5" '+e.nilai=='5'?'selected':'a'+' >Bersih Sekali</option>';
-        a+='            <option value="4" '+e.nilai=='4'?'selected':'a'+' >Bersih</option>';
-        a+='            <option value="3" '+e.nilai=='3'?'selected':'a'+' >Cukup</option>';
-        a+='            <option value="2" '+e.nilai=='2'?'selected':'a'+' >Kurang Bersih</option>';
-        a+='            <option value="1" '+e.nilai=='1'?'selected':'a'+' >Kotor</option>';
+        a+='            <option '+e.nilai=='5'?'selected':'a'+' value="5">Bersih Sekali</option>';
+        a+='            <option '+e.nilai=='4'?'selected':'a'+' value="4">Bersih</option>';
+        a+='            <option '+e.nilai=='3'?'selected':'a'+' value="3">Cukup</option>';
+        a+='            <option '+e.nilai=='2'?'selected':'a'+' value="2">Kurang Bersih</option>';
+        a+='            <option '+e.nilai=='1'?'selected':'a'+' value="1">Kotor</option>';
         a+='        </select>';
         a+='    </th>';
         a+='</tr>';
