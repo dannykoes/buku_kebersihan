@@ -530,12 +530,13 @@
         if (data.tugas) {
             foto = JSON.parse(data.foto);
         }
+        console.log(data);
         console.log(json,foto);
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
         $('#tugasid').html(data.id);
         $('#detaildata').val(data.tugas);
-        json.forEach(e => {
+        // json.forEach(e => {
         // a+='<div class="row">';
         // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
         // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
@@ -554,32 +555,32 @@
         // a+='    </div>';
         // a+='</div>';
 
-        a+='<tr>';
-        a+='    <td>'+e.namakantor+'</td>';
-        a+='    <td>'+e.lantai+'</td>';
-        a+='    <td>'+e.ruangan+'</td>';
-        a+='    <td>'+e.nama_tugas+'</td>';
-        a+='    <td>';
-        a+='        <a href="'+foto?foto[no].url:''+'" target="_blank"><img src="'+foto?foto[no].url:''+'" alt="" width="60px" height="60px"></a>';
-        a+='    </td>';
-        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
-        a+='    <th>';
-        a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
-        a+='            <option value="">Pilih</option>';
-        a+='            <option value="5">Bersih Sekali</option>';
-        a+='            <option value="4">Bersih</option>';
-        a+='            <option value="3">Cukup</option>';
-        a+='            <option value="2">Kurang Bersih</option>';
-        a+='            <option value="1">Kotor</option>';
-        a+='        </select>';
-        a+='    </th>';
-        a+='</tr>';
-        no++;
-        });
+        // a+='<tr>';
+        // a+='    <td>'+e.namakantor+'</td>';
+        // a+='    <td>'+e.lantai+'</td>';
+        // a+='    <td>'+e.ruangan+'</td>';
+        // a+='    <td>'+e.nama_tugas+'</td>';
+        // a+='    <td>';
+        // a+='        <a href="'+foto?foto[no].url:''+'" target="_blank"><img src="'+foto?foto[no].url:''+'" alt="" width="60px" height="60px"></a>';
+        // a+='    </td>';
+        // a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
+        // a+='    <th>';
+        // a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
+        // a+='            <option value="">Pilih</option>';
+        // a+='            <option value="5">Bersih Sekali</option>';
+        // a+='            <option value="4">Bersih</option>';
+        // a+='            <option value="3">Cukup</option>';
+        // a+='            <option value="2">Kurang Bersih</option>';
+        // a+='            <option value="1">Kotor</option>';
+        // a+='        </select>';
+        // a+='    </th>';
+        // a+='</tr>';
+        // no++;
+        // });
         $('#detail').html(a);
     }
     $(document).ready(function () {
-        console.log(09.53);
+        console.log(09.5);
     })
 </script>
 
