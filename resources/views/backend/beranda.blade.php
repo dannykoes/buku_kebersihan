@@ -564,7 +564,7 @@
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
-        a+='            <option '+ if (e.nilai==5) { 'selected' } +' value="5">Bersih Sekali</option>';
+        a+='            <option '+ if (e.nilai==5) { "selected" } +' value="5">Bersih Sekali</option>';
         a+='            <option value="4">Bersih</option>';
         a+='            <option value="3">Cukup</option>';
         a+='            <option value="2">Kurang Bersih</option>';
