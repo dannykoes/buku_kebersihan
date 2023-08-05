@@ -522,8 +522,14 @@
     function edit(data) {
         let a = '';
         let no = 0;
-        let json = JSON.parse(data.tugas);
-        let foto = JSON.parse(data.foto);
+        let json = false;
+        let foto = false;
+        if (data.tugas) {
+            json = JSON.parse(data.tugas);
+        }
+        if (data.tugas) {
+            foto = JSON.parse(data.foto);
+        }
         console.log(json,foto);
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
@@ -554,7 +560,7 @@
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.nama_tugas+'</td>';
         a+='    <td>';
-        a+='        <a href="'+foto?foto[no].url+'" target="_blank"><img src="'+foto?foto[no].url+'" alt="" width="60px" height="60px"></a>';
+        a+='        <a href="'+foto?foto[no].url:''+'" target="_blank"><img src="'+foto?foto[no].url:''+'" alt="" width="60px" height="60px"></a>';
         a+='    </td>';
         a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
         a+='    <th>';
