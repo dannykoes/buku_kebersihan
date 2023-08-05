@@ -105,12 +105,23 @@ class HomeController extends Controller
     }
     function approval(Request $request)
     {
-        return $request->all();
+        // return $request->all();
+        if ($request->approval) {
+            $t = TodoNewModel::where('id', $request->tugasid)->update([
+                'status' => $request->status
+            ]);
+            return $t;
+        }
+
         $js =  json_decode($request->detaildata);
         foreach ($js as $key => $value) {
             $value->komentar = $request->detailkomentar[$key] ? $request->detailkomentar[$key] : '';
             $value->nilai = $request->detailnilai[$key] ? $request->detailnilai[$key] : '';
         }
-        return $js;
+
+        $t = TodoNewModel::where('id', $request->tugasid)->update([
+            'tugas' => json_decode($js)
+        ]);
+        return $t;
     }
 }
