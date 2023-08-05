@@ -520,6 +520,7 @@
             .openPopup();
 
     function edit(data) {
+        console.log(data);
         let a = '';
         let no = 0;
         $('#detailjob').modal('show');
@@ -551,7 +552,7 @@
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.nama_tugas+'</td>';
         a+='    <td>';
-        a+='        <a href="'+data.photos?data.photos[no].url:''+'" target="_blank"><img src="'+data.photos?data.photos[no].url:''+'" alt="" width="60px" height="60px"></a>';
+        a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
         a+='    </td>';
         a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
         a+='    <th>';
