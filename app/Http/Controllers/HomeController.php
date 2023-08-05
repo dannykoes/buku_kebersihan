@@ -110,7 +110,10 @@ class HomeController extends Controller
             $t = TodoNewModel::where('id', $request->tugasid)->update([
                 'status' => $request->status
             ]);
-            return $t;
+            if ($t) {
+                return Redirect::back()->with('Berhasil Tersimpan');
+            }
+            return Redirect::back()->with('Gagal Tersimpan');
         }
 
         $js =  json_decode($request->detaildata);
@@ -122,6 +125,9 @@ class HomeController extends Controller
         $t = TodoNewModel::where('id', $request->tugasid)->update([
             'tugas' => json_encode($js)
         ]);
-        return $t;
+        if ($t) {
+            return Redirect::back()->with('Berhasil Tersimpan');
+        }
+        return Redirect::back()->with('Gagal Tersimpan');
     }
 }
