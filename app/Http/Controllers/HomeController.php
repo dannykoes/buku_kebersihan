@@ -43,7 +43,7 @@ class HomeController extends Controller
             ->where('users.role', 3)
             ->get();
         foreach ($data['job'] as $key => $v) {
-            $v->job = json_decode(json_decode($v->tugas));
+            $v->job = json_decode($v->tugas);
             $v->photos = json_decode($v->foto);
         }
 
