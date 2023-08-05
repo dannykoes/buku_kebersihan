@@ -293,7 +293,7 @@ class TodoApiController extends Controller
         TodoNewModel::create([
             'status' => 0,
             'id_pegawai' => Auth::user()->id,
-            'tugas' => json_encode($request->todo),
+            'tugas' => $request->todo,
             'foto' => json_encode($data),
         ]);
 
