@@ -274,6 +274,10 @@ class TodoApiController extends Controller
 
     public function simpantodo(Request $request)
     {
+
+        // return response()->json([
+        //     'data' => json_decode($request->todo)
+        // ]);
         $data = [];
         for ($i = 0; $i < count(json_decode($request->datagambar)); $i++) {
             $img = json_decode($request->datagambar)[$i];
@@ -289,11 +293,12 @@ class TodoApiController extends Controller
                 'public_id' => $cloudinary['public_id']
             ];
         }
+        $tdr = json_decode($request->todo);
 
         TodoNewModel::create([
             'status' => 0,
             'id_pegawai' => Auth::user()->id,
-            'tugas' => $request->todo,
+            'tugas' => json_encode($tdr),
             'foto' => json_encode($data),
         ]);
 
