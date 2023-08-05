@@ -522,21 +522,11 @@
     function edit(data) {
         let a = '';
         let no = 0;
-        let json = false;
-        let foto = false;
-        if (data.job) {
-            json = JSON.parse(data.tugas);
-        }
-        if (data.photos) {
-            foto = JSON.parse(data.photos);
-        }
-        console.log(data);
-        console.log(json,foto);
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
         $('#tugasid').html(data.id);
         $('#detaildata').val(data.tugas);
-        json.forEach(e => {
+        data.job.forEach(e => {
         // a+='<div class="row">';
         // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
         // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
@@ -561,7 +551,7 @@
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.nama_tugas+'</td>';
         a+='    <td>';
-        a+='        <a href="'+foto?foto[no].url:''+'" target="_blank"><img src="'+foto?foto[no].url:''+'" alt="" width="60px" height="60px"></a>';
+        a+='        <a href="'+data.photos?data.photos[no].url:''+'" target="_blank"><img src="'+data.photos?data.photos[no].url:''+'" alt="" width="60px" height="60px"></a>';
         a+='    </td>';
         a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>';
         a+='    <th>';
@@ -579,9 +569,6 @@
         });
         $('#detail').html(a);
     }
-    $(document).ready(function () {
-        console.log(09.5);
-    })
 </script>
 
 @endsection
