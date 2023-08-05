@@ -105,7 +105,7 @@ class HomeController extends Controller
     }
     function approval(Request $request)
     {
-        // return $request->all();
+        return $request->all();
         $js =  json_decode($request->detaildata);
         foreach ($js as $key => $value) {
             $value->komentar = $request->detailkomentar[$key] ? $request->detailkomentar[$key] : '';
