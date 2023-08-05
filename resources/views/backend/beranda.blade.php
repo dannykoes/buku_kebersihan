@@ -251,7 +251,8 @@
           <h4 id="namapetugas"></h4>
           <form action="/approval" method="POST">
             @csrf
-            <textarea name="detaildata" id="detaildata"hidden></textarea>
+            <input type="text" name="tugasid" id="tugasid" hidden>
+            <textarea name="detaildata" id="detaildata" hidden></textarea>
           <div id="detail"></div>
             <hr>
             <div class="col"><button class="btn btn-primary btn-sm" title="Update" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z"></path></svg></button></div>
@@ -465,14 +466,17 @@
             .openPopup();
 
     function edit(data) {
-        console.log(data);
         let a = '';
+        let json = JSON.parse(data.tugas);
+        let foto = JSON.parse(data.foto);
+        console.log(json,foto);
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
-        $('#detaildata').val(JSON.stringify(data.job));
-        data.job.forEach(e => {
+        $('#tugasid').html(data.id);
+        $('#detaildata').val(data.tugas);
+        json.job.forEach(e => {
         a+='<div class="row">';
-        a+='    <div class="col"><small>Kantor</small><h5>'+e.nama+'</h5></div>';
+        a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
         a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
         a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
         a+='    <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>';
@@ -491,6 +495,9 @@
         });
         $('#detail').html(a);
     }
+    $(document).ready(function () {
+        console.log(09.25);
+    })
 </script>
 
 @endsection
