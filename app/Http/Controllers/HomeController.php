@@ -120,7 +120,7 @@ class HomeController extends Controller
         }
 
         $t = TodoNewModel::where('id', $request->tugasid)->update([
-            'tugas' => json_decode($js)
+            'tugas' => json_encode($js)
         ]);
         return $t;
     }
