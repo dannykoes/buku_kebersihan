@@ -465,7 +465,7 @@
             .openPopup();
 
     function edit(data) {
-        console.log(data.job);
+        console.log(data);
         let a = '';
         $('#detailjob').modal('show');
         $('#namapetugas').html(data.name);
@@ -475,6 +475,7 @@
         a+='    <div class="col"><small>Kantor</small><h5>'+e.nama+'</h5></div>';
         a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
         a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
+        a+='    <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>';
         a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
         a+='    <div class="col-md-2"><small>Nilai</small>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
