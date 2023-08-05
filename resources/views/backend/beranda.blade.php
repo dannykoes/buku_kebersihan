@@ -535,7 +535,7 @@
         $('#namapetugas').html(data.name);
         $('#tugasid').html(data.id);
         $('#detaildata').val(data.tugas);
-        json.job.forEach(e => {
+        json.forEach(e => {
         // a+='<div class="row">';
         // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
         // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
@@ -579,7 +579,7 @@
         $('#detail').html(a);
     }
     $(document).ready(function () {
-        console.log(09.44);
+        console.log(09.53);
     })
 </script>
 
