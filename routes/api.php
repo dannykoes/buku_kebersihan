@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DashboardAPIController;
 use App\Http\Controllers\API\ProfileApiController;
 use App\Http\Controllers\API\TodoApiController;
 use App\Http\Controllers\API\UserApiController;
@@ -35,4 +36,5 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/simpanprofile', [ProfileApiController::class, 'simpanprofile']);
     Route::get('/getDataprofile', [ProfileApiController::class, 'getDataprofile']);
     Route::post('/simpantodo', [TodoApiController::class, 'simpantodo']);
+    Route::get('/datadashboard', [DashboardAPIController::class, 'dashboardcontroller']);
 });

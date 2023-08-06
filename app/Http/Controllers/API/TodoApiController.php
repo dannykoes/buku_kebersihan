@@ -274,10 +274,15 @@ class TodoApiController extends Controller
 
     public function simpantodo(Request $request)
     {
+        $check = TodoNewModel::whereDate('created_at', '>=', Carbon::now()->format('Y-m-d'))->whereDate('created_at', '<=', Carbon::now()->format('Y-m-d'))
+            ->where('id_pegawai', Auth::user()->id)
+            ->get();
+        if (count($check) > 0) {
+            return response()->json([
+                'msg' => 'Anda telah mengisi task cleaning hari ini'
+            ]);
+        }
 
-        // return response()->json([
-        //     'data' => json_decode($request->todo)
-        // ]);
         $data = [];
         for ($i = 0; $i < count(json_decode($request->datagambar)); $i++) {
             $img = json_decode($request->datagambar)[$i];
@@ -304,7 +309,7 @@ class TodoApiController extends Controller
 
         return response()->json([
             'success' => true,
-            'msg' => 'Berhasil input task hari ini'
+            'msg' => 'Selamat anda telah mengisi task cleaning pada ' . Carbon::now()
         ]);
     }
 }

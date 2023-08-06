@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Akarindo | Buku Kebersihan</title>
+    <title>PT. GUNA ADI GRAHA</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
@@ -41,7 +41,7 @@
                                     <input id="name" name="name" type="text" class="form-control" placeholder="Id Pegawai">
                                 </div>
                                 @error('name')
-                                    <strong>{{$message}}</strong>
+                                <strong>{{$message}}</strong>
                                 @enderror
 
                                 <div id="password-field" class="field-wrapper input">
@@ -89,7 +89,7 @@
         <div class="form-image">
             {{-- <div class="l-image">
             </div> --}}
-            <img src="{{asset('image/Login.jpg')}}" alt="" srcset="" height="100%">
+            <img src="{{asset('image/Login_GAG.jpg')}}" alt="" srcset="" height="100%">
         </div>
     </div>
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
