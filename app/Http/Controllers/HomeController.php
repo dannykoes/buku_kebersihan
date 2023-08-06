@@ -43,8 +43,14 @@ class HomeController extends Controller
             ->where('users.role', 3)
             ->get();
         foreach ($data['job'] as $key => $v) {
-            $v->job = json_decode($v->tugas);
-            $v->photos = json_decode($v->foto);
+            $v->job = [];
+            $v->photos = [];
+            if ($v->tugas) {
+                $v->job = json_decode($v->tugas);
+            }
+            if ($v->foto) {
+                $v->photos = json_decode($v->foto);
+            }
         }
 
         $data['harian'] = Tugas::select(
@@ -100,11 +106,28 @@ class HomeController extends Controller
     function approval(Request $request)
     {
         // return $request->all();
+        if ($request->approval) {
+            $t = TodoNewModel::where('id', $request->tugasid)->update([
+                'status' => $request->status
+            ]);
+            if ($t) {
+                return Redirect::back()->with('Berhasil Tersimpan');
+            }
+            return Redirect::back()->with('Gagal Tersimpan');
+        }
+
         $js =  json_decode($request->detaildata);
         foreach ($js as $key => $value) {
             $value->komentar = $request->detailkomentar[$key] ? $request->detailkomentar[$key] : '';
             $value->nilai = $request->detailnilai[$key] ? $request->detailnilai[$key] : '';
         }
-        return $js;
+
+        $t = TodoNewModel::where('id', $request->tugasid)->update([
+            'tugas' => json_encode($js)
+        ]);
+        if ($t) {
+            return Redirect::back()->with('Berhasil Tersimpan');
+        }
+        return Redirect::back()->with('Gagal Tersimpan');
     }
 }
