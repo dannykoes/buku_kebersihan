@@ -289,8 +289,13 @@ class TodoApiController extends Controller
             $image = $request->file($img)->getPathname();
             $cdl = GlobalHelper::cloudinarys();
             $clc = ClientModel::where('id', Auth::user()->client_id)->first();
-            $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => $clc['perusahaan'] . '/joblist/']);
-            $bukti = $cloudinary['secure_url'];
+            if (isset($clc)) {
+                $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => $clc['perusahaan'] . '/joblist/']);
+                $bukti = $cloudinary['secure_url'];
+            } else {
+                $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => 'folder_tester' . '/joblist/']);
+                $bukti = $cloudinary['secure_url'];
+            }
             // // $data[] =  $request->file($img)->getPathname();
 
             $data[] = [
