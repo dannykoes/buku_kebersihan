@@ -19,11 +19,18 @@ class DashboardAPIController extends Controller
             $statuscolor = 'red';
             if ($v->status == 0) {
                 $statuscolor = 'yellow';
+                $v->statustask = 'Pending';
             } elseif ($v->status == 1) {
                 $statuscolor = 'green';
+                $v->statustask = 'Terkomformasi';
             } else {
                 $statuscolor = 'red';
+                $v->statustask = 'Tolak';
             }
+
+            $v->nametask = 'Task cleaning ' . Carbon::parse($v->created_at)->format('Y-m-d');
+
+
 
             $eventlist[] = array(
                 'judul' => 'Task',
@@ -39,7 +46,8 @@ class DashboardAPIController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $eventlist
+            'data' => $eventlist,
+            'task' => $dat
         ]);
     }
 }
