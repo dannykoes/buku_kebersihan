@@ -89,8 +89,8 @@ class MasterController extends Controller
             ->get();
         foreach ($data['job'] as $key => $v) {
             $v->jobs = [];
-            if ($v->job_id) {
-                $v->jobs = AObjectModel::whereIn('id', json_decode($v->job_id))->get();
+            if ($v->objek_id) {
+                $v->jobs = AObjectModel::whereIn('id', json_decode($v->objek_id))->get();
             }
         }
         $data['pengguna'] = [];
