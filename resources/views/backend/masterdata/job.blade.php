@@ -10,8 +10,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Job</th>
+                                <th>Nama Pegawai</th>
+                                <th>Gedung</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -23,7 +23,7 @@
                                 <td>
                                     @if(count($val->jobs) > 0)
                                         @foreach($val->jobs as $key => $value)
-                                            <span class="badge badge-info">{{$value->object}}</span>
+                                            <span class="badge badge-info">{{$value->gedung}}</span>
                                         @endforeach
                                     @endif
                                 </td>
@@ -51,7 +51,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modaljobLabel">job</h5>
+                        <h5 class="modal-title" id="modaljobLabel">Job</h5>
                         <button type="button" class="btn btn-secondary" onclick="closemodal('#modaljob')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
                         </button>
@@ -80,8 +80,8 @@
                                         <label for="" class="text-uppercase">job</label>
                                         <select name="jobobjek[]" id="jobobjek" class="form-control" multiple>
                                             <option value="">Pilih</option>
-                                            @foreach($objek as $key => $value)
-                                                <option value="{{$value->id}}">{{$value->object}}</option>
+                                            @foreach($gedung as $key => $value)
+                                                <option value="{{$value->id}}">{{$value->gedung}}</option>
                                             @endforeach
                                         </select>
                                     </div>

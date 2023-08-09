@@ -11,6 +11,6 @@ class AJobModel extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'user_id',
-        'objek_id'
+        'objek_id',
     ];
 }

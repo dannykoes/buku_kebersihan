@@ -32,6 +32,7 @@ class AjobController extends Controller
     public function store(Request $request)
     {
         session()->put('tab', 6);
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'jobuser' => 'required',
             'jobobjek' => 'required',
