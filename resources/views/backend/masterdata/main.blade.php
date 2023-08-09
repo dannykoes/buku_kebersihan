@@ -15,7 +15,7 @@
             <a class="nav-link @if (Session::get('tab')==3) active @endif" id="ruangan-tab" data-toggle="tab" href="#ruangan" role="tab" aria-controls="ruangan" aria-selected="false">Ruangan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==7) active @endif" id="lokasi-tab" data-toggle="tab" href="#lokasi" role="tab" aria-controls="lokasi" aria-selected="false">Lokasi</a>
+            <a class="nav-link @if (Session::get('tab')==7) active @endif" id="lokasi-tab" data-toggle="tab" href="#lokasi" role="tab" aria-controls="lokasi" aria-selected="false" onclick="triggerresize()">Lokasi</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab" href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Perkerjaan</a>
@@ -292,6 +292,17 @@
             .setContent('Pilih Lokasi')
             .openOn(map);        
     });
+    function resetlokasi() {
+        $('#lokasiid').val(null);
+        $('#lokasigedung').val(null);
+        $('#lokasikantorid').val(null);
+        $('#lokasigedungid').val(null);
+        $('#lokasilat').val(null);
+        $('#lokasilong').val(null);
+        $('#lokasinama').val(null);
+        $('#lokasikantorid').change();
+        $('#lokasigedungid').change();
+    }
 
     createDataTable('#masterobjek');
     $('#objekkantorid').select2({
@@ -448,6 +459,15 @@
     }
     function resetjob() {
         // 
+    }
+
+    $(document).ready(function () {
+        // window.dispatchEvent(new Event('resize'));
+    })
+    function triggerresize() {
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 500);
     }
     </script>
 

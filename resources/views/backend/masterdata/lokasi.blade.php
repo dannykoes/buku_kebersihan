@@ -2,7 +2,7 @@
     <div class="widget-content">
         <div class="row p-3">
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                <div class="" id="map" style="height: 610px; border-radius:20px"></div>
+                <div class="" id="map" style="height: 500px; border-radius:20px"></div>
             </div>
             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <form action="alokasi" method="POST">
@@ -14,7 +14,7 @@
                     <select name="lokasikantorid" id="lokasikantorid" class="form-control" required onchange="changekantor('#lokasigedungid','#lokasikantorid','#lokasigedung')">
                         <option value="">Pilih</option>
                         @foreach($kantor as $key => $value)
-                            <option value="{{$value->id}}">{{$value->nama.' - '.$value->pic}}</option>
+                            <option value="{{$value->id}}">{{$value->nama}}</option>
                         @endforeach
                     </select>
                     @error('lokasikantorid')
@@ -53,6 +53,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Save</button>
                 <span class="btn btn-danger btn-sm" id="btndeletelokasi" onclick="deletedata()">Delete</span>
+                <span class="btn btn-warning btn-sm" onclick="resetlokasi()">Reset</span>
                 </form>
             </div>
         </div>

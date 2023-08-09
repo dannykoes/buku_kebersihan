@@ -10,8 +10,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>PIC</th>
+                                <th>Kantor</th>
+                                <th>Nama Kantor</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -57,7 +57,7 @@
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <label for="" class="text-uppercase">Nama</label>
+                                        <label for="" class="text-uppercase">kantor</label>
                                         <input type="text" name="kantornama" id="kantornama" class="form-control" required>
                                     </div>
                                     @error('kantornama')
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <label for="" class="text-uppercase">PIC</label>
+                                        <label for="" class="text-uppercase">nama kantor</label>
                                         <input type="text" name="kantorpic" id="kantorpic" class="form-control" required>
                                     </div>
                                     @error('kantorpic')
