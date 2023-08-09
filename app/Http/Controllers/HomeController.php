@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ALokasiModel;
 use App\Models\Master\Tugas;
 use App\Models\TodoNewModel;
 use App\Models\User;
@@ -91,6 +92,12 @@ class HomeController extends Controller
             ->join('kantors', 'kantors.id', 'tugas.kantor_id')
             ->join('users', 'users.id', 'tugas.id_pengguna')
             ->where('tugas.kategori', 3)
+            ->get();
+        $data['peta'] = ALokasiModel::select(
+            'a_lokasi_models.*',
+            'a_kantor_models.nama',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_lokasi_models.kantor_id')
             ->get();
         // return $data;
         if (Auth::user()->role == 0 && Auth::user()->role == null) {

@@ -514,13 +514,16 @@
         var line = new ApexCharts(document.querySelector("#chartline"), chartline);
         line.render();
 
-    var map = L.map('map').setView([ -7.000433527639624, 110.33436565215736], 13);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        L.marker([-7.000433527639624, 110.33436565215736]).addTo(map)
-            .bindPopup('Kantor.')
-            .openPopup();
+    let datalokasi = @json($peta);
+    var map = L.map('map').setView([ -6.987502376476729, 110.4225807065836], 11);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    datalokasi.forEach(element => {
+        L.marker([element.lat, element.long]).addTo(map)
+                .bindPopup(element.nama)
+                .openPopup();
+    });
 
     function edit(data) {
         console.log(data);
