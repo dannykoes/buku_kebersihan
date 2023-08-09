@@ -22,6 +22,7 @@
     <link href="{{asset('asset/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('asset/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('asset/plugins/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('asset/assets/css/forms/theme-checkbox-radio.css')}}">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -37,6 +38,7 @@
     <script src="{{asset('asset/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('asset/assets/js/app.js')}}"></script>
     <script src="{{asset('asset/assets/js/custom.js')}}"></script>
+    <script src="{{asset('asset/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{asset('asset/plugins/table/datatable/datatables.js')}}"></script>
     <script src="{{asset('asset/plugins/apex/apexcharts.min.js')}}"></script>
     <script src="{{asset('asset/assets/js/dashboard/dash_2.js')}}"></script>
@@ -45,6 +47,8 @@
     <script src="{{asset('asset/plugins/sweetalerts/custom-sweetalert.js')}}"></script>
     <script src="{{asset('asset/plugins/select2/select2.min.js')}}"></script>
     <script src="{{asset('asset/plugins/select2/custom-select2.js')}}"></script>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .navbar {
@@ -286,6 +290,16 @@
                         </div>
                     </div>
                     @endif
+                    @if (session('error'))
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{session('error')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
@@ -363,7 +377,23 @@
             chart4.render();
         }
 
+        function openmodal(idmodal) {
+            $(idmodal).modal('show');
+        }
+
+        function closemodal(idmodal) {
+            $(idmodal).modal('hide');
+        }
+        
         function deletedata(url) {
+            console.log(url);
+            if (!url) {
+                return Swal.fire(
+                    'Perhatian!',
+                    'Data Tidak Ditemukan!',
+                    'info'
+                )
+            }
             swal({
                 title: 'Hapus!',
                 text: "Apakah anda yakin?",

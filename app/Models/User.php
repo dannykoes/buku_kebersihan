@@ -25,6 +25,7 @@ class User extends Authenticatable
         'client_id',
         'id_pegawai',
         'role',
+        'jabatan_id',
     ];
 
     /**

@@ -60,9 +60,21 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);
     Route::resource('laporan', App\Http\Controllers\LaporanController::class);
+
+    Route::resource('akantor', App\Http\Controllers\Master\AkantorController::class);
+    Route::resource('agedung', App\Http\Controllers\Master\AgedungController::class);
+    Route::resource('alantai', App\Http\Controllers\Master\AlantaiController::class);
+    Route::resource('aruangan', App\Http\Controllers\Master\AruanganController::class);
+    Route::resource('alokasi', App\Http\Controllers\Master\AlokasiController::class);
+    Route::resource('aobjek', App\Http\Controllers\Master\AobjekController::class);
+    Route::resource('ajabatan', App\Http\Controllers\Master\AjabatanController::class);
+    Route::resource('ajob', App\Http\Controllers\Master\AjobController::class);
+    Route::resource('atodo', App\Http\Controllers\Master\AtodoController::class);
+    Route::resource('arole', App\Http\Controllers\Master\AroleController::class);
 });
 
 Route::middleware('spv')->group(function () {
+    // 
 });
 Route::middleware('client')->group(function () {
     // 

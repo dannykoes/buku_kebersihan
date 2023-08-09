@@ -3,6 +3,14 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\AGedungModel;
+use App\Models\AJobModel;
+use App\Models\AKantorModel;
+use App\Models\ALantaiModel;
+use App\Models\ALokasiModel;
+use App\Models\AObjectModel;
+use App\Models\ARoleModel;
+use App\Models\ARuanganModel;
 use App\Models\Master\ClientModel;
 use App\Models\Master\Kantor;
 use App\Models\Master\Lantai;
@@ -21,7 +29,78 @@ class MasterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    function index()
+    {
+        $data = [];
+        $data['kantor'] = AKantorModel::get();
+        $data['gedung'] = AGedungModel::select(
+            'a_gedung_models.*',
+            'a_kantor_models.nama',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_gedung_models.kantor_id')
+            ->get();
+        $data['lantai'] = ALantaiModel::select(
+            'a_lantai_models.*',
+            'a_kantor_models.nama',
+            'a_gedung_models.gedung',
+
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_lantai_models.kantor_id')
+            ->join('a_gedung_models', 'a_gedung_models.id', 'a_lantai_models.gedung_id')
+            ->get();
+        $data['ruangan'] = ARuanganModel::select(
+            'a_ruangan_models.*',
+            'a_kantor_models.nama',
+            'a_gedung_models.gedung',
+            'a_lantai_models.lantai',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_ruangan_models.kantor_id')
+            ->join('a_gedung_models', 'a_gedung_models.id', 'a_ruangan_models.gedung_id')
+            ->join('a_lantai_models', 'a_lantai_models.id', 'a_ruangan_models.lantai_id')
+            ->get();
+        $data['lokasi'] = ALokasiModel::select()
+            ->get();
+        $data['objek'] = AObjectModel::select(
+            'a_object_models.*',
+            'a_kantor_models.nama',
+            'a_gedung_models.gedung',
+            'a_lantai_models.lantai',
+            'a_ruangan_models.ruangan',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_object_models.kantor_id')
+            ->join('a_gedung_models', 'a_gedung_models.id', 'a_object_models.gedung_id')
+            ->join('a_lantai_models', 'a_lantai_models.id', 'a_object_models.lantai_id')
+            ->join('a_ruangan_models', 'a_ruangan_models.id', 'a_object_models.ruangan_id')
+            ->get();
+        $data['jabatan'] = ARoleModel::get();
+        $data['pegawai'] = User::select(
+            'users.id as user_id',
+            'users.name',
+            'users.role',
+            'a_jabatan_models.*',
+        )
+            ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
+            ->get();
+        $data['job'] = AJobModel::select(
+            'a_job_models.*',
+            'users.name',
+        )
+            ->join('users', 'users.id', 'a_job_models.user_id')
+            ->get();
+        foreach ($data['job'] as $key => $v) {
+            $v->jobs = [];
+            if ($v->job_id) {
+                $v->jobs = AObjectModel::whereIn('id', json_decode($v->job_id))->get();
+            }
+        }
+        $data['pengguna'] = [];
+        $data['tugas'] = [];
+        $data['userptg'] = [];
+        $data['pgntgs'] = [];
+        // return $data;
+        return view('backend.masterdata.main', $data);
+    }
+    public function indexlama()
     {
         $data = [];
         $data['client'] = ClientModel::get();
