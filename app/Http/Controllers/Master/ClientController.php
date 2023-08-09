@@ -36,7 +36,7 @@ class ClientController extends Controller
         $validator = Validator::make($request->all(), [
             // 'email' => 'required',
             'perusahaan' => 'required',
-            'kontak' => 'required',
+            // 'kontak' => 'required',
             'pic' => 'required',
         ]);
 
@@ -48,7 +48,7 @@ class ClientController extends Controller
             'id' => $request->id
         ], [
             'perusahaan' => $request->perusahaan,
-            'kontak' => $request->kontak,
+            'kontak' => '0000',
             'pic' => $request->pic,
             'email' => '$request->email',
         ]);

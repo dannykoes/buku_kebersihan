@@ -274,18 +274,28 @@ class TodoApiController extends Controller
 
     public function simpantodo(Request $request)
     {
+        $check = TodoNewModel::whereDate('created_at', '>=', Carbon::now()->format('Y-m-d'))->whereDate('created_at', '<=', Carbon::now()->format('Y-m-d'))
+            ->where('id_pegawai', Auth::user()->id)
+            ->get();
+        if (count($check) > 0) {
+            return response()->json([
+                'msg' => 'Anda telah mengisi task cleaning hari ini'
+            ]);
+        }
 
-        // return response()->json([
-        //     'data' => json_decode($request->todo)
-        // ]);
         $data = [];
         for ($i = 0; $i < count(json_decode($request->datagambar)); $i++) {
             $img = json_decode($request->datagambar)[$i];
             $image = $request->file($img)->getPathname();
             $cdl = GlobalHelper::cloudinarys();
             $clc = ClientModel::where('id', Auth::user()->client_id)->first();
-            $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => $clc['perusahaan'] . '/joblist/']);
-            $bukti = $cloudinary['secure_url'];
+            if (isset($clc)) {
+                $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => $clc['perusahaan'] . '/joblist/']);
+                $bukti = $cloudinary['secure_url'];
+            } else {
+                $cloudinary = $cdl->uploadApi()->upload($image, ['folder' => 'folder_tester' . '/joblist/']);
+                $bukti = $cloudinary['secure_url'];
+            }
             // // $data[] =  $request->file($img)->getPathname();
 
             $data[] = [
@@ -304,7 +314,7 @@ class TodoApiController extends Controller
 
         return response()->json([
             'success' => true,
-            'msg' => 'Berhasil input task hari ini'
+            'msg' => 'Selamat anda telah mengisi task cleaning pada ' . Carbon::now()
         ]);
     }
 }
