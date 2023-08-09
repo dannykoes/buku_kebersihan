@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <label for="" class="text-uppercase">nama</label>
+                                        <label for="" class="text-uppercase">nama pekerjaan ( cleaning )</label>
                                         <input type="text" name="objeknama" id="objeknama" class="form-control" required>
                                     </div>
                                     @error('objeknama')
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                         <fieldset style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
-                                            <label>Kategori</label>
+                                            <label>Kategori Kebersihan</label>
                                             <div class="n-chk">
                                                 <label class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
                                                     <input type="radio" name="harian[]" value="1" id="harian" class="new-control-input">

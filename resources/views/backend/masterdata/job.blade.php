@@ -67,7 +67,7 @@
                                         <select name="jobuser" id="jobuser" class="form-control">
                                             <option value="">Pilih</option>
                                             @foreach($pegawai as $key => $value)
-                                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                                <option value="{{$value->user_id}}">{{$value->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
