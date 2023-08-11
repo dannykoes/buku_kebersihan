@@ -437,7 +437,7 @@ const autocomplete = new Autocomplete("marker", {
     // marker.addTo(map).bindPopup(display_name);
 
     // set marker to coordinates
-    map.setView([cord[1], cord[0]], 8);
+    map.setView([cord[1], cord[0]], 14);
 
     // add class to marker
     L.DomUtil.addClass(marker._icon, "leaflet-marker-locate");
