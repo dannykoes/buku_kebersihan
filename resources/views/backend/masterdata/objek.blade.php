@@ -23,7 +23,7 @@
                             @foreach($objek as $key => $val)
                             <tr>
                                 <td width="1%">{{$key + 1}}</td>
-                                <td>{{$val->nama}}</td>
+                                <td>{{$val->pic}}</td>
                                 <td>{{$val->gedung}}</td>
                                 <td>{{$val->lantai}}</td>
                                 <td>{{$val->ruangan}}</td>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <label for="" class="text-uppercase">nama pekerjaan ( cleaning )</label>
+                                        <label for="" class="text-uppercase">object pekerjaan ( cleaning )</label>
                                         <input type="text" name="objeknama" id="objeknama" class="form-control" required>
                                     </div>
                                     @error('objeknama')

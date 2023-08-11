@@ -11,7 +11,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kantor</th>
-                                <th>Nama</th>
+                                <th>Nama Gedung</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -19,7 +19,7 @@
                             @foreach($gedung as $key => $val)
                             <tr>
                                 <td width="1%">{{$key + 1}}</td>
-                                <td>{{$val->nama}}</td>
+                                <td>{{$val->pic}}</td>
                                 <td>{{$val->gedung}}</td>
                                 <td>
                                     <button class="btn btn-warning btn-sm" id="edit" onclick="addgedung({{ $val }})" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">

@@ -20,7 +20,7 @@
                             @foreach($lantai as $key => $val)
                             <tr>
                                 <td width="1%">{{$key + 1}}</td>
-                                <td>{{$val->nama}}</td>
+                                <td>{{$val->pic}}</td>
                                 <td>{{$val->gedung}}</td>
                                 <td>{{$val->lantai}}</td>
                                 <td>

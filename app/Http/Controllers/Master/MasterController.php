@@ -36,12 +36,14 @@ class MasterController extends Controller
         $data['gedung'] = AGedungModel::select(
             'a_gedung_models.*',
             'a_kantor_models.nama',
+            'a_kantor_models.pic',
         )
             ->join('a_kantor_models', 'a_kantor_models.id', 'a_gedung_models.kantor_id')
             ->get();
         $data['lantai'] = ALantaiModel::select(
             'a_lantai_models.*',
             'a_kantor_models.nama',
+            'a_kantor_models.pic',
             'a_gedung_models.gedung',
 
         )
@@ -51,6 +53,7 @@ class MasterController extends Controller
         $data['ruangan'] = ARuanganModel::select(
             'a_ruangan_models.*',
             'a_kantor_models.nama',
+            'a_kantor_models.pic',
             'a_gedung_models.gedung',
             'a_lantai_models.lantai',
         )
@@ -63,6 +66,7 @@ class MasterController extends Controller
         $data['objek'] = AObjectModel::select(
             'a_object_models.*',
             'a_kantor_models.nama',
+            'a_kantor_models.pic',
             'a_gedung_models.gedung',
             'a_lantai_models.lantai',
             'a_ruangan_models.ruangan',

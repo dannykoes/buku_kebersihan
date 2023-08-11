@@ -2,7 +2,7 @@
     <div class="widget-content">
         <div class="row p-3">
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                <div class="" id="map" style="height: 500px; border-radius:20px"></div>
+                <div class="" id="map" style="height: 450px; border-radius:20px"></div>
             </div>
             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <form action="alokasi" method="POST">
@@ -14,7 +14,7 @@
                     <select name="lokasikantorid" id="lokasikantorid" class="form-control" required onchange="changekantor('#lokasigedungid','#lokasikantorid','#lokasigedung')">
                         <option value="">Pilih</option>
                         @foreach($kantor as $key => $value)
-                            <option value="{{$value->id}}">{{$value->nama}}</option>
+                            <option value="{{$value->id}}">{{$value->pic}}</option>
                         @endforeach
                     </select>
                     @error('lokasikantorid')
@@ -30,14 +30,14 @@
                         <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <label for="" class="text-uppercase">latitude</label>
                     <input type="text" name="lokasilat" id="lokasilat" class="form-control" required>
                     @error('lokasilat')
                         <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <label for="" class="text-uppercase">longitude</label>
                     <input type="text" name="lokasilong" id="lokasilong" class="form-control" required>
                     @error('lokasilong')
