@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pic');
             $table->string('tgl_bergabung');
             $table->string('tgl_selesai');
+            $table->integer('kantor_id');
             $table->softDeletes();
             $table->timestamps();
         });

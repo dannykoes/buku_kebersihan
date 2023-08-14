@@ -562,6 +562,13 @@ const autocomplete = new Autocomplete("marker", {
         openmodal('#modalpegawai');
         if (data) {
             console.log(data);
+            if (data.status == 1) {
+                $('#pegawaistatusactive').attr('checked',true);
+            }
+            if (data.status == 2) {
+                $('#pegawaistatusdeactive').attr('checked',true);
+            }
+            $('#pegawaikantor').val(data.kantor_id);
             $('#pegawaitype').val(data.jabatan);
             $('#pegawaispv').val(data.spv);
             $('#pegawaipic').val(data.pic);
@@ -572,12 +579,15 @@ const autocomplete = new Autocomplete("marker", {
             $('#pegawainip').val(data.nip);
             $('#pegawaitglbergabung').val(data.tgl_bergabung);
             $('#pegawaitglselesai').val(data.tgl_selesai);
+            $('#pegawaikantor').change();
             $('#pegawaitype').change();
             $('#pegawaispv').change();
             $('#pegawaipic').change();
         }
     }
     function resetpegawai() {
+        $('#pegawaistatusactive').removeAttr('checked');
+        $('#pegawaistatusdeactive').removeAttr('checked');
         $('#pegawaijabatan').val(null);
         $('#pegawaispv').val(null);
         $('#pegawaipic').val(null);
@@ -588,6 +598,7 @@ const autocomplete = new Autocomplete("marker", {
         $('#pegawainama').val(null);
         $('#pegawaigedung').val(null);
         $('#pegawaikantorid').val(null);
+        $('#pegawaikantor').val(null);
     }
 
     createDataTable('#masterjob');

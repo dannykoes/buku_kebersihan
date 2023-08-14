@@ -81,6 +81,7 @@ class MasterController extends Controller
             'users.id as user_id',
             'users.name',
             'users.role',
+            'users.status',
             'a_jabatan_models.*',
         )
             ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')

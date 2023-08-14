@@ -17,5 +17,6 @@ class AJabatanModel extends Model
         'pic',
         'tgl_bergabung',
         'tgl_selesai',
+        'kantor_id',
     ];
 }

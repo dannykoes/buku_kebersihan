@@ -35,7 +35,7 @@ class AjabatanController extends Controller
     {
         session()->put('tab', 5);
         session()->put('subtab', 1);
-        // return $request->all();
+        // return $request->pegawaistatus[0];
         $validator = Validator::make($request->all(), [
             'pegawainip' => 'required',
             'pegawainama' => 'required',
@@ -44,6 +44,7 @@ class AjabatanController extends Controller
             'pegawaipic' => 'required',
             'pegawaitglbergabung' => 'required',
             'pegawaitglselesai' => 'required',
+            'pegawaistatus' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -71,12 +72,14 @@ class AjabatanController extends Controller
             'pic' => $request->pegawaipic,
             'tgl_bergabung' => $request->pegawaitglbergabung,
             'tgl_selesai' => $request->pegawaitglselesai,
+            'kantor_id' => $request->pegawaikantor,
         ]);
         if (!$p) {
             return Redirect::back()->with('info', 'Gagal Simpan');
         }
         $user['jabatan_id'] = $p->id;
         $user['role'] = $request->pegawaitype;
+        $user['status'] = $request->pegawaistatus[0];
 
         $u =  User::updateOrCreate([
             'id' => $request->pegawaiaaa

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'id_pegawai',
         'role',
         'jabatan_id',
+        'status',
     ];
 
     /**
