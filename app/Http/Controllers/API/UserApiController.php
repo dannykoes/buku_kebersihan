@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\AJobModel;
+use App\Models\AObjectModel;
 use App\Models\Master\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,23 +25,34 @@ class UserApiController extends Controller
         // 		'created_at'=>date('Y-m-d H:i:s'),
         // 	]);
         // }
-        $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
-            ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
-            // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
-            ->where('id_pengguna', Auth::user()->id)
-            ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+        // $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
+        //     ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
+        //     // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
+        //     ->where('id_pengguna', Auth::user()->id)
+        //     ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+
+        // foreach ($dat as $key => $val) {
+        //     $val->is_check = false;
+        //     if ($val->kategori == 1) {
+        //         $val->timejob = 'Harian';
+        //     }
+        //     if ($val->kategori == 2) {
+        //         $val->timejob = 'Mingguan';
+        //     }
+        //     if ($val->kategori == 3) {
+        //         $val->timejob = 'Bulanan';
+        //     }
+        // }
+        $jb = AJobModel::where('user_id', Auth::user()->id)->first();
+        $dat = AObjectModel::leftJoin('a_kantor_models', 'a_kantor_models.id', '=', 'a_object_models.kantor_id')
+            ->leftJoin('a_gedung_models', 'a_gedung_models.id', '=', 'a_object_models.gedung_id')
+            ->leftJoin('a_lantai_models', 'a_lantai_models.id', '=', 'a_object_models.lantai_id')
+            ->leftJoin('a_ruangan_models', 'a_ruangan_models.id', '=', 'a_object_models.ruangan_id')
+            ->whereIn('a_object_models.gedung_id', json_decode($jb['objek_id']))
+            ->get(['a_kantor_models.pic', 'a_gedung_models.gedung', 'a_lantai_models.lantai', 'a_ruangan_models.ruangan', 'a_object_models.*']);
 
         foreach ($dat as $key => $val) {
             $val->is_check = false;
-            if ($val->kategori == 1) {
-                $val->timejob = 'Harian';
-            }
-            if ($val->kategori == 2) {
-                $val->timejob = 'Mingguan';
-            }
-            if ($val->kategori == 3) {
-                $val->timejob = 'Bulanan';
-            }
         }
         return response()->json([
             'success' => true,
@@ -76,23 +89,35 @@ class UserApiController extends Controller
             // 	]);
             // }
 
-            $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
-                ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
-                // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
-                ->where('id_pengguna', $user['id'])
-                ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+            // $dat = Tugas::leftJoin('ruangans', 'ruangans.id', '=', 'tugas.ruangan_id')
+            //     ->leftJoin('kantors', 'kantors.id', '=', 'tugas.kantor_id')
+            //     // ->leftJoin('lantais', 'lantais.id', '=', 'tugas.lantai_id')
+            //     ->where('id_pengguna', $user['id'])
+            //     ->get(['ruangans.ruangan', 'kantors.nama as namakantor', 'tugas.*']);
+
+            // foreach ($dat as $key => $val) {
+            //     $val->is_check = false;
+            //     if ($val->kategori == 1) {
+            //         $val->timejob = 'Harian';
+            //     }
+            //     if ($val->kategori == 2) {
+            //         $val->timejob = 'Mingguan';
+            //     }
+            //     if ($val->kategori == 3) {
+            //         $val->timejob = 'Bulanan';
+            //     }
+            // }
+
+            $jb = AJobModel::where('user_id', Auth::user()->id)->first();
+            $dat = AObjectModel::leftJoin('a_kantor_models', 'a_kantor_models.id', '=', 'a_object_models.kantor_id')
+                ->leftJoin('a_gedung_models', 'a_gedung_models.id', '=', 'a_object_models.gedung_id')
+                ->leftJoin('a_lantai_models', 'a_lantai_models.id', '=', 'a_object_models.lantai_id')
+                ->leftJoin('a_ruangan_models', 'a_ruangan_models.id', '=', 'a_object_models.ruangan_id')
+                ->whereIn('a_object_models.gedung_id', json_decode($jb['objek_id']))
+                ->get(['a_kantor_models.pic', 'a_gedung_models.gedung', 'a_lantai_models.lantai', 'a_ruangan_models.ruangan', 'a_object_models.*']);
 
             foreach ($dat as $key => $val) {
                 $val->is_check = false;
-                if ($val->kategori == 1) {
-                    $val->timejob = 'Harian';
-                }
-                if ($val->kategori == 2) {
-                    $val->timejob = 'Mingguan';
-                }
-                if ($val->kategori == 3) {
-                    $val->timejob = 'Bulanan';
-                }
             }
 
             // return $dat;
