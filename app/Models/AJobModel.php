@@ -12,5 +12,6 @@ class AJobModel extends Model
     protected $fillable = [
         'user_id',
         'objek_id',
+        'kantor_id',
     ];
 }

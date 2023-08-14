@@ -86,11 +86,23 @@ class MasterController extends Controller
         )
             ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
             ->get();
+        $data['onlypegawai'] = User::select(
+            'users.id as user_id',
+            'users.name',
+            'users.role',
+            'users.status',
+            'a_jabatan_models.*',
+        )
+            ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
+            ->where('users.role', 6)
+            ->get();
         $data['job'] = AJobModel::select(
             'a_job_models.*',
             'users.name',
+            'a_kantor_models.pic',
         )
             ->join('users', 'users.id', 'a_job_models.user_id')
+            ->leftJoin('a_kantor_models', 'a_kantor_models.id', 'a_job_models.kantor_id')
             ->get();
         foreach ($data['job'] as $key => $v) {
             $v->jobs = [];

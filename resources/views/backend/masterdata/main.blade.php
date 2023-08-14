@@ -124,6 +124,34 @@
         $('#lantaikantorid').val(null);
         $('#lantaigedung').val(null);
     }
+    function setjobbykantor(jobid,kantorid,x) {
+        let kantor = $(kantorid).val();
+        let r = $(x).val();
+        let html = '';
+        html += '<option value="" >Pilih</option>';
+        $(jobid).html(html);
+        $.ajax({
+            type: 'GET',
+            url: '/aobjek/getbykantor',
+            data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor,
+            success: function(data) {
+                let json = JSON.parse($('#jobobjekid').val());
+
+                if (data.length > 0) {
+                    data.forEach(element => {
+                        json.forEach(el => {
+                            if (element.id == el) {
+                                html += '<option value="' + element.id + '" selected>' + element.object + '</option>';
+                            } else {
+                                html += '<option value="' + element.id + '">' + element.object + '</option>';
+                            }
+                        });
+                    });
+                    $(jobid).html(html);
+                }
+            }
+        });
+    }
     function changekantor(gedungid,kantorid,x) {
         let kantor = $(kantorid).val();
         let r = $(x).val();
@@ -618,14 +646,24 @@ const autocomplete = new Autocomplete("marker", {
         if (data) {
             console.log(data);
             $('#jobid').val(data.id);
+            $('#jobkantorid').val(data.kantor_id);
+            $('#jobobjekid').val(data.objek_id);
             $('#jobuser').val(data.user_id);
             $('#jobuser').change();
-            $('#jobobjek').val(JSON.parse(data.job_id));
+            $('#jobobjek').val(JSON.parse(data.objek_id));
             $('#jobobjek').change();
+            $('#jobkantor').val(data.kantor_id);
+            $('#jobkantor').change();
         }
     }
     function resetjob() {
-        // 
+        $('#jobid').val(null);
+        $('#jobkantorid').val(null);
+        $('#jobobjekid').val(null);
+        $('#jobuser').val(null);
+        $('#jobuser').change();
+        $('#jobobjek').val(null);
+        $('#jobobjek').change();
     }
 
     $(document).ready(function () {

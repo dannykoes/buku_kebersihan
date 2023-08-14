@@ -36,6 +36,7 @@ class AjobController extends Controller
         $validator = Validator::make($request->all(), [
             'jobuser' => 'required',
             'jobobjek' => 'required',
+            'jobkantor' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -46,6 +47,7 @@ class AjobController extends Controller
             'id' => $request->jobid
         ], [
             'user_id' => $request->jobuser,
+            'kantor_id' => $request->jobkantor,
             'objek_id' => json_encode($request->jobobjek),
         ]);
         if ($k) {

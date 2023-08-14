@@ -76,9 +76,17 @@ class AobjekController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, Request $request)
     {
-        //
+        if ($id == 'getbykantor') {
+            return AObjectModel::select(
+                'a_object_models.*',
+                'a_kantor_models.nama',
+            )
+                ->join('a_kantor_models', 'a_kantor_models.id', 'a_object_models.kantor_id')
+                ->where('a_object_models.kantor_id', $request->kantor)
+                ->get();
+        }
     }
 
     /**

@@ -11,6 +11,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Pegawai</th>
+                                <th>Kantor</th>
                                 <th>Gedung</th>
                                 <th>Aksi</th>
                             </tr>
@@ -20,6 +21,7 @@
                             <tr>
                                 <td width="1%">{{$key + 1}}</td>
                                 <td>{{$val->name}}</td>
+                                <td>{{$val->pic}}</td>
                                 <td>
                                     @if(count($val->jobs) > 0)
                                         @foreach($val->jobs as $key => $value)
@@ -60,13 +62,15 @@
                         <form action="ajob" method="POST">
                             @csrf
                             <input type="text" name="jobid" id="jobid" hidden>
+                            <input type="text" name="jobkantorid" id="jobkantorid" hidden>
+                            <textarea name="jobobjekid" id="jobobjekid" hidden></textarea>
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">Pegawai</label>
                                         <select name="jobuser" id="jobuser" class="form-control">
                                             <option value="">Pilih</option>
-                                            @foreach($pegawai as $key => $value)
+                                            @foreach($onlypegawai as $key => $value)
                                                 <option value="{{$value->user_id}}">{{$value->name}}</option>
                                             @endforeach
                                         </select>
@@ -77,12 +81,26 @@
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
+                                        <label for="" class="text-uppercase">kantor</label>
+                                        <select name="jobkantor" id="jobkantor" class="form-control" onchange="setjobbykantor('#jobobjek','#jobkantor','#jobkantorid')">
+                                            <option value="">Pilih</option>
+                                            @foreach($kantor as $key => $value)
+                                                <option value="{{$value->id}}">{{$value->pic}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('jobkantor')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group m-0">
                                         <label for="" class="text-uppercase">job</label>
                                         <select name="jobobjek[]" id="jobobjek" class="form-control" multiple>
-                                            <option value="">Pilih</option>
+                                            {{-- <option value="">Pilih</option>
                                             @foreach($gedung as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->gedung}}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                     @error('jobobjek')
