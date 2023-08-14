@@ -310,6 +310,7 @@ class TodoApiController extends Controller
             'id_pegawai' => Auth::user()->id,
             'tugas' => json_encode($tdr),
             'foto' => json_encode($data),
+            'tanggal' => $request->tanggal,
         ]);
 
         return response()->json([
