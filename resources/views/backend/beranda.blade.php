@@ -537,6 +537,10 @@
         $('#detaildata').val(data.tugas);
         // $('#btnacc').html(data.status==0?'ACC':'Batal');
         data.job.forEach(e => {
+            let komentar = '';
+            if (e.komentar) {
+                komentar = e.komentar;
+            }
         // a+='<div class="row">';
             // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
             // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
@@ -563,7 +567,7 @@
         a+='    <td>'+e.lantai+'</td>';
         a+='    <td>'+e.ruangan+'</td>';
         a+='    <td>'+e.object+'</td>';
-        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+e.komentar?e.komentar:''+'</textarea></th>';
+        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
