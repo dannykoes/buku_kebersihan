@@ -559,11 +559,11 @@
         // a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
         // a+='    </td>';
         a+='<tr>';
-        a+='    <td>'+e.namakantor+'</td>';
+        a+='    <td>'+e.pic+'</td>';
         a+='    <td>'+e.lantai+'</td>';
         a+='    <td>'+e.ruangan+'</td>';
-        a+='    <td>'+e.nama_tugas+'</td>';
-        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+e.komentar+'</textarea></th>';
+        a+='    <td>'+e.object+'</td>';
+        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+e.komentar?e.komentar:''+'</textarea></th>';
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
