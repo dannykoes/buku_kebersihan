@@ -83,14 +83,16 @@
                             @endif
                         </td> --}}
                         <td>99 %</td>
-                        <td><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
-                            <circle cx="7.499" cy="9.5" r="1.5"></circle>
-                            <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
-                            <path
-                                d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
-                            </path>
-                        </svg></a></td>
+                        <td>
+                            <span onclick="modalfoto({{$f->photos}})">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                <path d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z"></path>
+                                </svg>
+                            </span>
+                        </td>
                         <td>
                             @if($f->status == 0)
                                 <span class="badge badge-warning">Menunggu</span>
@@ -253,12 +255,30 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal Foto -->
 <div class="modal fade" id="detailjob" tabindex="-1" role="dialog" aria-labelledby="detailjobLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="detailjobLabel">Approve</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4 id="namapetugas"></h4>
+          <div class="row" id="detailfotojob">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="modalfotos" tabindex="-1" role="dialog" aria-labelledby="modalfotosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalfotosLabel">Approve</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -539,6 +559,14 @@
                 .bindPopup(element.nama)
                 .openPopup();
     });
+
+    function modalfoto(poto) {
+        $('#modalfotos').modal('show');
+    poto.forEach(el => {
+        b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="120px" height="120px" class="col"></a>';
+    });
+    $('#detailfotojob').html(b);
+    }
 
     function edit(data) {
         console.log(data);
