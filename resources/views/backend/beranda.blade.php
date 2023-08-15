@@ -84,7 +84,7 @@
                         </td> --}}
                         <td>99 %</td>
                         <td>
-                            <span onclick="modalfoto({{$f->photos}})">
+                            <span onclick="modalfoto({{$f}})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
                                 <circle cx="7.499" cy="9.5" r="1.5"></circle>
@@ -284,7 +284,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <h4 id="namapetugas"></h4>
+          <h4 id="namapetugasfoto"></h4>
           <div class="row" id="detailfoto">
           </div>
           <form action="/approval" method="POST">
@@ -560,9 +560,10 @@
                 .openPopup();
     });
 
-    function modalfoto(poto) {
+    function modalfoto(x) {
         $('#modalfotos').modal('show');
-    poto.forEach(el => {
+        $('#namapetugasfoto').html(x.name);
+    x.photos.forEach(el => {
         b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="120px" height="120px" class="col"></a>';
     });
     $('#detailfotojob').html(b);
