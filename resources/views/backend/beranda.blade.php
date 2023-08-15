@@ -563,10 +563,11 @@
     function modalfoto(x) {
         $('#modalfotos').modal('show');
         $('#namapetugasfoto').html(x.name);
-    x.photos.forEach(el => {
-        b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="120px" height="120px" class="col"></a>';
-    });
-    $('#detailfotojob').html(b);
+        let b = '';
+        x.photos.forEach(el => {
+            b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="120px" height="120px" class="col"></a>';
+        });
+        $('#detailfotojob').html(b);
     }
 
     function edit(data) {
