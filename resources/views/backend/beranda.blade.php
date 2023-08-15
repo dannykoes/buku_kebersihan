@@ -266,7 +266,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <h4 id="namapetugas"></h4>
+          <h4 id="namapetugasfoto"></h4>
           <div class="row" id="detailfotojob">
           </div>
         </div>
@@ -284,7 +284,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <h4 id="namapetugasfoto"></h4>
+          <h4 id="namapetugas"></h4>
           <div class="row" id="detailfoto">
           </div>
           <form action="/approval" method="POST">
