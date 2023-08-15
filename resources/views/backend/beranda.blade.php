@@ -553,8 +553,28 @@
         // $('#btnacc').html(data.status==0?'ACC':'Batal');
         data.job.forEach(e => {
             let komentar = '';
+            let select1 = '';
+            let select2 = '';
+            let select3 = '';
+            let select4 = '';
+            let select5 = '';
             if (e.komentar) {
                 komentar = e.komentar;
+            }
+            if (e.nilai == 5) {
+                select5 = 'selected';
+            }
+            if (e.nilai == 4) {
+                select4 = 'selected';
+            }
+            if (e.nilai == 3) {
+                select3 = 'selected';
+            }
+            if (e.nilai == 2) {
+                select2 = 'selected';
+            }
+            if (e.nilai == 1) {
+                select1 = 'selected';
             }
         // a+='<div class="row">';
             // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
@@ -586,11 +606,11 @@
         a+='    <th>';
         a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
         a+='            <option value="">Pilih</option>';
-        a+='            <option '+if (e.nilai==5) {'selected'}+' value="5">Bersih Sekali</option>';
-        a+='            <option '+if (e.nilai==4) {'selected'}+' value="4">Bersih</option>';
-        a+='            <option '+if (e.nilai==3) {'selected'}+' value="3">Cukup</option>';
-        a+='            <option '+if (e.nilai==2) {'selected'}+' value="2">Kurang Bersih</option>';
-        a+='            <option '+if (e.nilai==1) {'selected'}+' value="1">Kotor</option>';
+        a+='            <option '+select5+' value="5">Bersih Sekali</option>';
+        a+='            <option '+select4+' value="4">Bersih</option>';
+        a+='            <option '+select3+' value="3">Cukup</option>';
+        a+='            <option '+select2+' value="2">Kurang Bersih</option>';
+        a+='            <option '+select1+' value="1">Kotor</option>';
         a+='        </select>';
         a+='    </th>';
         a+='</tr>';
