@@ -141,20 +141,19 @@
             url: '/aobjek/getbykantor',
             data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor,
             success: function(data) {
-                let json = JSON.parse($('#jobobjekid').val());
-
-                if (data.length > 0) {
-                    data.forEach(element => {
-                        json.forEach(el => {
-                            if (element.id == el) {
-                                html += '<option value="' + element.id + '" selected>' + element.object + '</option>';
-                            } else {
-                                html += '<option value="' + element.id + '">' + element.object + '</option>';
-                            }
-                        });
-                    });
-                    $(jobid).html(html);
-                }
+                // let json = JSON.parse($('#jobobjekid').val());
+                // if (data.length > 0) {
+                //     data.forEach(element => {
+                //         json.forEach(el => {
+                //             if (element.id == el) {
+                //                 html += '<option value="' + element.id + '" selected>' + element.object + '</option>';
+                //             } else {
+                //                 html += '<option value="' + element.id + '">' + element.object + '</option>';
+                //             }
+                //         });
+                //     });
+                //     $(jobid).html(html);
+                // }
             }
         });
     }
@@ -603,7 +602,7 @@ const autocomplete = new Autocomplete("marker", {
         resetpegawai();
         openmodal('#modalpegawai');
         if (data) {
-            console.log(data);
+            
             if (data.status == 1) {
                 $('#pegawaistatusactive').attr('checked',true);
             }
@@ -658,7 +657,7 @@ const autocomplete = new Autocomplete("marker", {
         resetjob();
         openmodal('#modaljob');
         if (data) {
-            console.log(data);
+            
             $('#jobid').val(data.id);
             $('#jobkantorid').val(data.kantor_id);
             $('#jobobjekid').val(data.objek_id);
