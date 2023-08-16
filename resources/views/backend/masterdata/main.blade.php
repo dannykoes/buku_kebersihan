@@ -533,7 +533,7 @@ const autocomplete = new Autocomplete("marker", {
             $('#objeklantaiid').val(data.lantai_id);
             $('#objekruanganid').val(data.ruangan_id);
             $('#objekid').val(data.id);
-            if (JSON.parse(data.object)) {
+            if (data.pekerjaan) {
                 $('#objekpekerjaan').val(JSON.parse(data.object));
                 $('#objekpekerjaan').change();
             }
