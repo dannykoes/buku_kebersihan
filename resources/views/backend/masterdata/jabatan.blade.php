@@ -173,7 +173,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                                         <label for="" class="text-uppercase">password</label>
-                                        <input type="password" name="pegawaipassword" id="pegawaipassword" class="form-control">
+                                        <input type="text" name="pegawaipassword" id="pegawaipassword" class="form-control">
                                     </div>
                                     @error('pegawaipassword')
                                         <small class="text-danger">{{$message}}</small>
@@ -188,8 +188,9 @@
                                             <option value="2">Direksi</option>
                                             <option value="3">Kepala Cabang</option>
                                             <option value="4">User</option>
-                                            <option value="5">Supervisor</option>
-                                            <option value="6">Pegawai</option>
+                                            <option value="5">Kepala Supervisor</option>
+                                            <option value="6">Supervisor</option>
+                                            <option value="7">Pegawai</option>
                                             {{-- @foreach($jabatan as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->nama}}</option>
                                             @endforeach --}}
