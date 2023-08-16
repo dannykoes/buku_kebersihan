@@ -28,7 +28,15 @@
                                 <td>{{$val->lantai}}</td>
                                 <td>{{$val->ruangan}}</td>
                                 <td>{{$val->namakategori}}</td>
-                                <td>{{$val->object}}</td>
+                                <td>
+                                    @if($val->pekerjaan)
+                                        @foreach($val->pekerjaan as $key => $v)
+                                            <span class="badge badge-info">{{$v->nama}}</span>
+                                        @endforeach
+                                    @else
+                                        <span class="badge badge-info">Silahkan Update</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <button class="btn btn-warning btn-sm" id="edit" onclick="addobjek({{ $val }})" title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
                                             <path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"></path>
@@ -115,6 +123,20 @@
                                     @enderror
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group m-0">
+                                        <label for="" class="text-uppercase">object pekerjaan ( cleaning )</label>
+                                        <select name="objekpekerjaan[]" id="objekpekerjaan" class="form-control" multiple>
+                                            <option value="">Pilih</option>
+                                            @foreach($pekerjaan as $key => $v)
+                                            <option value="{{$v->id}}">{{$v->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('objekpekerjaan')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                {{-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                                         <label for="" class="text-uppercase">object pekerjaan ( cleaning )</label>
                                         <input type="text" name="objeknama" id="objeknama" class="form-control" required>
@@ -122,7 +144,7 @@
                                     @error('objeknama')
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                         <fieldset style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                             <label>Kategori Kebersihan</label>

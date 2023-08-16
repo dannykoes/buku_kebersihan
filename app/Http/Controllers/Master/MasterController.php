@@ -9,6 +9,7 @@ use App\Models\AKantorModel;
 use App\Models\ALantaiModel;
 use App\Models\ALokasiModel;
 use App\Models\AObjectModel;
+use App\Models\APekerjaanModel;
 use App\Models\ARoleModel;
 use App\Models\ARuanganModel;
 use App\Models\Master\ClientModel;
@@ -76,6 +77,14 @@ class MasterController extends Controller
             ->join('a_lantai_models', 'a_lantai_models.id', 'a_object_models.lantai_id')
             ->join('a_ruangan_models', 'a_ruangan_models.id', 'a_object_models.ruangan_id')
             ->get();
+        foreach ($data['objek'] as $key => $v) {
+            $pekerjaan = json_decode($v->object) ? json_decode($v->object) : false;
+            $v->pekerjaan = false;
+            if ($pekerjaan) {
+                $v->pekerjaan = APekerjaanModel::whereIn('id', $pekerjaan)->get();
+            }
+        }
+        // return $data['objek'];
         $data['jabatan'] = ARoleModel::get();
         $data['pegawai'] = User::select(
             'users.id as user_id',
@@ -110,6 +119,7 @@ class MasterController extends Controller
                 $v->jobs = AGedungModel::whereIn('id', json_decode($v->objek_id))->get();
             }
         }
+        $data['pekerjaan'] = APekerjaanModel::get();
         $data['pengguna'] = [];
         $data['tugas'] = [];
         $data['userptg'] = [];

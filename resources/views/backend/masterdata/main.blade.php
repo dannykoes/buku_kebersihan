@@ -18,7 +18,10 @@
             <a class="nav-link @if (Session::get('tab')==7) active @endif" id="lokasi-tab" data-toggle="tab" href="#lokasi" role="tab" aria-controls="lokasi" aria-selected="false" onclick="triggerresize()">Lokasi</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab" href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Perkerjaan</a>
+            <a class="nav-link @if (Session::get('tab')==8) active @endif" id="pekerjaan-tab" data-toggle="tab" href="#pekerjaan" role="tab" aria-controls="pekerjaan" aria-selected="false">Pekerjaan</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab" href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Pekerjaan</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==5) active @endif " id="jabatan-tab" data-toggle="tab" href="#jabatan" role="tab" aria-controls="jabatan" aria-selected="false">Jabatan</a>
@@ -42,6 +45,9 @@
         </div>
         <div class="tab-pane fade @if (Session::get('tab')==7) show active @endif " id="lokasi" role="tabpanel" aria-labelledby="lokasi-tab">
             @include('backend.masterdata.lokasi')
+        </div>
+        <div class="tab-pane fade @if (Session::get('tab')==8) show active @endif " id="pekerjaan" role="tabpanel" aria-labelledby="pekerjaan-tab">
+            @include('backend.masterdata.pekerjaan')
         </div>
         <div class="tab-pane fade @if (Session::get('tab')==4) show active @endif " id="objek" role="tabpanel" aria-labelledby="objek-tab">
             @include('backend.masterdata.objek')
@@ -509,6 +515,11 @@ const autocomplete = new Autocomplete("marker", {
         placeholder: 'Pilih',
         dropdownParent: $('#modalobjek')
     });
+    $('#objekpekerjaan').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modalobjek')
+    });
     function addobjek(data) {
         resetobjek();
         openmodal('#modalobjek');
@@ -522,7 +533,10 @@ const autocomplete = new Autocomplete("marker", {
             $('#objeklantaiid').val(data.lantai_id);
             $('#objekruanganid').val(data.ruangan_id);
             $('#objekid').val(data.id);
-            $('#objeknama').val(data.object);
+            if (JSON.parse(data.object)) {
+                $('#objekpekerjaan').val(JSON.parse(data.object));
+                $('#objekpekerjaan').change();
+            }
             $('#objekkantorid').change();
             setTimeout(() => {
                 $('#objekgedungid').change();
@@ -673,6 +687,20 @@ const autocomplete = new Autocomplete("marker", {
         setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
         }, 500);
+    }
+
+    createDataTable('#masterpekerjaan');
+    function addpekerjaan(data) {
+        resetpekerjaan();
+        openmodal('#modalpekerjaan');
+        if (data) {
+            $('#pekerjaanid').val(data.id);
+            $('#pekerjaannama').val(data.nama);
+        }
+    }
+    function resetpekerjaan() {
+        $('#pekerjaanid').val(null);
+        $('#pekerjaannama').val(null);
     }
     </script>
 

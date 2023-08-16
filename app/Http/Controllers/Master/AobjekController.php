@@ -31,14 +31,14 @@ class AobjekController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->harian[0];
+        // return $request->all();
         session()->put('tab', 4);
         $kategori = 0;
         $validator = Validator::make($request->all(), [
             'objekkantorid' => 'required',
             'objekgedungid' => 'required',
             'objeklantaiid' => 'required',
-            'objeknama' => 'required',
+            'objekpekerjaan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -65,7 +65,7 @@ class AobjekController extends Controller
             'lantai_id' => $request->objeklantaiid,
             'ruangan_id' => $request->objekruanganid,
             'kategori' => $request->harian[0],
-            'object' => $request->objeknama,
+            'object' => json_encode($request->objekpekerjaan),
         ]);
         if ($k) {
             return Redirect::back()->with('info', 'Berhasil Simpan');

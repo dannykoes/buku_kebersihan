@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::resource('alokasi', App\Http\Controllers\Master\AlokasiController::class);
     Route::resource('aobjek', App\Http\Controllers\Master\AobjekController::class);
     Route::resource('ajabatan', App\Http\Controllers\Master\AjabatanController::class);
+    Route::resource('apekerjaan', App\Http\Controllers\Master\ApekerjaanController::class);
     Route::resource('ajob', App\Http\Controllers\Master\AjobController::class);
     Route::resource('atodo', App\Http\Controllers\Master\AtodoController::class);
     Route::resource('arole', App\Http\Controllers\Master\AroleController::class);
