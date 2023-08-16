@@ -228,7 +228,7 @@
                                         <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" hidden>
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">pic</label>
                                         <select name="pegawaipic" id="pegawaipic" class="form-control">
