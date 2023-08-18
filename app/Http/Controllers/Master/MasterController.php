@@ -103,7 +103,7 @@ class MasterController extends Controller
             'a_jabatan_models.*',
         )
             ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
-            ->where('users.role', 6)
+            ->where('users.role', 7)
             ->get();
         $data['job'] = AJobModel::select(
             'a_job_models.*',
