@@ -55,7 +55,8 @@ class HomeController extends Controller
                 $v->photos = json_decode($v->foto);
             }
             if ($v->object) {
-                $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
+                // $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
+                $v->objects = json_decode($v->object);
             }
         }
 
