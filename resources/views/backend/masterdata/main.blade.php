@@ -581,6 +581,17 @@ const autocomplete = new Autocomplete("marker", {
         $('#rolenama').val(null);
         $('#roleurutan').val(null);
     }
+    function changepegawaitype() {
+        let val = $('#pegawaitype').val();
+        $('#pegkantor').removeAttr('hidden');
+        $('#pegspv').removeAttr('hidden');
+        if (val == 1 || val == 2) {
+            $('#pegkantor').attr('hidden',true);
+            $('#pegspv').attr('hidden',true);
+            $('#pegkantor').val(null);
+            $('#pegspv').val(null);
+        }
+    }
 
     createDataTable('#masterpegawai');
     $('#pegawaitype').select2({

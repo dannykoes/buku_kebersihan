@@ -39,8 +39,8 @@ class AjabatanController extends Controller
         $validator = Validator::make($request->all(), [
             'pegawainip' => 'required',
             'pegawainama' => 'required',
-            'pegawaitype' => 'required',
-            'pegawaispv' => 'required',
+            // 'pegawaitype' => 'required',
+            // 'pegawaispv' => 'required',
             // 'pegawaipic' => 'required',
             'pegawaitglbergabung' => 'required',
             'pegawaitglselesai' => 'required',

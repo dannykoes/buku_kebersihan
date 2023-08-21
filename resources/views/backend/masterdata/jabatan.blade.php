@@ -182,7 +182,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">jabatan</label>
-                                        <select name="pegawaitype" id="pegawaitype" class="form-control">
+                                        <select name="pegawaitype" id="pegawaitype" class="form-control" onchange="changepegawaitype()">
                                             <option value="">Pilih</option>
                                             <option value="1">Administrator</option>
                                             <option value="2">Direksi</option>
@@ -200,7 +200,7 @@
                                         <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" id="pegkantor">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">kantor</label>
                                         <select name="pegawaikantor" id="pegawaikantor" class="form-control">
@@ -214,7 +214,7 @@
                                         <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" id="pegspv">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">spv</label>
                                         <select name="pegawaispv" id="pegawaispv" class="form-control">
