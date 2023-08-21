@@ -30,8 +30,26 @@ class MasterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    function index()
+    function index(Request $request)
     {
+        if ($request->ajax()) {
+            $data['onlypegawai'] = User::select(
+                'users.id as user_id',
+                'users.name',
+                'users.role',
+                'users.status',
+                'a_jabatan_models.*',
+            )
+                ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
+                ->where(function ($query) use ($request) {
+                    if ($request->status) {
+                        return $query->where('role', $request->status);
+                    }
+                    return $query->where('role', 7);
+                })
+                ->get();
+            return $data;
+        }
         $data = [];
         $data['kantor'] = AKantorModel::get();
         $data['gedung'] = AGedungModel::select(
@@ -66,18 +84,23 @@ class MasterController extends Controller
             ->get();
         $data['objek'] = AObjectModel::select(
             'a_object_models.*',
-            'a_kantor_models.nama',
-            'a_kantor_models.pic',
+            // 'a_kantor_models.nama',
+            // 'a_kantor_models.pic',
             'a_gedung_models.gedung',
             'a_lantai_models.lantai',
             'a_ruangan_models.ruangan',
         )
-            ->join('a_kantor_models', 'a_kantor_models.id', 'a_object_models.kantor_id')
+            // ->join('a_kantor_models', 'a_kantor_models.id', 'a_object_models.kantor_id')
             ->join('a_gedung_models', 'a_gedung_models.id', 'a_object_models.gedung_id')
             ->join('a_lantai_models', 'a_lantai_models.id', 'a_object_models.lantai_id')
             ->join('a_ruangan_models', 'a_ruangan_models.id', 'a_object_models.ruangan_id')
             ->get();
         foreach ($data['objek'] as $key => $v) {
+            $kantor = json_decode($v->kantor_id) ? json_decode($v->kantor_id) : false;
+            $v->kantor = is_array($kantor);
+            if ($v->kantor) {
+                $v->kantor = AkantorModel::whereIn('id', $kantor)->get();
+            }
             $pekerjaan = json_decode($v->object) ? json_decode($v->object) : false;
             $v->pekerjaan = false;
             if ($pekerjaan) {
@@ -103,7 +126,12 @@ class MasterController extends Controller
             'a_jabatan_models.*',
         )
             ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
-            ->where('users.role', 7)
+            ->where(function ($query) use ($request) {
+                if ($request->status) {
+                    return $query->where('role', $request->status);
+                }
+                return $query->where('role', 7);
+            })
             ->get();
         $data['job'] = AJobModel::select(
             'a_job_models.*',

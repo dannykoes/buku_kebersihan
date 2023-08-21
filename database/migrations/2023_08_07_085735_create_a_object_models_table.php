@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('a_object_models', function (Blueprint $table) {
             $table->id();
-            $table->integer('kantor_id');
+            $table->json('kantor_id');
             $table->integer('gedung_id');
             $table->integer('lantai_id');
             $table->integer('ruangan_id');

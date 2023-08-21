@@ -157,6 +157,30 @@
             }
         });
     }
+    function changekantorobject(gedungid,kantorid,x) {
+        let kantor = $(kantorid).val();
+        let r = $(x).val();
+        let html = '';
+        html += '<option value="" >Pilih</option>';
+        $(gedungid).html(html);
+        $.ajax({
+            type: 'GET',
+            url: '/agedung/getbykantor',
+            data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor,
+            success: function(data) {
+                if (data.length > 0) {
+                    data.forEach(element => {
+                        if (element.id == r) {
+                            html += '<option value="' + element.id + '" selected>' + element.gedung + '</option>';
+                        } else {
+                            html += '<option value="' + element.id + '">' + element.gedung + '</option>';
+                        }
+                    });
+                    $(gedungid).html(html);
+                }
+            }
+        });
+    }
     function changekantor(gedungid,kantorid,x) {
         let kantor = $(kantorid).val();
         let r = $(x).val();
@@ -582,15 +606,46 @@ const autocomplete = new Autocomplete("marker", {
         $('#roleurutan').val(null);
     }
     function changepegawaitype() {
+        let param = '';
         let val = $('#pegawaitype').val();
         $('#pegkantor').removeAttr('hidden');
         $('#pegspv').removeAttr('hidden');
+        $('#spvtitle').html('Supervisor');
         if (val == 1 || val == 2) {
             $('#pegkantor').attr('hidden',true);
             $('#pegspv').attr('hidden',true);
             $('#pegkantor').val(null);
             $('#pegspv').val(null);
         }
+        if (val >= 3 && val<=5) {
+            $('#pegspv').attr('hidden',true);
+            $('#pegspv').val(null);
+        }
+        if (val == 6) {
+            param = '&status=6';
+        }
+            let r = $('#pegawaispv').val();
+            let html = '';
+            html += '<option value="" >Pilih</option>';
+            $('#pegawaispv').html(html);
+            $.ajax({
+                type: 'GET',
+                url: '/master',
+                data: '_token = <?php echo csrf_token() ?>'+param,
+                success: function(data) {
+                    if (data.onlypegawai.length > 0) {
+                        $('#spvtitle').html('Kepala Supervisor');
+                        data.onlypegawai.forEach(element => {
+                            if (element.user_id == r) {
+                                html += '<option value="' + element.user_id + '" selected>' + element.name + '</option>';
+                            } else {
+                                html += '<option value="' + element.user_id + '">' + element.name + '</option>';
+                            }
+                        });
+                    $('#pegawaispv').html(html);
+                    }
+            }
+        });
     }
 
     createDataTable('#masterpegawai');

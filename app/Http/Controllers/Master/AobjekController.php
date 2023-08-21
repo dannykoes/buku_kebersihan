@@ -60,7 +60,7 @@ class AobjekController extends Controller
         $k =  AObjectModel::updateOrCreate([
             'id' => $request->objekid
         ], [
-            'kantor_id' => $request->objekkantorid,
+            'kantor_id' => json_encode($request->objekkantorid),
             'gedung_id' => $request->objekgedungid,
             'lantai_id' => $request->objeklantaiid,
             'ruangan_id' => $request->objekruanganid,

@@ -60,6 +60,9 @@ class AgedungController extends Controller
     public function show(string $id, Request $request)
     {
         if ($id == 'getbykantor') {
+            if (stripos(',', $request->kantor) >= 0) {
+                return AGedungModel::whereIn('kantor_id', explode(',', $request->kantor))->get();
+            }
             return AGedungModel::where('kantor_id', $request->kantor)->get();
         }
     }

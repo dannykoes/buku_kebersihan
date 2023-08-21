@@ -23,16 +23,32 @@
                             @foreach($objek as $key => $val)
                             <tr>
                                 <td width="1%">{{$key + 1}}</td>
-                                <td>{{$val->pic}}</td>
+                                <td>
+                                    @if($val->kantor)
+                                        @foreach($val->kantor as $key => $v)
+                                            <span class="badge badge-info">{{$v->pic}}</span>
+                                        @endforeach
+                                    @else
+                                        <span class="badge badge-info">Silahkan Update</span>
+                                    @endif
+                                    {{$val->pic}}
+                                </td>
                                 <td>{{$val->gedung}}</td>
                                 <td>{{$val->lantai}}</td>
                                 <td>{{$val->ruangan}}</td>
                                 <td>{{$val->namakategori}}</td>
                                 <td>
                                     @if($val->pekerjaan)
-                                        @foreach($val->pekerjaan as $key => $v)
-                                            <span class="badge badge-info">{{$v->nama}}</span>
-                                        @endforeach
+                                    <?php $nomor = 3; ?>
+                                    @foreach($val->pekerjaan as $key => $v)
+                                    <span class="badge badge-info">
+                                        {{$v->nama}}
+                                    </span>
+                                    @if($nomor == $key)
+                                        <br>
+                                        <?php $nomor+=3; ?>
+                                    @endif
+                                    @endforeach
                                     @else
                                         <span class="badge badge-info">Silahkan Update</span>
                                     @endif
@@ -78,8 +94,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">Kantor</label>
-                                        <select name="objekkantorid" id="objekkantorid" class="form-control" onchange="changekantor('#objekgedungid','#objekkantorid','#objekkantor')">
-                                            <option value="">Pilih</option>
+                                        <select name="objekkantorid[]" id="objekkantorid" class="form-control" onchange="changekantor('#objekgedungid','#objekkantorid','#objekkantor')" multiple>
                                             @foreach($kantor as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->nama.' - '.$value->pic}}</option>
                                             @endforeach
