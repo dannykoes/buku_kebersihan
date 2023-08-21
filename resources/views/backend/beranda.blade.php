@@ -581,31 +581,31 @@
         // $('#tugasstatus').val(data.status==0?1:0);
         $('#detaildata').val(data.tugas);
         // $('#btnacc').html(data.status==0?'ACC':'Batal');
-        data.job.forEach(e => {
-            let komentar = '';
-            let select1 = '';
-            let select2 = '';
-            let select3 = '';
-            let select4 = '';
-            let select5 = '';
-            if (e.komentar) {
-                komentar = e.komentar;
-            }
-            if (e.nilai == 5) {
-                select5 = 'selected';
-            }
-            if (e.nilai == 4) {
-                select4 = 'selected';
-            }
-            if (e.nilai == 3) {
-                select3 = 'selected';
-            }
-            if (e.nilai == 2) {
-                select2 = 'selected';
-            }
-            if (e.nilai == 1) {
-                select1 = 'selected';
-            }
+        // data.job.forEach(e => {
+        //     let komentar = '';
+        //     let select1 = '';
+        //     let select2 = '';
+        //     let select3 = '';
+        //     let select4 = '';
+        //     let select5 = '';
+        //     if (e.komentar) {
+        //         komentar = e.komentar;
+        //     }
+        //     if (e.nilai == 5) {
+        //         select5 = 'selected';
+        //     }
+        //     if (e.nilai == 4) {
+        //         select4 = 'selected';
+        //     }
+        //     if (e.nilai == 3) {
+        //         select3 = 'selected';
+        //     }
+        //     if (e.nilai == 2) {
+        //         select2 = 'selected';
+        //     }
+        //     if (e.nilai == 1) {
+        //         select1 = 'selected';
+        //     }
         // a+='<div class="row">';
             // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
             // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
@@ -627,25 +627,25 @@
         // a+='    <td>';
         // a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
         // a+='    </td>';
-        a+='<tr>';
-        a+='    <td>'+e.pic+'</td>';
-        a+='    <td>'+e.lantai+'</td>';
-        a+='    <td>'+e.ruangan+'</td>';
-        a+='    <td>'+e.object+'</td>';
-        a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
-        a+='    <th>';
-        a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
-        a+='            <option value="">Pilih</option>';
-        a+='            <option '+select5+' value="5">Bersih Sekali</option>';
-        a+='            <option '+select4+' value="4">Bersih</option>';
-        a+='            <option '+select3+' value="3">Cukup</option>';
-        a+='            <option '+select2+' value="2">Kurang Bersih</option>';
-        a+='            <option '+select1+' value="1">Kotor</option>';
-        a+='        </select>';
-        a+='    </th>';
-        a+='</tr>';
-        no++;
-    });
+    //     a+='<tr>';
+    //     a+='    <td>'+e.pic+'</td>';
+    //     a+='    <td>'+e.lantai+'</td>';
+    //     a+='    <td>'+e.ruangan+'</td>';
+    //     a+='    <td>'+e.object+'</td>';
+    //     a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
+    //     a+='    <th>';
+    //     a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
+    //     a+='            <option value="">Pilih</option>';
+    //     a+='            <option '+select5+' value="5">Bersih Sekali</option>';
+    //     a+='            <option '+select4+' value="4">Bersih</option>';
+    //     a+='            <option '+select3+' value="3">Cukup</option>';
+    //     a+='            <option '+select2+' value="2">Kurang Bersih</option>';
+    //     a+='            <option '+select1+' value="1">Kotor</option>';
+    //     a+='        </select>';
+    //     a+='    </th>';
+    //     a+='</tr>';
+    //     no++;
+    // });
     $('#detail').html(a);
     data.photos.forEach(el => {
         b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="60px" height="60px" class="col"></a>';

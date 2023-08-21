@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ALokasiModel;
+use App\Models\AObjectModel;
 use App\Models\APekerjaanModel;
 use App\Models\Master\Tugas;
 use App\Models\TodoNewModel;
@@ -47,17 +48,23 @@ class HomeController extends Controller
         foreach ($data['job'] as $key => $v) {
             $v->objects = [];
             $v->photos = [];
-            // $v->job = [];
-            // if ($v->tugas) {
-            //     $v->job = json_decode($v->tugas);
-            // }
+            $v->job = [];
+            if ($v->tugas) {
+                $v->job = json_decode($v->tugas);
+                $v->objects = AObjectModel::select()
+                    ->where('kantor_id', $v->job->kantor_id)
+                    ->where('gedung_id', $v->job->gedung_id)
+                    ->where('ruangan_id', $v->job->ruangan_id)
+                    ->where('kategori', $v->job->kategori)
+                    ->get();
+            }
             if ($v->foto) {
                 $v->photos = json_decode($v->foto);
             }
-            if ($v->object) {
-                // $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
-                $v->objects = json_decode($v->object);
-            }
+            // if ($v->object) {
+            //     // $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
+            //     // $v->objects = json_decode($v->object);
+            // }
         }
 
         $data['harian'] = Tugas::select(
