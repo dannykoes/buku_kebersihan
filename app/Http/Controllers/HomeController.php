@@ -51,12 +51,12 @@ class HomeController extends Controller
             $v->job = [];
             if ($v->tugas) {
                 $v->job = json_decode($v->tugas);
-                $v->objects = AObjectModel::select()
-                    ->where('kantor_id', $v->job['kantor_id'])
-                    ->where('gedung_id', $v->job['gedung_id'])
-                    ->where('ruangan_id', $v->job['ruangan_id'])
-                    ->where('kategori', $v->job['kategori'])
-                    ->get();
+                // $v->objects = AObjectModel::select()
+                //     ->where('kantor_id', $v->job['kantor_id'])
+                //     ->where('gedung_id', $v->job['gedung_id'])
+                //     ->where('ruangan_id', $v->job['ruangan_id'])
+                //     ->where('kategori', $v->job['kategori'])
+                //     ->get();
             }
             if ($v->foto) {
                 $v->photos = json_decode($v->foto);
