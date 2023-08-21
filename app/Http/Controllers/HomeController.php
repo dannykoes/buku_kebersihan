@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ALokasiModel;
+use App\Models\APekerjaanModel;
 use App\Models\Master\Tugas;
 use App\Models\TodoNewModel;
 use App\Models\User;
@@ -41,16 +42,20 @@ class HomeController extends Controller
             // ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
             // ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
             // ->join('kantors', 'kantors.id', 'tugas.kantor_id')
-            ->where('users.role', 3)
+            ->where('users.role', 7)
             ->get();
         foreach ($data['job'] as $key => $v) {
-            $v->job = [];
+            $v->objects = [];
             $v->photos = [];
-            if ($v->tugas) {
-                $v->job = json_decode($v->tugas);
-            }
+            // $v->job = [];
+            // if ($v->tugas) {
+            //     $v->job = json_decode($v->tugas);
+            // }
             if ($v->foto) {
                 $v->photos = json_decode($v->foto);
+            }
+            if ($v->object) {
+                $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
             }
         }
 
