@@ -49,6 +49,7 @@ class AjobController extends Controller
             'user_id' => $request->jobuser,
             'kantor_id' => $request->jobkantor,
             'objek_id' => json_encode($request->jobobjek),
+            // 'objek_id' => json_encode([]),
         ]);
         if ($k) {
             return Redirect::back()->with('info', 'Berhasil Simpan');

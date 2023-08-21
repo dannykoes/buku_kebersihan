@@ -82,7 +82,7 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">kantor</label>
-                                        <select name="jobkantor" id="jobkantor" class="form-control" onchange="setjobbykantor('#jobobjek','#jobkantor','#jobkantorid')">
+                                        <select name="jobkantor" id="jobkantor" class="form-control" onchange="changekantor('#jobobjek','#jobkantor','#jobkantorid')">
                                             <option value="">Pilih</option>
                                             @foreach($kantor as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->pic}}</option>
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
-                                        <label for="" class="text-uppercase">job</label>
+                                        <label for="" class="text-uppercase">gedung</label>
                                         <select name="jobobjek[]" id="jobobjek" class="form-control" multiple>
                                             {{-- <option value="">Pilih</option>
                                             @foreach($gedung as $key => $value)
