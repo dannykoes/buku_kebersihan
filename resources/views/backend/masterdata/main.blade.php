@@ -622,7 +622,7 @@ const autocomplete = new Autocomplete("marker", {
             $('#pegspv').val(null);
         }
         if (val == 6) {
-            param = '&status=6';
+            param = '&status=5';
         }
             let r = $('#pegawaispv').val();
             let html = '';
