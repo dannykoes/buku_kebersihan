@@ -310,9 +310,6 @@ class TodoApiController extends Controller
         }
         // return $todos;
 
-        return response()->json([
-            'data' => $tdr
-        ]);
 
         TodoNewModel::create([
             'status' => 0,
