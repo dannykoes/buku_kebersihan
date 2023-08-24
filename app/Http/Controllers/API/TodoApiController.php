@@ -304,11 +304,17 @@ class TodoApiController extends Controller
             ];
         }
         $tdr = json_decode($request->todo);
+        $todos = [];
+        foreach ($tdr as $key => $value) {
+            $todos[$value->namakategori][] = $value;
+        }
+        // return $todos;
+
 
         TodoNewModel::create([
             'status' => 0,
             'id_pegawai' => Auth::user()->id,
-            'tugas' => json_encode($tdr),
+            'tugas' => json_encode($todos),
             'foto' => json_encode($data),
             'tanggal' => $request->tanggal,
         ]);
