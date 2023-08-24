@@ -43,7 +43,7 @@ class HomeController extends Controller
             // ->join('lantais', 'lantais.id', 'tugas.ruangan_id')
             // ->join('ruangans', 'ruangans.id', 'lantais.ruangan_id')
             // ->join('kantors', 'kantors.id', 'tugas.kantor_id')
-            ->where('users.role', 7)
+            // ->where('users.role', 7)
             ->get();
         foreach ($data['job'] as $key => $v) {
             $v->objects = [];
@@ -66,7 +66,7 @@ class HomeController extends Controller
             //     // $v->objects = json_decode($v->object);
             // }
         }
-
+        // return $data;
         $data['harian'] = Tugas::select(
             'tugas.*',
             'kantors.nama',

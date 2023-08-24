@@ -62,6 +62,11 @@ class AjabatanController extends Controller
             $user['password'] = Hash::make($request->pegawaipassword);
         }
 
+        $kantor = [];
+        if ($request->pegawaikantor) {
+            $kantor = $request->pegawaikantor;
+        }
+
         $p =  AJabatanModel::updateOrCreate([
             'id' => $request->pegawaiid
         ], [
@@ -72,7 +77,7 @@ class AjabatanController extends Controller
             'pic' => '$request->pegawaipic',
             'tgl_bergabung' => $request->pegawaitglbergabung,
             'tgl_selesai' => $request->pegawaitglselesai,
-            'kantor_id' => $request->pegawaikantor,
+            'kantor_id' => json_encode($request->pegawaikantor),
         ]);
         if (!$p) {
             return Redirect::back()->with('info', 'Gagal Simpan');

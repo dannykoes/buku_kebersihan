@@ -664,6 +664,11 @@ const autocomplete = new Autocomplete("marker", {
         placeholder: 'Pilih',
         dropdownParent: $('#modalpegawai')
     });
+    $('#pegawaikantor').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modalpegawai')
+    });
     function addpegawai(data) {
         resetpegawai();
         openmodal('#modalpegawai');
@@ -675,7 +680,7 @@ const autocomplete = new Autocomplete("marker", {
             if (data.status == 2) {
                 $('#pegawaistatusdeactive').attr('checked',true);
             }
-            $('#pegawaikantor').val(data.kantor_id);
+            $('#pegawaikantor').val(JSON.parse(data.kantor_id)?JSON.parse(data.kantor_id):data.kantor_id);
             $('#pegawaitype').val(data.jabatan);
             $('#pegawaispv').val(data.spv);
             $('#pegawaipic').val(data.pic);
