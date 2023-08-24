@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::resource('pengguna', App\Http\Controllers\PenggunaController::class);
     Route::resource('client', ClientController::class);
     Route::post('/approval', [HomeController::class, 'approval']);
+    Route::get('/changeapproval', [HomeController::class, 'changeapproval']);
     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);

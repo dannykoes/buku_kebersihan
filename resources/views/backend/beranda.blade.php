@@ -98,7 +98,7 @@
                                 <span class="badge badge-warning">Menunggu</span>
                             @endif
                             @if($f->status == 1)
-                                <span class="badge badge-warning">Menunggu</span>
+                                <span class="badge badge-info">Approve</span>
                             @endif
                             @if($f->status == 2)
                                 <span class="badge badge-warning">Menunggu</span>
@@ -112,7 +112,7 @@
                                 <button id="btndefault" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(240, 240, 240);transform: ;msFilter:;"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg></button>
                                 <div class="dropdown-menu" aria-labelledby="btndefault">
                                     <a href="javascript:void(0);" class="dropdown-item" onclick="edit({{$f}})"><i class="flaticon-home-fill-1 mr-1"></i>Edit</a>
-                                    <a href="/approval?status={{$f->status==0?1:0}}&tugasid={{$f->id}}&approval=true" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>{{$f->status==0?'ACC':'BATAL ACC'}}</a>
+                                    <a href="/changeapproval?status={{$f->status==0?1:0}}&tugasid={{$f->id}}&approval=true" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>{{$f->status==0?'ACC':'BATAL ACC'}}</a>
                                 </div>
                             </div>
                         </td>
@@ -292,60 +292,71 @@
             <input type="text" name="tugasid" id="tugasid" hidden>
             {{-- <input type="text" name="tugasstatus" id="tugasstatus" hidden> --}}
             <textarea name="detaildata" id="detaildata" hidden></textarea>
-            <div >
-                <table class="table teble-responsive">
-                    <thead>
-                        <tr>
-                            <th>Kantor</th>
-                            <th>Lantai</th>
-                            <th>Ruangan</th>
-                            <th>Objek</th>
-                            <th>Komentar</th>
-                            <th>Nilai</th>
-                        </tr>
-                    </thead>
-                    <tbody id="detail">
-                        {{-- <tr>
-                            <td>'+e.namakantor+'</td>
-                            <td>'+e.lantai+'</td>
-                            <td>'+e.ruangan+'</td>
-                            <td>'+e.nama_tugas+'</td>
-                            <td>
-                                <a href="{{asset('image/Login.jpg')}}" target="_blank"><img src="{{asset('image/Login.jpg')}}" alt="" width="60px" height="60px"></a>
-                                <a href="{{asset('image/login.png')}}" target="_blank"><img src="{{asset('image/login.png')}}" alt="" width="60px" height="60px"></a>
-                            </td>
-                            <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></th>
-                            <th>
-                                <select name="detailnilai[]" id="detailnilai" class="form-control">
-                                    <option value="">Pilih</option>
-                                    <option value="5">Bersih Sekali</option>
-                                    <option value="4">Bersih</option>
-                                    <option value="3">Cukup</option>
-                                    <option value="2">Kurang Bersih</option>
-                                    <option value="1">Kotor</option>
-                                </select>
-                            </th>
-                        </tr> --}}
-                    </tbody>
-                </table>
-                {{-- <div class="row">
-                        <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>
-                        <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>
-                        <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>
-                        <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>
-                        <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>
-                        <div class="col-md-2"><small>Nilai</small>
-                            <select name="detailnilai[]" id="detailnilai" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="5">Bersih Sekali</option>
-                                <option value="4">Bersih</option>
-                                <option value="3">Cukup</option>
-                                <option value="2">Kurang Bersih</option>
-                                <option value="1">Kotor</option>
-                            </select>
-                        </div>
-                    </div> --}}
-            </div>
+            <div class="widget-content widget-content-area pill-justify-centered mt-2">
+                                    
+                <ul class="nav nav-pills mb-3 mt-3 justify-content-center" id="justify-center-pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase active" id="justify-center-pills-harian-tab" data-toggle="pill" href="#justify-center-pills-harian" role="tab" aria-controls="justify-center-pills-harian" aria-selected="true">harian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" id="justify-center-pills-mingguan-tab" data-toggle="pill" href="#justify-center-pills-mingguan" role="tab" aria-controls="justify-center-pills-mingguan" aria-selected="false">mingguan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" id="justify-center-pills-bulanan-tab" data-toggle="pill" href="#justify-center-pills-bulanan" role="tab" aria-controls="justify-center-pills-bulanan" aria-selected="false">bulanan</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="justify-center-pills-tabContent">
+                    <div class="tab-pane fade show active" id="justify-center-pills-harian" role="tabpanel" aria-labelledby="justify-center-pills-harian-tab">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Gedung</th>
+                                    <th>Lantai</th>
+                                    <th>Ruangan</th>
+                                    <th>Objek</th>
+                                    <th>Komentar</th>
+                                    <th>Nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailharian">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="justify-center-pills-mingguan" role="tabpanel" aria-labelledby="justify-center-pills-mingguan-tab">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Gedung</th>
+                                    <th>Lantai</th>
+                                    <th>Ruangan</th>
+                                    <th>Objek</th>
+                                    <th>Komentar</th>
+                                    <th>Nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailmingguan">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="justify-center-pills-bulanan" role="tabpanel" aria-labelledby="justify-center-pills-bulanan-tab">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Gedung</th>
+                                    <th>Lantai</th>
+                                    <th>Ruangan</th>
+                                    <th>Objek</th>
+                                    <th>Komentar</th>
+                                    <th>Nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailbulanan">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
             <hr>
             <div class="col"><button class="btn btn-primary btn-sm" title="Update" type="submit" >Simpan</button></div>
         </form>
@@ -581,80 +592,151 @@
         // $('#tugasstatus').val(data.status==0?1:0);
         $('#detaildata').val(data.tugas);
         // $('#btnacc').html(data.status==0?'ACC':'Batal');
-        // data.job.forEach(e => {
-        //     let komentar = '';
-        //     let select1 = '';
-        //     let select2 = '';
-        //     let select3 = '';
-        //     let select4 = '';
-        //     let select5 = '';
-        //     if (e.komentar) {
-        //         komentar = e.komentar;
-        //     }
-        //     if (e.nilai == 5) {
-        //         select5 = 'selected';
-        //     }
-        //     if (e.nilai == 4) {
-        //         select4 = 'selected';
-        //     }
-        //     if (e.nilai == 3) {
-        //         select3 = 'selected';
-        //     }
-        //     if (e.nilai == 2) {
-        //         select2 = 'selected';
-        //     }
-        //     if (e.nilai == 1) {
-        //         select1 = 'selected';
-        //     }
-        // a+='<div class="row">';
-            // a+='    <div class="col"><small>Kantor</small><h5>'+e.namakantor+'</h5></div>';
-            // a+='    <div class="col"><small>Lantai</small><h5>'+e.lantai+'</h5></div>';
-        // a+='    <div class="col"><small>Ruangan</small><h5>'+e.ruangan+'</h5></div>';
-        // a+='    <div class="col"><small>Objek</small><h5>'+e.nama_tugas+'</h5></div>';
-        // a+='    <div class="col-md-2"><small>Komentar</small><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar"></textarea></div>';
-        // a+='    <div class="col-md-2"><small>Nilai</small>';
-        // a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
-        // a+='            <option value="">Pilih</option>';
-        // a+='            <option value="5">Bersih Sekali</option>';
-        // a+='            <option value="4">Bersih</option>';
-        // a+='            <option value="3">Cukup</option>';
-        // a+='            <option value="2">Kurang Bersih</option>';
-        // a+='            <option value="1">Kotor</option>';
-        // a+='        </select>';
-        // a+='    </div>';
-        // a+='</div>';
-        
-        // a+='    <td>';
-        // a+='        <a href="'+data.photos?data.photos[no]['url']:''+'" target="_blank"><img src="'+data.photos?data.photos[no]['url']:''+'" alt="" width="60px" height="60px"></a>';
-        // a+='    </td>';
-    //     a+='<tr>';
-    //     a+='    <td>'+e.pic+'</td>';
-    //     a+='    <td>'+e.lantai+'</td>';
-    //     a+='    <td>'+e.ruangan+'</td>';
-    //     a+='    <td>'+e.object+'</td>';
-    //     a+='    <th><textarea name="detailkomentar[]" id="detailkomentar" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
-    //     a+='    <th>';
-    //     a+='        <select name="detailnilai[]" id="detailnilai" class="form-control">';
-    //     a+='            <option value="">Pilih</option>';
-    //     a+='            <option '+select5+' value="5">Bersih Sekali</option>';
-    //     a+='            <option '+select4+' value="4">Bersih</option>';
-    //     a+='            <option '+select3+' value="3">Cukup</option>';
-    //     a+='            <option '+select2+' value="2">Kurang Bersih</option>';
-    //     a+='            <option '+select1+' value="1">Kotor</option>';
-    //     a+='        </select>';
-    //     a+='    </th>';
-    //     a+='</tr>';
+        data.job.Harian.forEach(e => {
+            let komentar = '';
+            let select1 = '';
+            let select2 = '';
+            let select3 = '';
+            let select4 = '';
+            let select5 = '';
+            if (e.komentar) {
+                komentar = e.komentar;
+            }
+            if (e.nilai == 5) {
+                select5 = 'selected';
+            }
+            if (e.nilai == 4) {
+                select4 = 'selected';
+            }
+            if (e.nilai == 3) {
+                select3 = 'selected';
+            }
+            if (e.nilai == 2) {
+                select2 = 'selected';
+            }
+            if (e.nilai == 1) {
+                select1 = 'selected';
+            }
+        a+='<tr>';
+        a+='    <td>'+e.gedung+'</td>';
+        a+='    <td>'+e.lantai+'</td>';
+        a+='    <td>'+e.ruangan+'</td>';
+        a+='    <td>'+e.object+'</td>';
+        a+='    <th><textarea name="komentarharian[]" id="komentarharian" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
+        a+='    <th>';
+        a+='        <select name="nilaiharian[]" id="nilaiharian" class="form-control">';
+        a+='            <option value="">Pilih</option>';
+        a+='            <option '+select5+' value="5">Bersih Sekali</option>';
+        a+='            <option '+select4+' value="4">Bersih</option>';
+        a+='            <option '+select3+' value="3">Cukup</option>';
+        a+='            <option '+select2+' value="2">Kurang Bersih</option>';
+        a+='            <option '+select1+' value="1">Kotor</option>';
+        a+='        </select>';
+        a+='    </th>';
+        a+='</tr>';
     //     no++;
-    // });
-    $('#detail').html(a);
+    });
+    $('#detailharian').html(a);
+a='';
+        data.job.Mingguan.forEach(e => {
+            let komentar = '';
+            let select1 = '';
+            let select2 = '';
+            let select3 = '';
+            let select4 = '';
+            let select5 = '';
+            if (e.komentar) {
+                komentar = e.komentar;
+            }
+            if (e.nilai == 5) {
+                select5 = 'selected';
+            }
+            if (e.nilai == 4) {
+                select4 = 'selected';
+            }
+            if (e.nilai == 3) {
+                select3 = 'selected';
+            }
+            if (e.nilai == 2) {
+                select2 = 'selected';
+            }
+            if (e.nilai == 1) {
+                select1 = 'selected';
+            }
+        a+='<tr>';
+        a+='    <td>'+e.gedung+'</td>';
+        a+='    <td>'+e.lantai+'</td>';
+        a+='    <td>'+e.ruangan+'</td>';
+        a+='    <td>'+e.object+'</td>';
+        a+='    <th><textarea name="komentarmingguan[]" id="komentarmingguan" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
+        a+='    <th>';
+        a+='        <select name="nilaimingguan[]" id="nilaimingguan" class="form-control">';
+        a+='            <option value="">Pilih</option>';
+        a+='            <option '+select5+' value="5">Bersih Sekali</option>';
+        a+='            <option '+select4+' value="4">Bersih</option>';
+        a+='            <option '+select3+' value="3">Cukup</option>';
+        a+='            <option '+select2+' value="2">Kurang Bersih</option>';
+        a+='            <option '+select1+' value="1">Kotor</option>';
+        a+='        </select>';
+        a+='    </th>';
+        a+='</tr>';
+    //     no++;
+    });
+    $('#detailmingguan').html(a);
+a='';
+        data.job.Bulanan.forEach(e => {
+            let komentar = '';
+            let select1 = '';
+            let select2 = '';
+            let select3 = '';
+            let select4 = '';
+            let select5 = '';
+            if (e.komentar) {
+                komentar = e.komentar;
+            }
+            if (e.nilai == 5) {
+                select5 = 'selected';
+            }
+            if (e.nilai == 4) {
+                select4 = 'selected';
+            }
+            if (e.nilai == 3) {
+                select3 = 'selected';
+            }
+            if (e.nilai == 2) {
+                select2 = 'selected';
+            }
+            if (e.nilai == 1) {
+                select1 = 'selected';
+            }
+        a+='<tr>';
+        a+='    <td>'+e.gedung+'</td>';
+        a+='    <td>'+e.lantai+'</td>';
+        a+='    <td>'+e.ruangan+'</td>';
+        a+='    <td>'+e.object+'</td>';
+        a+='    <th><textarea name="komentarbulanan[]" id="komentarbulanan" cols="30" rows="1" class="form-control" placeholder="Komentar">'+komentar+'</textarea></th>';
+        a+='    <th>';
+        a+='        <select name="nilaibulanan[]" id="nilaibulanan" class="form-control">';
+        a+='            <option value="">Pilih</option>';
+        a+='            <option '+select5+' value="5">Bersih Sekali</option>';
+        a+='            <option '+select4+' value="4">Bersih</option>';
+        a+='            <option '+select3+' value="3">Cukup</option>';
+        a+='            <option '+select2+' value="2">Kurang Bersih</option>';
+        a+='            <option '+select1+' value="1">Kotor</option>';
+        a+='        </select>';
+        a+='    </th>';
+        a+='</tr>';
+    //     no++;
+    });
+    $('#detailbulanan').html(a);
+
     data.photos.forEach(el => {
         b+='<a href="'+el.url+'" target="_blank"><img src="'+el.url+'" alt="" width="60px" height="60px" class="col"></a>';
     });
     $('#detailfoto').html(b);
     }
     $(document).ready(function () {
-        // $('#detailjob').modal('show');    
-        console.log('11.43');
+        // console.log('11.43');
     })
 </script>
 

@@ -123,25 +123,36 @@ class HomeController extends Controller
             return view('backend.dashboard.petugasdashboard');
         }
     }
-    function approval(Request $request)
+    function changeapproval(Request $request)
     {
-        // return $request->all();
         if ($request->approval) {
             $t = TodoNewModel::where('id', $request->tugasid)->update([
                 'status' => $request->status
             ]);
             if ($t) {
-                return Redirect::back()->with('Berhasil Tersimpan');
+                return Redirect::back()->with('info', 'Berhasil Tersimpan');
             }
-            return Redirect::back()->with('Gagal Tersimpan');
+            return Redirect::back()->with('info', 'Gagal Tersimpan');
         }
+    }
+    function approval(Request $request)
+    {
+        // return $request->all();
 
         $js =  json_decode($request->detaildata);
-        foreach ($js as $key => $value) {
-            $value->komentar = $request->detailkomentar[$key] ? $request->detailkomentar[$key] : '';
-            $value->nilai = $request->detailnilai[$key] ? $request->detailnilai[$key] : '';
+        foreach ($js->Harian as $key => $value) {
+            $value->komentar = $request->komentarharian[$key] ? $request->komentarharian[$key] : '';
+            $value->nilai = $request->nilaiharian[$key] ? $request->nilaiharian[$key] : '';
         }
-
+        foreach ($js->Mingguan as $key => $value) {
+            $value->komentar = $request->komentarmingguan[$key] ? $request->komentarmingguan[$key] : '';
+            $value->nilai = $request->nilaimingguan[$key] ? $request->nilaimingguan[$key] : '';
+        }
+        foreach ($js->Bulanan as $key => $value) {
+            $value->komentar = $request->komentarbulanan[$key] ? $request->komentarbulanan[$key] : '';
+            $value->nilai = $request->nilaibulanan[$key] ? $request->nilaibulanan[$key] : '';
+        }
+        // return $js;
         $t = TodoNewModel::where('id', $request->tugasid)->update([
             'tugas' => json_encode($js)
         ]);
