@@ -127,6 +127,27 @@ class MasterController extends Controller
                     $value->kantor = AKantorModel::whereIn('id', $j)->get();
                 }
             }
+            if ($value->jabatan == 1) {
+                $value->namajabatan = 'Administrator';
+            }
+            if ($value->jabatan == 2) {
+                $value->namajabatan = 'Direksi';
+            }
+            if ($value->jabatan == 3) {
+                $value->namajabatan = 'Kepala Cabang';
+            }
+            if ($value->jabatan == 4) {
+                $value->namajabatan = 'User';
+            }
+            if ($value->jabatan == 5) {
+                $value->namajabatan = 'Kepala Supervisor';
+            }
+            if ($value->jabatan == 6) {
+                $value->namajabatan = 'Supervisor';
+            }
+            if ($value->jabatan == 7) {
+                $value->namajabatan = 'Pegawai';
+            }
         }
         $data['onlypegawai'] = User::select(
             'users.id as user_id',
