@@ -622,7 +622,7 @@ const autocomplete = new Autocomplete("marker", {
             $('#pegspv').attr('hidden',true);
             $('#pegspv').val(null);
         }
-        if (val == 6) {
+        if (val >= 6) {
             let x = $('#pegawaikantor').val();
             param = '&status=5&kantor='+x.join(',');
         }
@@ -647,9 +647,9 @@ const autocomplete = new Autocomplete("marker", {
                                 html += '<option value="' + element.user_id + '">' + element.name + '</option>';
                             }
                         });
-                    $('#pegawaispv').html(html);
                     }
-            }
+                }
+                $('#pegawaispv').html(html);
         });
     }
 
