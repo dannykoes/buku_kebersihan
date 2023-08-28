@@ -110,14 +110,24 @@ class MasterController extends Controller
         // return $data['objek'];
         $data['jabatan'] = ARoleModel::get();
         $data['pegawai'] = User::select(
+            'a_jabatan_models.*',
+            'a_jabatan_models.kantor_id',
             'users.id as user_id',
             'users.name',
             'users.role',
             'users.status',
-            'a_jabatan_models.*',
         )
             ->leftJoin('a_jabatan_models', 'a_jabatan_models.id', 'users.jabatan_id')
             ->get();
+        foreach ($data['pegawai'] as $key => $value) {
+            $value->kantor = [];
+            if ($value->kantor_id) {
+                $j = json_decode($value->kantor_id);
+                if (is_array($j)) {
+                    $value->kantor = AKantorModel::whereIn('id', $j)->get();
+                }
+            }
+        }
         $data['onlypegawai'] = User::select(
             'users.id as user_id',
             'users.name',

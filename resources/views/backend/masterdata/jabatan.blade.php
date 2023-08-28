@@ -12,6 +12,8 @@
                                 <th>No</th>
                                 <th>Nip</th>
                                 <th>Nama</th>
+                                <th>Kantor</th>
+                                <th>Jabatan</th>
                                 <th>Tanggal Bergabung</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Aksi</th>
@@ -23,6 +25,12 @@
                                 <td width="1%">{{$key + 1}}</td>
                                 <td>{{$val->nip}}</td>
                                 <td>{{$val->name}}</td>
+                                <td>
+                                    @foreach($val->kantor as $key => $v)
+                                        <p class="badge badge-info">{{$v->nama}}</p>
+                                    @endforeach
+                                </td>
+                                <td>{{$val->nama}}</td>
                                 <td>{{\Carbon\Carbon::parse($val->tgl_bergabung)->format('d-m-Y')}}</td>
                                 <td>{{\Carbon\Carbon::parse($val->tgl_selesai)->format('d-m-Y')}}</td>
                                 <td>
