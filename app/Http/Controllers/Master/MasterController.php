@@ -47,6 +47,14 @@ class MasterController extends Controller
                     }
                     return $query->where('role', 7);
                 })
+                ->where(function ($query) use ($request) {
+                    if ($request->kantor) {
+                        $x = explode(',', $request->kantor);
+                        foreach ($x as $key => $value) {
+                            $query->orWhere('kantor_id', 'like', '%' . $value . '%');
+                        }
+                    }
+                })
                 ->get();
             return $data;
         }

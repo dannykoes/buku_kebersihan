@@ -216,7 +216,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" id="pegkantor">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">kantor</label>
-                                        <select name="pegawaikantor[]" id="pegawaikantor" class="form-control" multiple>
+                                        <select name="pegawaikantor[]" id="pegawaikantor" class="form-control" multiple onchange="changepegawaitype()">
                                             @foreach($kantor as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->pic}}</option>
                                             @endforeach
