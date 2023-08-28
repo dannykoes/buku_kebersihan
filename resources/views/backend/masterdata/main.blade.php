@@ -647,9 +647,9 @@ const autocomplete = new Autocomplete("marker", {
                             }
                         });
                     }
-                }
-            });
-            $('#pegawaispv').html(html);
+                    $('#pegawaispv').html(html);
+            }
+        });
     }
 
     createDataTable('#masterpegawai');
