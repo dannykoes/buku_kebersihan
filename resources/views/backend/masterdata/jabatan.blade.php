@@ -26,7 +26,7 @@
                                 <td>{{$val->nip}}</td>
                                 <td>{{$val->name}}</td>
                                 <td>
-                                    <?php $nomor = 2; ?>
+                                    <?php $nomor = 1; ?>
                                     @foreach($val->kantor as $key => $v)
                                         <p class="badge badge-info">{{$v->pic}}</p>
                                     @if($nomor == $key)

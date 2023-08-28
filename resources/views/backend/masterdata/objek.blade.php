@@ -39,7 +39,7 @@
                                 <td>{{$val->namakategori}}</td>
                                 <td>
                                     @if($val->pekerjaan)
-                                    <?php $nomor = 3; ?>
+                                    <?php $nomor = 2; ?>
                                     @foreach($val->pekerjaan as $key => $v)
                                     <span class="badge badge-info">
                                         {{$v->nama}}
