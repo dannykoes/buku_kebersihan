@@ -606,7 +606,6 @@ const autocomplete = new Autocomplete("marker", {
         $('#roleurutan').val(null);
     }
     function changepegawaitype() {
-        console.log($('#pegawaikantor').val());
         let param = '';
         let val = $('#pegawaitype').val();
         $('#pegkantor').removeAttr('hidden');
@@ -649,8 +648,8 @@ const autocomplete = new Autocomplete("marker", {
                         });
                     }
                 }
-                $('#pegawaispv').html(html);
-        });
+            });
+            $('#pegawaispv').html(html);
     }
 
     createDataTable('#masterpegawai');
