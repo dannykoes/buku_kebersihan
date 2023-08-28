@@ -637,7 +637,7 @@ const autocomplete = new Autocomplete("marker", {
                 success: function(data) {
                     if (data.onlypegawai.length > 0) {
                         $('#spvtitle').html('Kepala Supervisor');
-                        if (val==6) {
+                        if (val==7) {
                             $('#spvtitle').html('Supervisor');
                         }
                         data.onlypegawai.forEach(element => {
