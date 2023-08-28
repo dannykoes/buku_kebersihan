@@ -45,7 +45,7 @@ class MasterController extends Controller
                     if ($request->status) {
                         return $query->where('role', $request->status);
                     }
-                    return $query->where('role', 7);
+                    return $query->where('role', 6);
                 })
                 ->where(function ($query) use ($request) {
                     if ($request->kantor) {

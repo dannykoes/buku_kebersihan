@@ -637,6 +637,9 @@ const autocomplete = new Autocomplete("marker", {
                 success: function(data) {
                     if (data.onlypegawai.length > 0) {
                         $('#spvtitle').html('Kepala Supervisor');
+                        if (val==6) {
+                            $('#spvtitle').html('Supervisor');
+                        }
                         data.onlypegawai.forEach(element => {
                             if (element.user_id == r) {
                                 html += '<option value="' + element.user_id + '" selected>' + element.name + '</option>';
