@@ -27,7 +27,7 @@
                                 <td>{{$val->name}}</td>
                                 <td>
                                     @foreach($val->kantor as $key => $v)
-                                        <p class="badge badge-info">{{$v->nama}}</p>
+                                        <p class="badge badge-info">{{$v->pic}}</p>
                                     @endforeach
                                 </td>
                                 <td>{{$val->nama}}</td>
