@@ -229,7 +229,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" id="pegspv">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase" id="spvtitle">spv</label>
-                                        <select name="pegawaispv" id="pegawaispv" class="form-control">
+                                        <select name="pegawaispv[]" id="pegawaispv" class="form-control" multiple>
                                             {{-- <option value="">Pilih</option>
                                             @foreach($pegawai as $key => $value)
                                                 <option value="{{$value->user_id}}">{{$value->name}}</option>

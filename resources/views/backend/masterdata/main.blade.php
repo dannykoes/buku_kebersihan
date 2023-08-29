@@ -621,9 +621,13 @@ const autocomplete = new Autocomplete("marker", {
             $('#pegspv').attr('hidden',true);
             $('#pegspv').val(null);
         }
-        if (val >= 6) {
+        if (val == 6) {
             let x = $('#pegawaikantor').val();
             param = '&status=5&kantor='+x.join(',');
+        }
+        if (val == 7) {
+            let x = $('#pegawaikantor').val();
+            param = '&kantor='+x.join(',');
         }
             let r = $('#pegawaispv').val();
             let html = '';
@@ -637,7 +641,7 @@ const autocomplete = new Autocomplete("marker", {
                     if (data.onlypegawai.length > 0) {
                         $('#spvtitle').html('Kepala Supervisor');
                         if (val==7) {
-                            $('#spvtitle').html('Supervisor');
+                            $('#spvtitle').html('Kepala/Supervisor');
                         }
                         data.onlypegawai.forEach(element => {
                             if (element.user_id == r) {
@@ -686,7 +690,6 @@ const autocomplete = new Autocomplete("marker", {
             }
             $('#pegawaikantor').val(JSON.parse(data.kantor_id)?JSON.parse(data.kantor_id):data.kantor_id);
             $('#pegawaitype').val(data.jabatan);
-            $('#pegawaispv').val(data.spv);
             $('#pegawaipic').val(data.pic);
             $('#pegawaiuserid').val(data.user_id);
             $('#pegawaiaaa').val(data.user_id);
@@ -697,8 +700,11 @@ const autocomplete = new Autocomplete("marker", {
             $('#pegawaitglselesai').val(data.tgl_selesai);
             $('#pegawaikantor').change();
             $('#pegawaitype').change();
-            $('#pegawaispv').change();
             $('#pegawaipic').change();
+            setTimeout(() => {
+                $('#pegawaispv').val(JSON.parse(data.spv));
+                $('#pegawaispv').change();
+            }, 1000);
         }
     }
     function resetpegawai() {

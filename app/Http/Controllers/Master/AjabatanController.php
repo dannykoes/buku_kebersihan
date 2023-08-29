@@ -35,12 +35,12 @@ class AjabatanController extends Controller
     {
         session()->put('tab', 5);
         session()->put('subtab', 1);
-        // return $request->pegawaistatus[0];
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'pegawainip' => 'required',
             'pegawainama' => 'required',
             // 'pegawaitype' => 'required',
-            // 'pegawaispv' => 'required',
+            'pegawaispv' => 'required',
             // 'pegawaipic' => 'required',
             'pegawaitglbergabung' => 'required',
             'pegawaitglselesai' => 'required',
@@ -73,7 +73,7 @@ class AjabatanController extends Controller
             'nip' => $request->pegawainip,
             'nama' => $request->pegawainama,
             'jabatan' => $request->pegawaitype,
-            'spv' => $request->pegawaispv,
+            'spv' => json_encode($request->pegawaispv),
             'pic' => '$request->pegawaipic',
             'tgl_bergabung' => $request->pegawaitglbergabung,
             'tgl_selesai' => $request->pegawaitglselesai,

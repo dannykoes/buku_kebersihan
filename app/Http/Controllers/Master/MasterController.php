@@ -45,7 +45,7 @@ class MasterController extends Controller
                     if ($request->status) {
                         return $query->where('role', $request->status);
                     }
-                    return $query->where('role', 6);
+                    return $query->where('role', '>=', 5)->where('role', '<=', 6);
                 })
                 ->where(function ($query) use ($request) {
                     if ($request->kantor) {
@@ -129,10 +129,17 @@ class MasterController extends Controller
             ->get();
         foreach ($data['pegawai'] as $key => $value) {
             $value->kantor = [];
+            $value->supervisor = [];
             if ($value->kantor_id) {
                 $j = json_decode($value->kantor_id);
                 if (is_array($j)) {
                     $value->kantor = AKantorModel::whereIn('id', $j)->get();
+                }
+            }
+            if ($value->spv) {
+                $s = json_decode($value->spv);
+                if (is_array($s)) {
+                    $value->supervisor = User::whereIn('id', $s)->get();
                 }
             }
             if ($value->jabatan == 1) {
@@ -157,6 +164,7 @@ class MasterController extends Controller
                 $value->namajabatan = 'Pegawai';
             }
         }
+        // return $data;
         $data['onlypegawai'] = User::select(
             'users.id as user_id',
             'users.name',
