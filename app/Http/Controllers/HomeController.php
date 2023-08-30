@@ -19,10 +19,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -160,5 +160,12 @@ class HomeController extends Controller
             return Redirect::back()->with('Berhasil Tersimpan');
         }
         return Redirect::back()->with('Gagal Tersimpan');
+    }
+
+    function apicheck()
+    {
+        $data = [];
+        $data['data'] = 'oke';
+        return response()->json($data, 200);
     }
 }

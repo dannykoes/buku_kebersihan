@@ -4,6 +4,7 @@ use App\Http\Controllers\API\DashboardAPIController;
 use App\Http\Controllers\API\ProfileApiController;
 use App\Http\Controllers\API\TodoApiController;
 use App\Http\Controllers\API\UserApiController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,4 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/simpantodo', [TodoApiController::class, 'simpantodo']);
     Route::get('/datadashboard', [DashboardAPIController::class, 'dashboardcontroller']);
 });
+Route::get('/apicheck', [HomeController::class, 'apicheck']);
