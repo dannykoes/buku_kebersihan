@@ -39,4 +39,3 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/simpantodo', [TodoApiController::class, 'simpantodo']);
     Route::get('/datadashboard', [DashboardAPIController::class, 'dashboardcontroller']);
 });
-Route::get('/apicheck', [HomeController::class, 'apicheck']);
