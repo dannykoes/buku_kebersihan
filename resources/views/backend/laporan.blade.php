@@ -1,17 +1,172 @@
 @extends('layouts.template')
 @section('content')
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+  <div class="widget widget-chart-two">
+      <div class="widget-content">
+          <p class="text-center"><b>Harian</b></p>
+          <table id="harianjob" class="table table-hover" style="width:100%">
+              <thead>
+                  <tr>
+                      <th width="8%">No</th>
+                      <th>Petugas</th>
+                      <th>Kantor</th>
+                      <th>Lantai</th>
+                      <th>Ruangan</th>
+                      <th>Proses</th>
+                      <th>Foto</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($harian as $k => $h )
+                  <tr>
+                      <td>{{$k+1}}</td>
+                      <td>{{$h->name}}</td>
+                      <td>{{$h->nama}}</td>
+                      <td>{{$h->lantai}}</td>
+                      <td>{{$h->ruangan}}</td>
+                      <td>
+                          <span class="badge badge-warning">50%</span>
+                      </td>
+                      <td>
+                          <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                  viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                  <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                  <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                  <path
+                                      d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                  </path>
+                              </svg></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+  <div class="widget widget-chart-two">
+      <div class="widget-content">
+          <p class="text-center"><b>Mingguan</b></p>
+          <table id="mingguanjob" class="table table-hover" style="width:100%">
+              <thead>
+                  <tr>
+                      <th width="8%">No</th>
+                      <th>Petugas</th>
+                      <th>Kantor</th>
+                      <th>Lantai</th>
+                      <th>Ruangan</th>
+                      <th>Proses</th>
+                      <th>Foto</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($mingguan as $k => $h )
+                  <tr>
+                      <td>{{$k+1}}</td>
+                      <td>{{$h->name}}</td>
+                      <td>{{$h->nama}}</td>
+                      <td>{{$h->lantai}}</td>
+                      <td>{{$h->ruangan}}</td>
+                      <td>
+                          <span class="badge badge-warning">50%</span>
+                      </td>
+                      <td>
+                          <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                  viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                  <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                  <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                  <path
+                                      d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                  </path>
+                              </svg></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+  <div class="widget widget-chart-two">
+      <div class="widget-content">
+          <p class="text-center"><b>Bulanan</b></p>
+          <table id="bulananjob" class="table table-hover" style="width:100%">
+              <thead>
+                  <tr>
+                      <th width="8%">No</th>
+                      <th>Petugas</th>
+                      <th>Kantor</th>
+                      <th>Lantai</th>
+                      <th>Ruangan</th>
+                      <th>Proses</th>
+                      <th>Foto</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($bulanan as $k => $h )
+                  <tr>
+                      <td>{{$k+1}}</td>
+                      <td>{{$h->name}}</td>
+                      <td>{{$h->nama}}</td>
+                      <td>{{$h->lantai}}</td>
+                      <td>{{$h->ruangan}}</td>
+                      <td>
+                          <span class="badge badge-warning">50%</span>
+                      </td>
+                      <td>
+                          <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                  viewBox="0 0 24 24" style="fill:rgba(0,143,251,0.85);transform: ;msFilter:;">
+                                  <circle cx="7.499" cy="9.5" r="1.5"></circle>
+                                  <path d="m10.499 14-1.5-2-3 4h12l-4.5-6z"></path>
+                                  <path
+                                      d="M19.999 4h-16c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 14V6h16l.002 12H3.999z">
+                                  </path>
+                              </svg></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
     <div class="widget widget-chart-two">
         <div class="widget-content">
-            <div class="form-group p-2" style="max-width: 20%">
+          <div class="row layout-top-spacing ml-2">
+            <div class="form-group col-md-3">
                 <label for="">Kantor</label>
                 <select name="selectkantor" id="selectkantor" class="form-control">
-                    @foreach ($kantor as $k)
-                    <option value="{{$k->id}}">{{$k->nama}}</option>
+                  <option value="">Pilih</option>
+                  @foreach ($kantor as $k)
+                  <option value="{{$k->id}}">{{$k->pic}}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="">Gedung</label>
+                <select name="selectgedung" id="selectgedung" class="form-control">
+                  <option value="">Pilih</option>
+                    @foreach ($gedung as $k)
+                    <option value="{{$k->id}}">{{$k->gedung}}</option>
                     @endforeach
                 </select>
             </div>
+              <div class="form-group col-md-3">
+                <label for="">Lantai</label>
+                <select name="selectlantai" id="selectlantai" class="form-control">
+                  <option value="">Pilih</option>
+                  @foreach ($lantai as $k)
+                  <option value="{{$k->id}}">{{$k->lantai}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
             <p class="text-center"><b>Laporan Kebersihan per Kantor</b></p>
+            <textarea id="chartcategory" hidden>{{$chartcate}}</textarea>
+            <textarea id="chartdata" hidden>{{$chartdata}}</textarea>
             <div class="" id="chart"></div>
         </div>
     </div>
@@ -152,10 +307,15 @@
 @section('custom-js')
 <script>
     createDataTable('#bannerlap');
+    createDataTable('#harianjob');
+    createDataTable('#mingguanjob');
+    createDataTable('#bulananjob');
+    let cate1 = $('#chartcategory').val();
+    let data1 = $('#chartdata').val();
     var options = {
           series: [{
-          name: 'Inflation',
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+          name: 'Kebersihan',
+          data: JSON.parse(data1),
         }],
           chart: {
           height: 350,
@@ -180,9 +340,8 @@
             colors: ["#304758"]
           }
         },
-        
         xaxis: {
-          categories: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+          categories: JSON.parse(cate1),
           position: 'bottom',
           axisBorder: {
             show: false
@@ -235,79 +394,79 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
-        var options2 = {
-          series: [{
-          name: 'Servings',
-          data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35]
-        }],
-          annotations: {
-        //   points: [{
-        //     x: 'Bananas',
-        //     seriesIndex: 0,
-        //     label: {
-        //       borderColor: '#775DD0',
-        //       offsetY: 0,
-        //       style: {
-        //         color: '#fff',
-        //         background: '#775DD0',
-        //       },
-        //       text: 'Bananas are good',
-        //     }
-        //   }]
-        },
-        chart: {
-          height: 350,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            columnWidth: '50%',
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          width: 2
-        },
+        // var options2 = {
+        //   series: [{
+        //   name: 'Servings',
+        //   data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35]
+        // }],
+        //   annotations: {
+        // //   points: [{
+        // //     x: 'Bananas',
+        // //     seriesIndex: 0,
+        // //     label: {
+        // //       borderColor: '#775DD0',
+        // //       offsetY: 0,
+        // //       style: {
+        // //         color: '#fff',
+        // //         background: '#775DD0',
+        // //       },
+        // //       text: 'Bananas are good',
+        // //     }
+        // //   }]
+        // },
+        // chart: {
+        //   height: 350,
+        //   type: 'bar',
+        // },
+        // plotOptions: {
+        //   bar: {
+        //     borderRadius: 10,
+        //     columnWidth: '50%',
+        //   }
+        // },
+        // dataLabels: {
+        //   enabled: false
+        // },
+        // stroke: {
+        //   width: 2
+        // },
         
-        grid: {
-          row: {
-            colors: ['#fff', '#f2f2f2']
-          }
-        },
-        xaxis: {
-          labels: {
-            rotate: -45
-          },
-          categories: ['Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
-            'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas'
-          ],
-          tickPlacement: 'on'
-        },
-        yaxis: {
-          title: {
-            text: 'Servings',
-          },
-        },
-        fill: {
-          type: 'gradient',
-          gradient: {
-            shade: 'light',
-            type: "horizontal",
-            shadeIntensity: 0.25,
-            gradientToColors: undefined,
-            inverseColors: true,
-            opacityFrom: 0.85,
-            opacityTo: 0.85,
-            stops: [50, 0, 100]
-          },
-        }
-        };
+        // grid: {
+        //   row: {
+        //     colors: ['#fff', '#f2f2f2']
+        //   }
+        // },
+        // xaxis: {
+        //   labels: {
+        //     rotate: -45
+        //   },
+        //   categories: ['Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
+        //     'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas'
+        //   ],
+        //   tickPlacement: 'on'
+        // },
+        // yaxis: {
+        //   title: {
+        //     text: 'Servings',
+        //   },
+        // },
+        // fill: {
+        //   type: 'gradient',
+        //   gradient: {
+        //     shade: 'light',
+        //     type: "horizontal",
+        //     shadeIntensity: 0.25,
+        //     gradientToColors: undefined,
+        //     inverseColors: true,
+        //     opacityFrom: 0.85,
+        //     opacityTo: 0.85,
+        //     stops: [50, 0, 100]
+        //   },
+        // }
+        // };
 
-        var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
-        chart2.render();
+        // var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+        // chart2.render();
 </script>
 
 @endsection

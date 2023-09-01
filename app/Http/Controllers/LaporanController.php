@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AGedungModel;
+use App\Models\AKantorModel;
+use App\Models\ALantaiModel;
+use App\Models\ARuanganModel;
 use App\Models\Master\Kantor;
 use Illuminate\Http\Request;
 
@@ -13,7 +17,22 @@ class LaporanController extends Controller
     public function index()
     {
         $data = [];
-        $data['kantor'] = Kantor::get();
+        $data['kantor'] = AKantorModel::get();
+        $data['gedung'] = AGedungModel::get();
+        $data['lantai'] = ALantaiModel::get();
+        $data['ruangan'] = ARuanganModel::get();
+        $data['harian'] = [];
+        $data['mingguan'] = [];
+        $data['bulanan'] = [];
+        $chartcate = [];
+        $chartdata = [];
+        foreach ($data['ruangan'] as $key => $v) {
+            array_push($chartcate, $v->ruangan);
+            array_push($chartdata, 10);
+        }
+        $data['chartcate'] = json_encode($chartcate);
+        $data['chartdata'] = json_encode($chartdata);
+        // return $data;
         return view('backend.laporan', $data);
     }
 

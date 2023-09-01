@@ -49,22 +49,16 @@ class HomeController extends Controller
             $v->objects = [];
             $v->photos = [];
             $v->job = [];
+            $v->harian = [];
             if ($v->tugas) {
                 $v->job = json_decode($v->tugas);
-                // $v->objects = AObjectModel::select()
-                //     ->where('kantor_id', $v->job['kantor_id'])
-                //     ->where('gedung_id', $v->job['gedung_id'])
-                //     ->where('ruangan_id', $v->job['ruangan_id'])
-                //     ->where('kategori', $v->job['kategori'])
-                //     ->get();
+            }
+            foreach ($v->job as $key => $value) {
+                # code...
             }
             if ($v->foto) {
                 $v->photos = json_decode($v->foto);
             }
-            // if ($v->object) {
-            //     // $v->objects = APekerjaanModel::whereIn('id', json_decode($v->object))->get();
-            //     // $v->objects = json_decode($v->object);
-            // }
         }
         // return $data;
         $data['harian'] = Tugas::select(

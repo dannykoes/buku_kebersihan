@@ -637,7 +637,7 @@
     //     no++;
     });
     $('#detailharian').html(a);
-a='';
+        a='';
         data.job.Mingguan.forEach(e => {
             let komentar = '';
             let select1 = '';
@@ -683,7 +683,7 @@ a='';
     //     no++;
     });
     $('#detailmingguan').html(a);
-a='';
+        a='';
         data.job.Bulanan.forEach(e => {
             let komentar = '';
             let select1 = '';
