@@ -190,8 +190,12 @@ class MasterController extends Controller
             ->get();
         foreach ($data['job'] as $key => $v) {
             $v->jobs = [];
+            $v->lantais = [];
             if ($v->objek_id) {
                 $v->jobs = AGedungModel::whereIn('id', json_decode($v->objek_id))->get();
+            }
+            if ($v->lantai_id) {
+                $v->lantais = ALantaiModel::whereIn('id', json_decode($v->lantai_id))->get();
             }
         }
         $data['pekerjaan'] = APekerjaanModel::get();

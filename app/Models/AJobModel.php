@@ -13,5 +13,6 @@ class AJobModel extends Model
         'user_id',
         'objek_id',
         'kantor_id',
+        'lantai_id',
     ];
 }

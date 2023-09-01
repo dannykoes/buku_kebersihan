@@ -734,24 +734,37 @@ const autocomplete = new Autocomplete("marker", {
         placeholder: 'Pilih',
         dropdownParent: $('#modaljob'),
     });
+    $('#joblantai').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaljob'),
+    });
     function addjob(data) {
         resetjob();
         openmodal('#modaljob');
         if (data) {
-            
+            console.log(data.lantai_id);
             $('#jobid').val(data.id);
+            $('#joblantaiid').val(data.lantai_id);
             $('#jobkantorid').val(data.kantor_id);
             $('#jobobjekid').val(data.objek_id);
             $('#jobuser').val(data.user_id);
             $('#jobuser').change();
-            $('#jobobjek').val(JSON.parse(data.objek_id));
-            $('#jobobjek').change();
             $('#jobkantor').val(data.kantor_id);
             $('#jobkantor').change();
+            setTimeout(() => {
+                $('#jobobjek').val(JSON.parse(data.objek_id));
+                $('#jobobjek').change();
+            }, 1000);
+            setTimeout(() => {
+                $('#joblantai').val(JSON.parse(data.lantai_id));
+                $('#joblantai').change();
+            }, 2000);
         }
     }
     function resetjob() {
         $('#jobid').val(null);
+        $('#joblantaiid').val(null);
         $('#jobkantorid').val(null);
         $('#jobobjekid').val(null);
         $('#jobuser').val(null);

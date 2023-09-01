@@ -13,6 +13,7 @@
                                 <th>Nama Pegawai</th>
                                 <th>Kantor</th>
                                 <th>Gedung</th>
+                                <th>Lantai</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -26,6 +27,13 @@
                                     @if(count($val->jobs) > 0)
                                         @foreach($val->jobs as $key => $value)
                                             <span class="badge badge-info">{{$value->gedung}}</span>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(count($val->lantais) > 0)
+                                        @foreach($val->lantais as $key => $value)
+                                            <span class="badge badge-info">{{$value->lantai}}</span>
                                         @endforeach
                                     @endif
                                 </td>
@@ -64,6 +72,7 @@
                             <input type="text" name="jobid" id="jobid" hidden>
                             <input type="text" name="jobkantorid" id="jobkantorid" hidden>
                             <textarea name="jobobjekid" id="jobobjekid" hidden></textarea>
+                            <textarea name="joblantaiid" id="joblantaiid" hidden></textarea>
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
@@ -96,7 +105,7 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">gedung</label>
-                                        <select name="jobobjek[]" id="jobobjek" class="form-control" multiple>
+                                        <select name="jobobjek[]" id="jobobjek" class="form-control"  onchange="changegedung('#joblantai','#jobobjek','#jobkantor','#joblantaiid')">
                                             {{-- <option value="">Pilih</option>
                                             @foreach($gedung as $key => $value)
                                                 <option value="{{$value->id}}">{{$value->gedung}}</option>
@@ -107,8 +116,22 @@
                                         <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group m-0">
+                                        <label for="" class="text-uppercase">lantai</label>
+                                        <select name="joblantai[]" id="joblantai" class="form-control">
+                                            {{-- <option value="">Pilih</option>
+                                            @foreach($gedung as $key => $value)
+                                                <option value="{{$value->id}}">{{$value->gedung}}</option>
+                                            @endforeach --}}
+                                        </select>
+                                    </div>
+                                    @error('joblantai')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
                         </form>
                     </div>
                 </div>

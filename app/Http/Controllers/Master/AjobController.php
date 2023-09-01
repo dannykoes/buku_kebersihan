@@ -37,6 +37,7 @@ class AjobController extends Controller
             'jobuser' => 'required',
             'jobobjek' => 'required',
             'jobkantor' => 'required',
+            'joblantai' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -49,6 +50,7 @@ class AjobController extends Controller
             'user_id' => $request->jobuser,
             'kantor_id' => $request->jobkantor,
             'objek_id' => json_encode($request->jobobjek),
+            'lantai_id' => json_encode($request->joblantai),
             // 'objek_id' => json_encode([]),
         ]);
         if ($k) {
