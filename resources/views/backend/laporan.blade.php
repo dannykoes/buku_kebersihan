@@ -138,7 +138,7 @@
           <div class="row layout-top-spacing ml-2">
             <div class="form-group col-md-3">
                 <label for="">Kantor</label>
-                <select name="selectkantor" id="selectkantor" class="form-control">
+                <select name="selectkantor" id="selectkantor" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
                   @foreach ($kantor as $k)
                   <option value="{{$k->id}}">{{$k->pic}}</option>
@@ -147,7 +147,7 @@
               </div>
               <div class="form-group col-md-3">
                 <label for="">Gedung</label>
-                <select name="selectgedung" id="selectgedung" class="form-control">
+                <select name="selectgedung" id="selectgedung" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
                     @foreach ($gedung as $k)
                     <option value="{{$k->id}}">{{$k->gedung}}</option>
@@ -156,7 +156,7 @@
             </div>
               <div class="form-group col-md-3">
                 <label for="">Lantai</label>
-                <select name="selectlantai" id="selectlantai" class="form-control">
+                <select name="selectlantai" id="selectlantai" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
                   @foreach ($lantai as $k)
                   <option value="{{$k->id}}">{{$k->lantai}}</option>
@@ -467,6 +467,33 @@
 
         // var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
         // chart2.render();
+
+        function setfilter(){
+          let kantor = $('#selectkantor').val();
+          let gedung = $('#selectgedung').val();
+          let lantai = $('#selectlantai').val();
+          if (!kantor || !gedung || !lantai) {
+            return false;
+          }
+          let param = '&kantor='+kantor+'&gedung='+gedung+'&lantai='+lantai;
+          $.ajax({
+                type: 'GET',
+                url: '/laporan',
+                data: '_token = <?php echo csrf_token() ?>'+param,
+                success: function(data) {
+                  // cate1 = data.chartcate;
+                  // data1 = data.chartdata;
+                  chart.updateSeries([{
+                    data: JSON.parse(data.chartdata),
+                  }]);
+                  chart.updateOptions({
+                    xaxis:{
+                      categories: JSON.parse(data.chartcate)
+                    }
+                  });
+                }
+              });
+        }
 </script>
 
 @endsection

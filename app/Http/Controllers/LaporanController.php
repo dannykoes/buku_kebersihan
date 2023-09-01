@@ -14,8 +14,25 @@ class LaporanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            // return $request->all();
+            $data['ruangan'] = ARuanganModel::select()
+                ->where('kantor_id', $request->kantor)
+                ->where('gedung_id', $request->gedung)
+                ->where('lantai_id', $request->lantai)
+                ->get();
+            $chartcate = [];
+            $chartdata = [];
+            foreach ($data['ruangan'] as $key => $v) {
+                array_push($chartcate, $v->ruangan);
+                array_push($chartdata, 10);
+            }
+            $data['chartcate'] = json_encode($chartcate);
+            $data['chartdata'] = json_encode($chartdata);
+            return $data;
+        }
         $data = [];
         $data['kantor'] = AKantorModel::get();
         $data['gedung'] = AGedungModel::get();
@@ -28,7 +45,7 @@ class LaporanController extends Controller
         $chartdata = [];
         foreach ($data['ruangan'] as $key => $v) {
             array_push($chartcate, $v->ruangan);
-            array_push($chartdata, 10);
+            array_push($chartdata, $key);
         }
         $data['chartcate'] = json_encode($chartcate);
         $data['chartdata'] = json_encode($chartdata);
