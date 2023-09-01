@@ -4,7 +4,7 @@
     <div class="widget widget-chart-two">
         <div class="widget-content">
           <div class="row layout-top-spacing ml-2">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
                 <label for="">Kantor</label>
                 <select name="selectkantor" id="selectkantor" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
@@ -13,7 +13,7 @@
                     @endforeach
                 </select>
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-2">
                 <label for="">Gedung</label>
                 <select name="selectgedung" id="selectgedung" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
@@ -21,8 +21,8 @@
                     <option value="{{$k->id}}">{{$k->gedung}}</option>
                     @endforeach
                 </select>
-            </div>
-              <div class="form-group col-md-3">
+              </div>
+              <div class="form-group col-md-2">
                 <label for="">Lantai</label>
                 <select name="selectlantai" id="selectlantai" class="form-control" onchange="setfilter()">
                   <option value="">Pilih</option>
@@ -30,6 +30,25 @@
                   <option value="{{$k->id}}">{{$k->lantai}}</option>
                   @endforeach
                 </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="">Type</label>
+                <select name="selecttype" id="selecttype" class="form-control" onchange="setfilter()">
+                  <option value="">Pilih</option>
+                  <option value="1">Harian</option>
+                  <option value="2">Mingguan</option>
+                  <option value="3">Bulanan</option>
+                  {{-- @foreach ($type as $k)
+                  <option value="{{$k->id}}">{{$k->type}}</option>
+                  @endforeach --}}
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="">Tanggal</label>
+                <div class="d-flex">
+                  <input type="date" name="selecttglawal" id="selecttglawal" class="form-control">
+                  <input type="date" name="selecttglakhir" id="selecttglakhir" class="form-control">
+                </div>
               </div>
             </div>
             <p class="text-center"><b>Laporan Kebersihan per Kantor</b></p>
