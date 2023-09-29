@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // 
         Schema::create('a_outdoor_models', function (Blueprint $table) {
             $table->id();
             $table->integer('kantor_id');
