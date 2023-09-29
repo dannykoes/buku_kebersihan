@@ -73,6 +73,8 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::resource('ajob', App\Http\Controllers\Master\AjobController::class);
     Route::resource('atodo', App\Http\Controllers\Master\AtodoController::class);
     Route::resource('arole', App\Http\Controllers\Master\AroleController::class);
+    Route::resource('atoilet', App\Http\Controllers\Master\AToiletController::class);
+    Route::resource('aoutdoor', App\Http\Controllers\Master\AOutdoorController::class);
 });
 
 Route::middleware('spv')->group(function () {

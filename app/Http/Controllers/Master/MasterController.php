@@ -9,9 +9,11 @@ use App\Models\AKantorModel;
 use App\Models\ALantaiModel;
 use App\Models\ALokasiModel;
 use App\Models\AObjectModel;
+use App\Models\AOutdoorModel;
 use App\Models\APekerjaanModel;
 use App\Models\ARoleModel;
 use App\Models\ARuanganModel;
+use App\Models\AToiletModel;
 use App\Models\Master\ClientModel;
 use App\Models\Master\Kantor;
 use App\Models\Master\Lantai;
@@ -87,6 +89,28 @@ class MasterController extends Controller
             ->join('a_kantor_models', 'a_kantor_models.id', 'a_ruangan_models.kantor_id')
             ->join('a_gedung_models', 'a_gedung_models.id', 'a_ruangan_models.gedung_id')
             ->join('a_lantai_models', 'a_lantai_models.id', 'a_ruangan_models.lantai_id')
+            ->get();
+        $data['toilet'] = AToiletModel::select(
+            'a_toilet_models.*',
+            'a_kantor_models.nama',
+            'a_kantor_models.pic',
+            'a_gedung_models.gedung',
+            'a_lantai_models.lantai',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_toilet_models.kantor_id')
+            ->join('a_gedung_models', 'a_gedung_models.id', 'a_toilet_models.gedung_id')
+            ->join('a_lantai_models', 'a_lantai_models.id', 'a_toilet_models.lantai_id')
+            ->get();
+        $data['outdoor'] = AOutdoorModel::select(
+            'a_outdoor_models.*',
+            'a_kantor_models.nama',
+            'a_kantor_models.pic',
+            'a_gedung_models.gedung',
+            'a_lantai_models.lantai',
+        )
+            ->join('a_kantor_models', 'a_kantor_models.id', 'a_outdoor_models.kantor_id')
+            ->join('a_gedung_models', 'a_gedung_models.id', 'a_outdoor_models.gedung_id')
+            ->join('a_lantai_models', 'a_lantai_models.id', 'a_outdoor_models.lantai_id')
             ->get();
         $data['lokasi'] = ALokasiModel::select()
             ->get();

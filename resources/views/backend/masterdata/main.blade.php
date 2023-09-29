@@ -3,59 +3,92 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
     <ul class="nav nav-tabs  mb-3 mt-3" id="simpletab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==0) active @endif" id="kantor-tab" data-toggle="tab" href="#kantor" role="tab" aria-controls="kantor" aria-selected="true">Kantor</a>
+            <a class="nav-link @if (Session::get('tab')==0) active @endif" id="kantor-tab" data-toggle="tab"
+                href="#kantor" role="tab" aria-controls="kantor" aria-selected="true">Kantor</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==1) active @endif" id="gedung-tab" data-toggle="tab" href="#gedung" role="tab" aria-controls="gedung" aria-selected="true">Gedung</a>
+            <a class="nav-link @if (Session::get('tab')==1) active @endif" id="gedung-tab" data-toggle="tab"
+                href="#gedung" role="tab" aria-controls="gedung" aria-selected="true">Gedung</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==2) active @endif" id="lantai-tab" data-toggle="tab" href="#lantai" role="tab" aria-controls="lantai" aria-selected="false">Lantai</a>
+            <a class="nav-link @if (Session::get('tab')==2) active @endif" id="lantai-tab" data-toggle="tab"
+                href="#lantai" role="tab" aria-controls="lantai" aria-selected="false">Lantai</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==3) active @endif" id="ruangan-tab" data-toggle="tab" href="#ruangan" role="tab" aria-controls="ruangan" aria-selected="false">Ruangan</a>
+            <a class="nav-link @if (Session::get('tab')==3) active @endif" id="ruangan-tab" data-toggle="tab"
+                href="#ruangan" role="tab" aria-controls="ruangan" aria-selected="false">Ruangan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==7) active @endif" id="lokasi-tab" data-toggle="tab" href="#lokasi" role="tab" aria-controls="lokasi" aria-selected="false" onclick="triggerresize()">Lokasi</a>
+            {{-- <a class="nav-link @if (Session::get('tab')==7) active @endif" id="lokasi-tab" data-toggle="tab"
+                href="#lokasi" role="tab" aria-controls="lokasi" aria-selected="false"
+                onclick="triggerresize()">Lokasi</a> --}}
+            <a class="nav-link @if (Session::get('tab')==9) active @endif" id="toilet-tab" data-toggle="tab"
+                href="#toilet" role="tab" aria-controls="toilet" aria-selected="false">Toilet</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==8) active @endif" id="pekerjaan-tab" data-toggle="tab" href="#pekerjaan" role="tab" aria-controls="pekerjaan" aria-selected="false">Pekerjaan</a>
+            <a class="nav-link @if (Session::get('tab')==10) active @endif" id="outdoor-tab" data-toggle="tab"
+                href="#outdoor" role="tab" aria-controls="outdoor" aria-selected="false">Outdoor</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab" href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Pekerjaan</a>
+            <a class="nav-link @if (Session::get('tab')==8) active @endif" id="pekerjaan-tab" data-toggle="tab"
+                href="#pekerjaan" role="tab" aria-controls="pekerjaan" aria-selected="false">Pekerjaan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==5) active @endif " id="jabatan-tab" data-toggle="tab" href="#jabatan" role="tab" aria-controls="jabatan" aria-selected="false">Jabatan</a>
+            <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab"
+                href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Pekerjaan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Session::get('tab')==6) active @endif " id="pembagian-job" data-toggle="tab" href="#pgjb" role="tab" aria-controls="pgjb" aria-selected="false">Job</a>
+            <a class="nav-link @if (Session::get('tab')==5) active @endif " id="jabatan-tab" data-toggle="tab"
+                href="#jabatan" role="tab" aria-controls="jabatan" aria-selected="false">Jabatan</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @if (Session::get('tab')==6) active @endif " id="pembagian-job" data-toggle="tab"
+                href="#pgjb" role="tab" aria-controls="pgjb" aria-selected="false">Job</a>
         </li>
     </ul>
     <div class="tab-content" id="simpletabContent">
-        <div class="tab-pane fade @if (Session::get('tab')==0) show active @endif " id="kantor" role="tabpanel" aria-labelledby="kantor-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==0) show active @endif " id="kantor" role="tabpanel"
+            aria-labelledby="kantor-tab">
             @include('backend.masterdata.kantor')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==1) show active @endif " id="gedung" role="tabpanel" aria-labelledby="gedung-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==1) show active @endif " id="gedung" role="tabpanel"
+            aria-labelledby="gedung-tab">
             @include('backend.masterdata.gedung')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==2) show active @endif " id="lantai" role="tabpanel" aria-labelledby="lantai-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==2) show active @endif " id="lantai" role="tabpanel"
+            aria-labelledby="lantai-tab">
             @include('backend.masterdata.lantai')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==3) show active @endif " id="ruangan" role="tabpanel" aria-labelledby="ruangan-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==3) show active @endif " id="ruangan" role="tabpanel"
+            aria-labelledby="ruangan-tab">
             @include('backend.masterdata.ruangan')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==7) show active @endif " id="lokasi" role="tabpanel" aria-labelledby="lokasi-tab">
-            @include('backend.masterdata.lokasi')
+        <div class="tab-pane fade @if (Session::get('tab')==9) show active @endif " id="toilet" role="tabpanel"
+            aria-labelledby="toilet-tab">
+            @include('backend.masterdata.toilet')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==8) show active @endif " id="pekerjaan" role="tabpanel" aria-labelledby="pekerjaan-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==10) show active @endif " id="outdoor" role="tabpanel"
+            aria-labelledby="outdoor-tab">
+            @include('backend.masterdata.outdoor')
+        </div>
+        {{-- <div class="tab-pane fade @if (Session::get('tab')==7) show active @endif " id="lokasi" role="tabpanel"
+            aria-labelledby="lokasi-tab">
+            @include('backend.masterdata.lokasi')
+        </div> --}}
+        <div class="tab-pane fade @if (Session::get('tab')==8) show active @endif " id="pekerjaan" role="tabpanel"
+            aria-labelledby="pekerjaan-tab">
             @include('backend.masterdata.pekerjaan')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==4) show active @endif " id="objek" role="tabpanel" aria-labelledby="objek-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==4) show active @endif " id="objek" role="tabpanel"
+            aria-labelledby="objek-tab">
             @include('backend.masterdata.objek')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==5) show active @endif " id="jabatan" role="tabpanel" aria-labelledby="jabatan-tab">
+        <div class="tab-pane fade @if (Session::get('tab')==5) show active @endif " id="jabatan" role="tabpanel"
+            aria-labelledby="jabatan-tab">
             @include('backend.masterdata.jabatan')
         </div>
-        <div class="tab-pane fade @if (Session::get('tab')==6) show active @endif " id="pgjb" role="tabpanel" aria-labelledby="pembagian-job">
+        <div class="tab-pane fade @if (Session::get('tab')==6) show active @endif " id="pgjb" role="tabpanel"
+            aria-labelledby="pembagian-job">
             @include('backend.masterdata.job')
         </div>
 
@@ -298,6 +331,92 @@
         $('#ruangannama').val(null);
         $('#ruangangedung').val(null);
         $('#ruangankantorid').val(null);
+    }
+    
+    createDataTable('#mastertoilet');
+    $('#toiletkantorid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaltoilet')
+    });
+    $('#toiletgedungid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaltoilet')
+    });
+    $('#toiletlantaiid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaltoilet')
+    });
+    function addtoilet(data) {
+        resettoilet();
+        openmodal('#modaltoilet');
+        if (data) {
+            $('#toiletkantor').val(data.kantor_id);
+            $('#toiletgedung').val(data.gedung_id);
+            $('#toiletlantai').val(data.lantai_id);
+            $('#toiletid').val(data.id);
+            $('#toiletnama').val(data.toilet);
+            $('#toiletgedung').val(data.gedung_id);
+            $('#toiletkantorid').val(data.kantor_id);
+            $('#toiletkantorid').change();
+            setTimeout(() => {
+                $('#toiletgedungid').change();
+            }, 1000);
+        }
+    }
+    function resettoilet() {
+        $('#toiletkantor').val(null);
+        $('#toiletgedung').val(null);
+        $('#toiletlantai').val(null);
+        $('#toiletid').val(null);
+        $('#toiletnama').val(null);
+        $('#toiletgedung').val(null);
+        $('#toiletkantorid').val(null);
+    }
+
+    createDataTable('#masteroutdoor');
+    $('#outdoorkantorid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaloutdoor')
+    });
+    $('#outdoorgedungid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaloutdoor')
+    });
+    $('#outdoorlantaiid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modaloutdoor')
+    });
+    function addoutdoor(data) {
+        resetoutdoor();
+        openmodal('#modaloutdoor');
+        if (data) {
+            $('#outdoorkantor').val(data.kantor_id);
+            $('#outdoorgedung').val(data.gedung_id);
+            $('#outdoorlantai').val(data.lantai_id);
+            $('#outdoorid').val(data.id);
+            $('#outdoornama').val(data.outdoor);
+            $('#outdoorgedung').val(data.gedung_id);
+            $('#outdoorkantorid').val(data.kantor_id);
+            $('#outdoorkantorid').change();
+            setTimeout(() => {
+                $('#outdoorgedungid').change();
+            }, 1000);
+        }
+    }
+    function resetoutdoor() {
+        $('#outdoorkantor').val(null);
+        $('#outdoorgedung').val(null);
+        $('#outdoorlantai').val(null);
+        $('#outdoorid').val(null);
+        $('#outdoornama').val(null);
+        $('#outdoorgedung').val(null);
+        $('#outdoorkantorid').val(null);
     }
     
     $('#lokasikantorid').select2({
@@ -795,6 +914,6 @@ const autocomplete = new Autocomplete("marker", {
         $('#pekerjaanid').val(null);
         $('#pekerjaannama').val(null);
     }
-    </script>
+</script>
 
 @endsection
