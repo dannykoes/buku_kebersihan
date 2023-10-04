@@ -419,222 +419,222 @@
         $('#outdoorkantorid').val(null);
     }
     
-    $('#lokasikantorid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        // dropdownParent: $('#modalruangan')
-    });
-    $('#lokasigedungid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        // dropdownParent: $('#modalruangan')
-    });
+//     $('#lokasikantorid').select2({
+//         allowClear:true,
+//         placeholder: 'Pilih',
+//         // dropdownParent: $('#modalruangan')
+//     });
+//     $('#lokasigedungid').select2({
+//         allowClear:true,
+//         placeholder: 'Pilih',
+//         // dropdownParent: $('#modalruangan')
+//     });
 
-    let datalokasi = @json($lokasi);
-    var map = L.map('map').setView([ -7.000433527639624, 110.33436565215736], 13);
-    let marker = null;
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    datalokasi.forEach(element => {
-        marker = L.marker([element.lat, element.long]).addTo(map)
-            .bindPopup(element.nama)
-            .openPopup().on("click", function (event) {
-                $('#lokasiid').val(element.id);
-                $('#lokasigedung').val(element.gedung_id);
-                $('#lokasikantorid').val(element.kantor_id);
-                $('#lokasikantorid').change();
-                setTimeout(() => {
-                    $('#lokasilat').val(element.lat);
-                    $('#lokasilong').val(element.long);
-                    $('#lokasinama').val(element.nama);
-                    $('#btndeletelokasi').attr('onclick','deletedata("alokasi/'+element.id+'")');
-                }, 1000);
-            });
-    });
-    map.on('click', function(e) {        
-        var popLocation = e.latlng;
-        if (popLocation) {
-            $('#lokasiid').val(null);
-            // $('#lokasikantorid').val(null);
-            // $('#lokasigedungid').val(null);
-            // $('#lokasinama').val(null);
-            $('#lokasilat').val(e.latlng.lat);
-            $('#lokasilong').val(e.latlng.lng);
-            $('#btndeletelokasi').attr('onclick','deletedata()');
-        }
-        var popup = L.popup()
-            .setLatLng(popLocation)
-            .setContent('Pilih Lokasi')
-            .openOn(map);        
-    });
-    // --------------------------------------------------------------
-// create seearch button
+//     let datalokasi = @json($lokasi);
+//     var map = L.map('map').setView([ -7.000433527639624, 110.33436565215736], 13);
+//     let marker = null;
+//     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//         }).addTo(map);
+//     datalokasi.forEach(element => {
+//         marker = L.marker([element.lat, element.long]).addTo(map)
+//             .bindPopup(element.nama)
+//             .openPopup().on("click", function (event) {
+//                 $('#lokasiid').val(element.id);
+//                 $('#lokasigedung').val(element.gedung_id);
+//                 $('#lokasikantorid').val(element.kantor_id);
+//                 $('#lokasikantorid').change();
+//                 setTimeout(() => {
+//                     $('#lokasilat').val(element.lat);
+//                     $('#lokasilong').val(element.long);
+//                     $('#lokasinama').val(element.nama);
+//                     $('#btndeletelokasi').attr('onclick','deletedata("alokasi/'+element.id+'")');
+//                 }, 1000);
+//             });
+//     });
+//     map.on('click', function(e) {        
+//         var popLocation = e.latlng;
+//         if (popLocation) {
+//             $('#lokasiid').val(null);
+//             // $('#lokasikantorid').val(null);
+//             // $('#lokasigedungid').val(null);
+//             // $('#lokasinama').val(null);
+//             $('#lokasilat').val(e.latlng.lat);
+//             $('#lokasilong').val(e.latlng.lng);
+//             $('#btndeletelokasi').attr('onclick','deletedata()');
+//         }
+//         var popup = L.popup()
+//             .setLatLng(popLocation)
+//             .setContent('Pilih Lokasi')
+//             .openOn(map);        
+//     });
+//     // --------------------------------------------------------------
+// // create seearch button
 
-// add "random" button
-// const buttonTemplate = `<div class="leaflet-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg></div><div class="auto-search-wrapper max-height"><input type="text" id="marker" autocomplete="off"  aria-describedby="instruction" aria-label="Search ..." /><div id="instruction" class="hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</div></div>`;
-const buttonTemplate = `<div class="leaflet-search"></div><div class="auto-search-wrapper max-height"><input type="text" id="marker" autocomplete="off"  aria-describedby="instruction" class="form-control" aria-label="Search ..." /><div id="instruction" class="hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</div></div>`;
+// // add "random" button
+// // const buttonTemplate = `<div class="leaflet-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg></div><div class="auto-search-wrapper max-height"><input type="text" id="marker" autocomplete="off"  aria-describedby="instruction" aria-label="Search ..." /><div id="instruction" class="hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</div></div>`;
+// const buttonTemplate = `<div class="leaflet-search"></div><div class="auto-search-wrapper max-height"><input type="text" id="marker" autocomplete="off"  aria-describedby="instruction" class="form-control" aria-label="Search ..." /><div id="instruction" class="hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</div></div>`;
 
-// create custom button
-const customControl = L.Control.extend({
-  // button position
-  options: {
-    position: "topleft",
-    className: "leaflet-autocomplete",
-  },
+// // create custom button
+// const customControl = L.Control.extend({
+//   // button position
+//   options: {
+//     position: "topleft",
+//     className: "leaflet-autocomplete",
+//   },
 
-  // method
-  onAdd: function () {
-    return this._initialLayout();
-  },
+//   // method
+//   onAdd: function () {
+//     return this._initialLayout();
+//   },
 
-  _initialLayout: function () {
-    // create button
-    const container = L.DomUtil.create(
-      "div",
-      "leaflet-bar " + this.options.className
-    );
+//   _initialLayout: function () {
+//     // create button
+//     const container = L.DomUtil.create(
+//       "div",
+//       "leaflet-bar " + this.options.className
+//     );
 
-    L.DomEvent.disableClickPropagation(container);
+//     L.DomEvent.disableClickPropagation(container);
 
-    container.innerHTML = buttonTemplate;
+//     container.innerHTML = buttonTemplate;
 
-    return container;
-  },
-});
-
-// adding new button to map controll
-map.addControl(new customControl());
-
-// --------------------------------------------------------------
-
-// input element
-const root = document.getElementById("marker");
-
-function addClassToParent() {
-  const searchBtn = document.querySelector(".leaflet-search");
-  searchBtn.addEventListener("click", (e) => {
-    // toggle class
-    e.target
-      .closest(".leaflet-autocomplete")
-      .classList.toggle("active-autocomplete");
-
-    // add placeholder
-    root.placeholder = "Search ...";
-
-    // focus on input
-    root.focus();
-
-    // use destroy method
-    autocomplete.destroy();
-  });
-}
-
-addClassToParent();
-
-// function clear input
-// map.on("click", () => {
-//   document
-//     .querySelector(".leaflet-autocomplete")
-//     .classList.remove("active-autocomplete");
-
-//   clickOnClearButton();
+//     return container;
+//   },
 // });
 
-// autocomplete section
-// more config find in https://github.com/tomickigrzegorz/autocomplete
-// --------------------------------------------------------------
+// // adding new button to map controll
+// map.addControl(new customControl());
 
-const autocomplete = new Autocomplete("marker", {
-  delay: 1000,
-  selectFirst: true,
-  howManyCharacters: 2,
+// // --------------------------------------------------------------
 
-  onSearch: function ({ currentValue }) {
-    const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&q=${encodeURI(
-      currentValue
-    )}`;
+// // input element
+// const root = document.getElementById("marker");
 
-    /**
-     * Promise
-     */
-    return new Promise((resolve) => {
-      fetch(api)
-        .then((response) => response.json())
-        .then((data) => {
-          resolve(data.features);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-  },
+// function addClassToParent() {
+//   const searchBtn = document.querySelector(".leaflet-search");
+//   searchBtn.addEventListener("click", (e) => {
+//     // toggle class
+//     e.target
+//       .closest(".leaflet-autocomplete")
+//       .classList.toggle("active-autocomplete");
 
-  onResults: ({ currentValue, matches, template }) => {
-    const regex = new RegExp(currentValue, "i");
-    // checking if we have results if we don't
-    // take data from the noResults method
-    return matches === 0
-      ? template
-      : matches
-          .map((element) => {
-            return `
-              <li role="option">
-                <p>${element.properties.display_name.replace(
-                  regex,
-                  (str) => `<b>${str}</b>`
-                )}</p>
-              </li> `;
-          })
-          .join("");
-  },
+//     // add placeholder
+//     root.placeholder = "Search ...";
 
-  onSubmit: ({ object }) => {
-    const { display_name } = object.properties;
-    const cord = object.geometry.coordinates;
-    // custom id for marker
-    // const customId = Math.random();
+//     // focus on input
+//     root.focus();
 
-    // remove last marker
-    map.eachLayer(function (layer) {
-      if (layer.options && layer.options.pane === "markerPane") {
-        if (layer._icon.classList.contains("leaflet-marker-locate")) {
-          map.removeLayer(layer);
-        }
-      }
-    });
+//     // use destroy method
+//     autocomplete.destroy();
+//   });
+// }
 
-    // add marker
-    // const marker = L.marker([cord[1], cord[0]], {
-    //   title: display_name,
-    // });
+// addClassToParent();
 
-    // add marker to map
-    // marker.addTo(map).bindPopup(display_name);
+// // function clear input
+// // map.on("click", () => {
+// //   document
+// //     .querySelector(".leaflet-autocomplete")
+// //     .classList.remove("active-autocomplete");
 
-    // set marker to coordinates
-    map.setView([cord[1], cord[0]], 14);
+// //   clickOnClearButton();
+// // });
 
-    // add class to marker
-    L.DomUtil.addClass(marker._icon, "leaflet-marker-locate");
-  },
+// // autocomplete section
+// // more config find in https://github.com/tomickigrzegorz/autocomplete
+// // --------------------------------------------------------------
 
-  // the method presents no results
-  noResults: ({ currentValue, template }) =>
-    template(`<li>No results found: "${currentValue}"</li>`),
-});
+// const autocomplete = new Autocomplete("marker", {
+//   delay: 1000,
+//   selectFirst: true,
+//   howManyCharacters: 2,
 
-    function resetlokasi() {
-        $('#lokasiid').val(null);
-        $('#lokasigedung').val(null);
-        $('#lokasikantorid').val(null);
-        $('#lokasigedungid').val(null);
-        $('#lokasilat').val(null);
-        $('#lokasilong').val(null);
-        $('#lokasinama').val(null);
-        $('#lokasikantorid').change();
-        $('#lokasigedungid').change();
-    }
+//   onSearch: function ({ currentValue }) {
+//     const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&q=${encodeURI(
+//       currentValue
+//     )}`;
+
+//     /**
+//      * Promise
+//      */
+//     return new Promise((resolve) => {
+//       fetch(api)
+//         .then((response) => response.json())
+//         .then((data) => {
+//           resolve(data.features);
+//         })
+//         .catch((error) => {
+//           console.error(error);
+//         });
+//     });
+//   },
+
+//   onResults: ({ currentValue, matches, template }) => {
+//     const regex = new RegExp(currentValue, "i");
+//     // checking if we have results if we don't
+//     // take data from the noResults method
+//     return matches === 0
+//       ? template
+//       : matches
+//           .map((element) => {
+//             return `
+//               <li role="option">
+//                 <p>${element.properties.display_name.replace(
+//                   regex,
+//                   (str) => `<b>${str}</b>`
+//                 )}</p>
+//               </li> `;
+//           })
+//           .join("");
+//   },
+
+//   onSubmit: ({ object }) => {
+//     const { display_name } = object.properties;
+//     const cord = object.geometry.coordinates;
+//     // custom id for marker
+//     // const customId = Math.random();
+
+//     // remove last marker
+//     map.eachLayer(function (layer) {
+//       if (layer.options && layer.options.pane === "markerPane") {
+//         if (layer._icon.classList.contains("leaflet-marker-locate")) {
+//           map.removeLayer(layer);
+//         }
+//       }
+//     });
+
+//     // add marker
+//     // const marker = L.marker([cord[1], cord[0]], {
+//     //   title: display_name,
+//     // });
+
+//     // add marker to map
+//     // marker.addTo(map).bindPopup(display_name);
+
+//     // set marker to coordinates
+//     map.setView([cord[1], cord[0]], 14);
+
+//     // add class to marker
+//     L.DomUtil.addClass(marker._icon, "leaflet-marker-locate");
+//   },
+
+//   // the method presents no results
+//   noResults: ({ currentValue, template }) =>
+//     template(`<li>No results found: "${currentValue}"</li>`),
+// });
+
+//     function resetlokasi() {
+//         $('#lokasiid').val(null);
+//         $('#lokasigedung').val(null);
+//         $('#lokasikantorid').val(null);
+//         $('#lokasigedungid').val(null);
+//         $('#lokasilat').val(null);
+//         $('#lokasilong').val(null);
+//         $('#lokasinama').val(null);
+//         $('#lokasikantorid').change();
+//         $('#lokasigedungid').change();
+//     }
 
     createDataTable('#masterobjek');
     $('#objekkantorid').select2({
