@@ -97,6 +97,7 @@
 @endsection
 @section('custom-js')
 <script>
+    console.log('5-10-2023');
     createDataTable('#masterkantor');
     function addkantor(data) {
         resetkantor();
@@ -237,6 +238,7 @@
                 }
             }
         });
+        settoiletoutdoor();
     }
     function changegedung(lantaiid,gedungid,kantorid,x) {
         let kantor = $(kantorid).val();
@@ -262,6 +264,7 @@
                 }
             }
         });
+        settoiletoutdoor();
     }
     function changelantai(ruanganid,lantaiid,gedungid,kantorid,x) {
         let kantor = $(kantorid).val();
@@ -288,6 +291,41 @@
                 }
             }
         });
+        settoiletoutdoor();
+    }
+    function settoiletoutdoor(){
+        let kantor = $('#objekkantorid').val();
+        let gedung = $('#objekgedungid').val();
+        let lantai = $('#objeklantaiid').val();
+        if (kantor&&gedung&&lantai) {
+            let htmlt = '';
+            let htmlo = '';
+            let ot = $('#objektoilet').val();
+            let oo = $('#objekoutdoor').val();
+            $.ajax({
+                type: 'GET',
+                url: '/gettoiletoutdoor',
+                data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor+'&gedung='+gedung+'&lantai='+lantai,
+                success: function(data) {
+                    data.outdoor.forEach(element => {
+                        if (element.id == oo) {
+                            htmlo += '<option value="' + element.id + '" selected>' + element.outdoor + '</option>';
+                        } else {
+                            htmlo += '<option value="' + element.id + '">' + element.outdoor + '</option>';
+                        }
+                    });
+                    $('#objekoutdoorid').html(htmlo);
+                    data.toilet.forEach(element => {
+                        if (element.id == ot) {
+                            htmlt += '<option value="' + element.id + '" selected>' + element.toilet + '</option>';
+                        } else {
+                            htmlt += '<option value="' + element.id + '">' + element.toilet + '</option>';
+                        }
+                    });
+                    $('#objektoiletid').html(htmlt);
+                }
+            });
+        }
     }
 
     createDataTable('#masterruangan');
@@ -662,6 +700,16 @@
         placeholder: 'Pilih',
         dropdownParent: $('#modalobjek')
     });
+    $('#objektoiletid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modalobjek')
+    });
+    $('#objekoutdoorid').select2({
+        allowClear:true,
+        placeholder: 'Pilih',
+        dropdownParent: $('#modalobjek')
+    });
     function addobjek(data) {
         resetobjek();
         openmodal('#modalobjek');
@@ -674,6 +722,8 @@
             $('#objekgedungid').val(data.gedung_id);
             $('#objeklantaiid').val(data.lantai_id);
             $('#objekruanganid').val(data.ruangan_id);
+            $('#objektoilet').val(data.toilet_id);
+            $('#objekoutdoor').val(data.outdoor_id);
             $('#objekid').val(data.id);
             if (data.pekerjaan) {
                 $('#objekpekerjaan').val(JSON.parse(data.object));
@@ -862,7 +912,6 @@
         resetjob();
         openmodal('#modaljob');
         if (data) {
-            console.log(data.lantai_id);
             $('#jobid').val(data.id);
             $('#joblantaiid').val(data.lantai_id);
             $('#jobkantorid').val(data.kantor_id);

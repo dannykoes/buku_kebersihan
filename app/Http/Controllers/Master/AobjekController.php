@@ -64,6 +64,8 @@ class AobjekController extends Controller
             'gedung_id' => $request->objekgedungid,
             'lantai_id' => $request->objeklantaiid,
             'ruangan_id' => $request->objekruanganid,
+            'toilet_id' => $request->objektoiletid,
+            'outdoor_id' => $request->objekoutdoorid,
             'kategori' => $request->harian[0],
             'object' => json_encode($request->objekpekerjaan),
         ]);

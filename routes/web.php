@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Master\AOutdoorController;
 use App\Http\Controllers\Master\ClientController;
 use App\Http\Controllers\Master\PembagianTugasController;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['auth', 'is_superadmin']], function () {
     Route::post('/approval', [HomeController::class, 'approval']);
     Route::get('/changeapproval', [HomeController::class, 'changeapproval']);
     Route::get('/getclient/{id}', [ClientController::class, 'getclient']);
+    Route::get('/gettoiletoutdoor', [AOutdoorController::class, 'gettoiletoutdoor']);
     Route::post('/simpanpembagian', [PembagianTugasController::class, 'simpanpembagian']);
     Route::delete('/hapuspembagianjob/{id}', [PembagianTugasController::class, 'hapuspembagianjob']);
     Route::resource('laporan', App\Http\Controllers\LaporanController::class);

@@ -57,6 +57,22 @@ class AOutdoorController extends Controller
         return Redirect::back()->with('info', 'Gagal Simpan');
     }
 
+    public function gettoiletoutdoor(Request $request)
+    {
+        $data = [];
+        if ($request->ajax()) {
+            $data['toilet'] = AToiletModel::where('kantor_id', $request->kantor)
+                ->where('gedung_id', $request->gedung)
+                ->where('lantai_id', $request->lantai)
+                ->get();
+            $data['outdoor'] = AOutdoorModel::where('kantor_id', $request->kantor)
+                ->where('gedung_id', $request->gedung)
+                ->where('lantai_id', $request->lantai)
+                ->get();
+        }
+        return response()->json($data, 200);
+    }
+
     /**
      * Display the specified resource.
      */

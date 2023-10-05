@@ -14,6 +14,8 @@ class AObjectModel extends Model
         'gedung_id',
         'lantai_id',
         'ruangan_id',
+        'outdoor_id',
+        'toilet_id',
         'kategori',
         'object',
     ];

@@ -121,11 +121,15 @@ class MasterController extends Controller
             'a_gedung_models.gedung',
             'a_lantai_models.lantai',
             'a_ruangan_models.ruangan',
+            'a_toilet_models.toilet',
+            'a_outdoor_models.outdoor',
         )
             // ->join('a_kantor_models', 'a_kantor_models.id', 'a_object_models.kantor_id')
             ->join('a_gedung_models', 'a_gedung_models.id', 'a_object_models.gedung_id')
             ->join('a_lantai_models', 'a_lantai_models.id', 'a_object_models.lantai_id')
-            ->join('a_ruangan_models', 'a_ruangan_models.id', 'a_object_models.ruangan_id')
+            ->leftJoin('a_ruangan_models', 'a_ruangan_models.id', 'a_object_models.ruangan_id')
+            ->leftJoin('a_toilet_models', 'a_toilet_models.id', 'a_object_models.toilet_id')
+            ->leftJoin('a_outdoor_models', 'a_outdoor_models.id', 'a_object_models.outdoor_id')
             ->get();
         foreach ($data['objek'] as $key => $v) {
             $kantor = json_decode($v->kantor_id) ? json_decode($v->kantor_id) : false;
