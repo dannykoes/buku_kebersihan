@@ -44,8 +44,9 @@
     <script src="{{asset('asset/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('asset/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('asset/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('asset/assets/js/app.js')}}"></script>
-    <script src="{{asset('asset/assets/js/custom.js')}}"></script>
+    <!-- MDB -->
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js">
+    </script> --}}
     <script src="{{asset('asset/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{asset('asset/plugins/table/datatable/datatables.js')}}"></script>
     <script src="{{asset('asset/plugins/apex/apexcharts.min.js')}}"></script>
@@ -55,6 +56,9 @@
     <script src="{{asset('asset/plugins/sweetalerts/custom-sweetalert.js')}}"></script>
     <script src="{{asset('asset/plugins/select2/select2.min.js')}}"></script>
     <script src="{{asset('asset/plugins/select2/custom-select2.js')}}"></script>
+    <script src="{{asset('asset/assets/js/app.js')}}"></script>
+    <script src="{{asset('asset/assets/js/custom.js')}}"></script>
+    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
     {{--
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
