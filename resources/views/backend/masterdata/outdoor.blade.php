@@ -98,7 +98,7 @@
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">Gedung</label>
                                         <select name="outdoorgedungid" id="outdoorgedungid" class="form-control"
-                                            onchange="changegedung('#outdoorlantaiid','#outdoorgedungid','#outdoorkantorid','#outdoorlantai')">
+                                            onchange="changegedung('#outdoorlantaiid','#outdoorgedungid','#outdoorkantorid','#outdoorlantai','select')">
                                             <option value="">Pilih</option>
                                             {{-- @foreach($gedung as $key => $value)
                                             <option value="{{$value->id}}">{{$value->nama.' - '.$value->pic}}</option>

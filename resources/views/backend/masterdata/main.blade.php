@@ -240,13 +240,17 @@
         });
         settoiletoutdoor();
     }
-    function changegedung(lantaiid,gedungid,kantorid,x) {
+    function changegedung(lantaiid,gedungid,kantorid,x,type) {
         let kantor = $(kantorid).val();
         let gedung = $(gedungid).val();
+        
         let r = $(x).val();
         let html = '';
-        html += '<option value="" >Pilih</option>';
+        $('#objekruanganids').html(html);
+        $('#objektoiletid').html(html);
+        $('#objekoutdoorid').html(html);
         $(lantaiid).html(html);
+        console.log(r);
         $.ajax({
             type: 'GET',
             url: '/alantai/getbygedung',
@@ -254,10 +258,19 @@
             success: function(data) {
                 if (data.length > 0) {
                     data.forEach(element => {
-                        if (element.id == r) {
-                            html += '<option value="' + element.id + '" selected>' + element.lantai + '</option>';
-                        } else {
-                            html += '<option value="' + element.id + '">' + element.lantai + '</option>';
+                        let check = element.id==r?'checked':'';
+                        if (type == 'radio') {
+                            let string = `'#objekruanganids','#objeklantaiid','#objekgedungid','#objekkantorid','#objekruangan','radio'`;
+                            html += '    <label class="new-control new-radio new-radio-text radio-primary">';
+                            html += '    <input type="radio" class="new-control-input" name="objeklantaiid" id="objeklantaiid" value="'+element.id+'" onchange="changelantai('+string+')" '+check+' />';
+                            html += '    <span class="new-control-indicator"></span><span class="new-radio-content">'+element.lantai+'</span>';
+                            html += '    </label>';
+                        }else{
+                            if (element.id == r) {
+                                html += '<option value="' + element.id + '" selected>' + element.lantai + '</option>';
+                            } else {
+                                html += '<option value="' + element.id + '">' + element.lantai + '</option>';
+                            }
                         }
                     });
                     $(lantaiid).html(html);
@@ -266,13 +279,12 @@
         });
         settoiletoutdoor();
     }
-    function changelantai(ruanganid,lantaiid,gedungid,kantorid,x) {
+    function changelantai(ruanganid,lantaiid,gedungid,kantorid,x,type) {
         let kantor = $(kantorid).val();
         let gedung = $(gedungid).val();
         let lantai = $(lantaiid).val();
         let r = $(x).val();
         let html = '';
-        html += '<option value="" >Pilih</option>';
         $(ruanganid).html(html);
         $.ajax({
             type: 'GET',
@@ -281,11 +293,17 @@
             success: function(data) {
                 if (data.length > 0) {
                     data.forEach(element => {
-                        if (element.id == r) {
-                            html += '<option value="' + element.id + '" selected>' + element.ruangan + '</option>';
-                        } else {
-                            html += '<option value="' + element.id + '">' + element.ruangan + '</option>';
-                        }
+                        // if (element.id == r) {
+                        //     html += '<option value="' + element.id + '" selected>' + element.ruangan + '</option>';
+                        // } else {
+                        //     html += '<option value="' + element.id + '">' + element.ruangan + '</option>';
+                        // }
+                        // let string = `'#objekruanganids','#objeklantaiid','#objekgedungid','#objekkantorid','#objekruangan'`;
+                        let check = element.id==r?'checked':'';
+                        html += '    <label class="new-control new-radio new-radio-text radio-primary">';
+                        html += '    <input type="radio" class="new-control-input" name="objekruanganid" value="'+element.id+'" '+check+' />';
+                        html += '    <span class="new-control-indicator"></span><span class="new-radio-content">'+element.ruangan+'</span>';
+                        html += '    </label>';
                     });
                     $(ruanganid).html(html);
                 }
@@ -308,19 +326,29 @@
                 data: '_token = <?php echo csrf_token() ?>&kantor=' + kantor+'&gedung='+gedung+'&lantai='+lantai,
                 success: function(data) {
                     data.outdoor.forEach(element => {
-                        if (element.id == oo) {
-                            htmlo += '<option value="' + element.id + '" selected>' + element.outdoor + '</option>';
-                        } else {
-                            htmlo += '<option value="' + element.id + '">' + element.outdoor + '</option>';
-                        }
+                        let check = element.id==ot?'checked':'';
+                        // if (element.id == oo) {
+                            //     htmlo += '<option value="' + element.id + '" selected>' + element.outdoor + '</option>';
+                            // } else {
+                                //     htmlo += '<option value="' + element.id + '">' + element.outdoor + '</option>';
+                                // }
+                                htmlo += '    <label class="new-control new-radio new-radio-text radio-primary">';
+                                    htmlo += '    <input type="radio" class="new-control-input" name="objekoutdoorid" id="objektoilet" value="'+element.id+'" '+check+' />';
+                        htmlo += '    <span class="new-control-indicator"></span><span class="new-radio-content">'+element.outdoor+'</span>';
+                        htmlo += '    </label>';
                     });
                     $('#objekoutdoorid').html(htmlo);
                     data.toilet.forEach(element => {
-                        if (element.id == ot) {
-                            htmlt += '<option value="' + element.id + '" selected>' + element.toilet + '</option>';
-                        } else {
-                            htmlt += '<option value="' + element.id + '">' + element.toilet + '</option>';
-                        }
+                    let check = element.id==ot?'checked':'';
+                        // if (element.id == ot) {
+                        //     htmlt += '<option value="' + element.id + '" selected>' + element.toilet + '</option>';
+                        // } else {
+                        //     htmlt += '<option value="' + element.id + '">' + element.toilet + '</option>';
+                        // }
+                        htmlt += '    <label class="new-control new-radio new-radio-text radio-primary">';
+                        htmlt += '    <input type="radio" class="new-control-input" name="objektoiletid" id="objekoutdoor" value="'+element.id+'" '+check+' />';
+                        htmlt += '    <span class="new-control-indicator"></span><span class="new-radio-content">'+element.toilet+'</span>';
+                        htmlt += '    </label>';
                     });
                     $('#objektoiletid').html(htmlt);
                 }
@@ -685,31 +713,34 @@
         placeholder: 'Pilih',
         dropdownParent: $('#modalobjek')
     });
-    $('#objeklantaiid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        dropdownParent: $('#modalobjek')
-    });
-    $('#objekruanganid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        dropdownParent: $('#modalobjek')
-    });
+    // $('#objeklantaiid').select2({
+    //     allowClear:true,
+    //     placeholder: 'Pilih',
+    //     dropdownParent: $('#modalobjek')
+    // });
+    // $('#objekruanganid').select2({
+    //     allowClear:true,
+    //     placeholder: 'Pilih',
+    //     dropdownParent: $('#modalobjek')
+    // });
     $('#objekpekerjaan').select2({
         allowClear:true,
         placeholder: 'Pilih',
         dropdownParent: $('#modalobjek')
     });
-    $('#objektoiletid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        dropdownParent: $('#modalobjek')
-    });
-    $('#objekoutdoorid').select2({
-        allowClear:true,
-        placeholder: 'Pilih',
-        dropdownParent: $('#modalobjek')
-    });
+    // $('#objektoiletid').select2({
+    //     allowClear:true,
+    //     placeholder: 'Pilih',
+    //     dropdownParent: $('#modalobjek')
+    // });
+    // $('#objekoutdoorid').select2({
+    //     allowClear:true,
+    //     placeholder: 'Pilih',
+    //     dropdownParent: $('#modalobjek')
+    // });
+    function addltr(target,value) {
+        $(target).val(value);
+    }
     function addobjek(data) {
         resetobjek();
         openmodal('#modalobjek');
@@ -718,12 +749,9 @@
             $('#objekgedung').val(data.gedung_id);
             $('#objeklantai').val(data.lantai_id);
             $('#objekruangan').val(data.ruangan_id);
-            $('#objekkantorid').val(data.kantor_id);
-            $('#objekgedungid').val(data.gedung_id);
-            $('#objeklantaiid').val(data.lantai_id);
-            $('#objekruanganid').val(data.ruangan_id);
             $('#objektoilet').val(data.toilet_id);
             $('#objekoutdoor').val(data.outdoor_id);
+            $('#objekkantorid').val(JSON.parse(data.kantor_id));
             $('#objekid').val(data.id);
             if (data.pekerjaan) {
                 $('#objekpekerjaan').val(JSON.parse(data.object));
@@ -731,11 +759,15 @@
             }
             $('#objekkantorid').change();
             setTimeout(() => {
+                $('#objekgedungid').val(data.gedung_id);
                 $('#objekgedungid').change();
+                // $('#objeklantaiid').val(data.lantai_id);
             }, 1000);
             setTimeout(() => {
                 $('#objeklantaiid').change();
-            }, 2000);
+                $('#objekruanganid').val(data.ruangan_id);
+                $('#objekruanganid').change();
+            }, 1500);
             if (data.kategori == 1) {
                 $('#harian').attr('checked','true');
             }
