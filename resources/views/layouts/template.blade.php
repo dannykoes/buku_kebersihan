@@ -43,9 +43,7 @@
     <script src="{{asset('asset/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('asset/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('asset/bootstrap/js/bootstrap.min.js')}}"></script>
-    {{-- <script src="{{asset('asset/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script> --}}
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <script src="{{asset('asset/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('asset/assets/js/app.js')}}"></script>
     <script src="{{asset('asset/assets/js/custom.js')}}"></script>
     <script src="{{asset('asset/assets/js/scrollspyNav.js')}}"></script>
