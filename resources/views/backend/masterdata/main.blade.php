@@ -974,7 +974,7 @@
     }
 
     $(document).ready(function () {
-        // window.dispatchEvent(new Event('resize'));
+        window.dispatchEvent(new Event('resize'));
     })
     function triggerresize() {
         setTimeout(() => {
