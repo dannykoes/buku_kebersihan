@@ -35,7 +35,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==4) active @endif" id="objek-tab" data-toggle="tab"
-                href="#objek" role="tab" aria-controls="objek" aria-selected="false">Objek Pekerjaan</a>
+                href="#objek" role="tab" aria-controls="objek" aria-selected="false" onclick="triggerresize()">Objek
+                Pekerjaan</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if (Session::get('tab')==5) active @endif " id="jabatan-tab" data-toggle="tab"
