@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('kantor_id');
             $table->integer('gedung_id');
             $table->integer('lantai_id');
-            $table->integer('ruangan_id');
+            $table->integer('ruangan_id')->nullable();
             $table->integer('kategori');
             $table->string('object');
             $table->softDeletes();

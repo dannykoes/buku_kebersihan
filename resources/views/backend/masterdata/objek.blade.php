@@ -86,7 +86,7 @@
         </div>
         <!-- Modal -->
         <div class="modal fade" id="modalobjek" role="dialog" aria-labelledby="modalobjekLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-lg" role="document" style="overflow: auto; height: 80vh;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalobjekLabel">Objek Pekerjaan</h5>
@@ -159,7 +159,33 @@
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <fieldset
+                                        style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
+                                        <label>Type</label>
+                                        <div class="n-chk">
+                                            <label
+                                                class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
+                                                <input type="radio" name="type" value="1" id="ruangan"
+                                                    class="new-control-input" onclick="selecttype('1')">
+                                                <span class="new-control-indicator"></span>Ruangan
+                                            </label>
+                                            <label
+                                                class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
+                                                <input type="radio" name="type" value="2" id="toilet"
+                                                    class="new-control-input" onclick="selecttype('2')">
+                                                <span class="new-control-indicator"></span>Toilet
+                                            </label>
+                                            <label
+                                                class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
+                                                <input type="radio" name="type" value="3" id="outdoor"
+                                                    class="new-control-input" onclick="selecttype('3')">
+                                                <span class="new-control-indicator"></span>Outdoor
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2" id="form-ruangan">
                                     {{-- <div class="form-group m-0">
                                         <label for="" class="text-uppercase">ruangan</label>
                                         <select name="objekruanganid" id="objekruanganid" class="form-control">
@@ -177,7 +203,7 @@
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2" id="form-toilet">
                                     <fieldset
                                         style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                         <label for="" class="text-uppercase">toilet</label>
@@ -190,7 +216,7 @@
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2" id="form-outdoor">
                                     <fieldset
                                         style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                         <label for="" class="text-uppercase">outdoor</label>

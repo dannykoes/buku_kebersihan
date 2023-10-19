@@ -63,9 +63,9 @@ class AobjekController extends Controller
             'kantor_id' => json_encode($request->objekkantorid),
             'gedung_id' => $request->objekgedungid,
             'lantai_id' => $request->objeklantaiid,
-            'ruangan_id' => $request->objekruanganid,
-            'toilet_id' => $request->objektoiletid,
-            'outdoor_id' => $request->objekoutdoorid,
+            'ruangan_id' => $request->type == 1 ? $request->objekruanganid : 0,
+            'toilet_id' => $request->type == 2 ? $request->objektoiletid : 0,
+            'outdoor_id' => $request->type == 3 ? $request->objekoutdoorid : 0,
             'kategori' => $request->harian[0],
             'object' => json_encode($request->objekpekerjaan),
         ]);

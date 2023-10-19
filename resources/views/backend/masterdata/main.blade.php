@@ -98,7 +98,9 @@
 @endsection
 @section('custom-js')
 <script>
-    console.log('5-10-2023');
+    $(document).ready(function () {
+        selecttype(0);
+    })
     createDataTable('#masterkantor');
     function addkantor(data) {
         resetkantor();
@@ -995,6 +997,21 @@
     function resetpekerjaan() {
         $('#pekerjaanid').val(null);
         $('#pekerjaannama').val(null);
+    }
+
+    function selecttype(type) {
+        $('#form-ruangan').attr('hidden',true);
+        $('#form-toilet').attr('hidden',true);
+        $('#form-outdoor').attr('hidden',true);
+        if (type == 1) {
+            $('#form-ruangan').removeAttr('hidden');
+        }
+        if (type == 2) {
+            $('#form-toilet').removeAttr('hidden');
+        }
+        if (type == 3) {
+            $('#form-outdoor').removeAttr('hidden');
+        }
     }
 </script>
 
