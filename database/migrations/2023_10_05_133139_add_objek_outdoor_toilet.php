@@ -13,12 +13,12 @@ return new class extends Migration
     {
         if (!Schema::hasColumn('a_object_models', 'toilet_id')) {
             Schema::table('a_object_models', function (Blueprint $table) {
-                $table->json('toilet_id')->nullable();
+                $table->integer('toilet_id')->nullable();
             });
         }
         if (!Schema::hasColumn('a_object_models', 'outdoor_id')) {
             Schema::table('a_object_models', function (Blueprint $table) {
-                $table->json('outdoor_id')->nullable();
+                $table->integer('outdoor_id')->nullable();
             });
         }
     }

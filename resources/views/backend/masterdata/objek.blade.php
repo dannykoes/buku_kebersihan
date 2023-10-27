@@ -129,7 +129,7 @@
                                     <div class="form-group m-0">
                                         <label for="" class="text-uppercase">Gedung</label>
                                         <select name="objekgedungid" id="objekgedungid" class="form-control"
-                                            onchange="changegedung('#objeklantaiids','#objekgedungid','#objekkantorid','#objeklantai','radio')">
+                                            onchange="changegedung('#objeklantaiid','#objekgedungid','#objekkantorid','#objeklantai','opt')">
                                             <option value="">Pilih</option>
                                         </select>
                                     </div>
@@ -139,18 +139,18 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2">
                                     <div class="form-group m-0">
-                                        {{-- <label for="" class="text-uppercase">lantai</label>
+                                        <label for="" class="text-uppercase">lantai</label>
                                         <select name="objeklantaiid" id="objeklantaiid" class="form-control"
-                                            onchange="changelantai('#objekruanganids','#objeklantaiid','#objekgedungid','#objekkantorid','#objekruangan')">
+                                            onchange="changelantai('#objekruanganid','#objeklantaiid','#objekgedungid','#objekkantorid','#objekruangan','opt')">
                                             <option value="">Pilih</option>
-                                        </select> --}}
+                                        </select>
                                         {{-- <input type="text" name="objeklantaiid" id="objeklantaiid" hidden> --}}
-                                        <fieldset
+                                        {{-- <fieldset
                                             style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                             <label>Lantai</label>
                                             <div class="n-chk" id="objeklantaiids">
                                             </div>
-                                        </fieldset>
+                                        </fieldset> --}}
                                         @error('objeklantaiid')
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror
@@ -166,19 +166,19 @@
                                         <div class="n-chk">
                                             <label
                                                 class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
-                                                <input type="radio" name="type" value="1" id="ruangan"
+                                                <input type="radio" name="type" value="1" id="ruangan1"
                                                     class="new-control-input" onclick="selecttype('1')">
                                                 <span class="new-control-indicator"></span>Ruangan
                                             </label>
                                             <label
                                                 class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
-                                                <input type="radio" name="type" value="2" id="toilet"
+                                                <input type="radio" name="type" value="2" id="toilet2"
                                                     class="new-control-input" onclick="selecttype('2')">
                                                 <span class="new-control-indicator"></span>Toilet
                                             </label>
                                             <label
                                                 class="new-control new-checkbox new-checkbox-rounded checkbox-outline-primary">
-                                                <input type="radio" name="type" value="3" id="outdoor"
+                                                <input type="radio" name="type" value="3" id="outdoor3"
                                                     class="new-control-input" onclick="selecttype('3')">
                                                 <span class="new-control-indicator"></span>Outdoor
                                             </label>
@@ -186,18 +186,18 @@
                                     </fieldset>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-2" id="form-ruangan">
-                                    {{-- <div class="form-group m-0">
-                                        <label for="" class="text-uppercase">ruangan</label>
-                                        <select name="objekruanganid" id="objekruanganid" class="form-control">
-                                            <option value="">Pilih</option>
-                                        </select>
-                                    </div> --}}
-                                    {{-- <input type="text" name="objekruanganid" id="objekruanganid" hidden> --}}
                                     <fieldset
                                         style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
-                                        <label>Ruangan</label>
-                                        <div class="n-chk" id="objekruanganids">
+                                        <div class="form-group m-0">
+                                            <label for="" class="text-uppercase">ruangan</label>
+                                            <select name="objekruanganid" id="objekruanganid" class="form-control">
+                                                <option value="">Pilih</option>
+                                            </select>
                                         </div>
+                                        {{-- <input type="text" name="objekruanganid" id="objekruanganid" hidden> --}}
+                                        {{-- <label>Ruangan</label>
+                                        <div class="n-chk" id="objekruanganids">
+                                        </div> --}}
                                     </fieldset>
                                     @error('objekruanganid')
                                     <small class="text-danger">{{$message}}</small>
@@ -207,10 +207,10 @@
                                     <fieldset
                                         style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                         <label for="" class="text-uppercase">toilet</label>
-                                        {{-- <select name="objektoiletid" id="objektoiletid" class="form-control">
+                                        <select name="objektoiletid" id="objektoiletid" class="form-control">
                                             <option value="">Pilih</option>
-                                        </select> --}}
-                                        <div class="n-chk" id="objektoiletid"></div>
+                                        </select>
+                                        {{-- <div class="n-chk" id="objektoiletid"></div> --}}
                                     </fieldset>
                                     @error('objektoiletid')
                                     <small class="text-danger">{{$message}}</small>
@@ -220,10 +220,10 @@
                                     <fieldset
                                         style="border: 1px solid #bfc9d4; color: #3b3f5c; font-size: 15px; border-radius: 6px; padding: 0.75rem">
                                         <label for="" class="text-uppercase">outdoor</label>
-                                        {{-- <select name="objekoutdoorid" id="objekoutdoorid" class="form-control">
+                                        <select name="objekoutdoorid" id="objekoutdoorid" class="form-control">
                                             <option value="">Pilih</option>
-                                        </select> --}}
-                                        <div class="n-chk" id="objekoutdoorid"></div>
+                                        </select>
+                                        {{-- <div class="n-chk" id="objekoutdoorid"></div> --}}
                                     </fieldset>
                                     @error('objekoutdoorid')
                                     <small class="text-danger">{{$message}}</small>
